@@ -1,20 +1,147 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4NCjwhLS0gR2VuZXJhdG9yOiBBZG9iZSBJbGx1c3RyYXRvciAxOS4xLjAsIFNWRyBFeHBvcnQgUGx1Zy1JbiAuIFNWRyBWZXJzaW9uOiA2LjAwIEJ1aWxkIDApICAtLT4NCjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiDQoJIHZpZXdCb3g9IjAgMCAyNTAgMjUwIiBzdHlsZT0iZW5hYmxlLWJhY2tncm91bmQ6bmV3IDAgMCAyNTAgMjUwOyIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+DQo8c3R5bGUgdHlwZT0idGV4dC9jc3MiPg0KCS5zdDB7ZmlsbDojREQwMDMxO30NCgkuc3Qxe2ZpbGw6I0MzMDAyRjt9DQoJLnN0MntmaWxsOiNGRkZGRkY7fQ0KPC9zdHlsZT4NCjxnPg0KCTxwb2x5Z29uIGNsYXNzPSJzdDAiIHBvaW50cz0iMTI1LDMwIDEyNSwzMCAxMjUsMzAgMzEuOSw2My4yIDQ2LjEsMTg2LjMgMTI1LDIzMCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAJIi8+DQoJPHBvbHlnb24gY2xhc3M9InN0MSIgcG9pbnRzPSIxMjUsMzAgMTI1LDUyLjIgMTI1LDUyLjEgMTI1LDE1My40IDEyNSwxNTMuNCAxMjUsMjMwIDEyNSwyMzAgMjAzLjksMTg2LjMgMjE4LjEsNjMuMiAxMjUsMzAgCSIvPg0KCTxwYXRoIGNsYXNzPSJzdDIiIGQ9Ik0xMjUsNTIuMUw2Ni44LDE4Mi42aDBoMjEuN2gwbDExLjctMjkuMmg0OS40bDExLjcsMjkuMmgwaDIxLjdoMEwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMUwxMjUsNTIuMQ0KCQlMMTI1LDUyLjF6IE0xNDIsMTM1LjRIMTA4bDE3LTQwLjlMMTQyLDEzNS40eiIvPg0KPC9nPg0KPC9zdmc+DQo=">
+<nav class="navbar navbar-inverse navbar-toggleable-md fixed-top bg-white">
+  <div class="full-width"> 
+    <a  href="#pablo">
+      <img src="assets/img/logofanatic.png" class="brand-name">
+    </a>
+    <ol class="navbar-nav collapse navbar-collapse">
+      <li class="nav-item"> 
+        <a class="nav-link">
+          Market 
+        </a>
+      </li>
+      <li class="nav-item"> 
+        <a class="nav-link">
+          Shop Owner 
+        </a> 
+      </li>
+    </ol>
+    <div>
+      <ul class="navbar-nav justify-content-end"> 
+        <li class="nav-item nav-item-right dropdown" [appNavUser]="name">
+          <a class="nav-link" href="#pablo"  data-toggle="dropdown" id="navbarDropdownMenuLink1">
+            <i class="now-ui-icons users_single-02"></i>
+            <span class="now-ui-icons arrows-1_minimal-down"></span>
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" id="dropdown-user" >
+            <span class="dropdown-item">Login as...</span>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" (click)="loginForm()"><i class="now-ui-icons ui-1_email-85 nav-icon"></i>Email</a>
+            <a class="dropdown-item" (click)="loginFacebook()"><i class="fa fa-facebook nav-icon"></i>Facebook</a>
+            <a class="dropdown-item" (click)="gotoGoogle()"><i class="fa fa-google nav-icon"></i>Google</a>
+          </ul>
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" id="dropdown-user-login">
+            <span class="dropdown-item">{{uid}}</span>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="#" (click)="loginForm()"><i class="now-ui-icons ui-1_email-85 nav-icon"></i>Information</a>
+            <a class="dropdown-item" (click)="loginFacebook()"><i class="fa fa-facebook nav-icon"></i>My History</a>
+            <a class="dropdown-item" (click)="logout()"><i class="fa fa-google nav-icon"></i>Log Out</a>
+          </ul>
+        </li>
+        <li class="nav-item nav-item-right " >
+          <a class="nav-link" href="#pablo">
+            <i class="now-ui-icons shopping_cart-simple"></i>
+            <p>MY CART</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <hr class="small">
+    <div>
+      <ul class="second-nav navbar-nav collapse navbar-collapse">
+        <li class="nav-item active dropdown" *ngFor="let mainCategory of categories | keys">
+          <a class="nav-link dropdown-toggle"  data-toggle="dropdown" id="dropdownCategory">{{mainCategory}}</a>
+          <ul class="dropdown-menu dropdown-category" aria-labelledby="dropdownCategory">
+            <ul class="collection-item">
+              COLLECTION
+              <hr class="small">
+              <li class="sub-category">New Release</li>
+              <li class="sub-category">Launch Calendar</li>
+              <li class="sub-category">Best Seller</li>
+              <li class="sub-category">Basic</li>
+              <li class="sub-category">Sell</li>
+              <li class="sub-category">City Hunter</li>
+            </ul>
+            <li class="category-item" *ngFor="let subCategory of categories[mainCategory] | keys"> 
+              <a class="sub-category"><span >{{subCategory}}</span></a>
+              <hr class="small">
+              <div id="ui-tree">
+                  <app-ui-tree [data]="categories[mainCategory][subCategory]" [key]="key" ></app-ui-tree>
+              </div>  
+            </li>
+          </ul>
+        </li>
+      </ul>
+      <div class="second-nav-right">
+        <div class="col-sm-10">
+          <div class="input-group form-group-no-border">
+            <input type="text" class="form-control" placeholder="Search something">
+            <span class="input-group-addon">
+              <i class="now-ui-icons ui-1_zoom-bold"></i>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+<app-login></app-login>
+<div class="main-content">
+  <router-outlet></router-outlet>
 </div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" href="https://blog.angular.io//">Angular blog</a></h2>
-  </li>
-</ul>
-
+<section class="section" id="pre-footer">
+    <div class="container">
+      <div class="plugin col-md-4 col-sm-4 col-xs-12">
+        <i class="now-ui-icons iconfooter shopping_delivery-fast ">
+        </i>
+        <div class="plugin-info">
+          <h5><b>FREE TWO-DAY SHIPPING</b></h5>
+          <p class="plugin-meta">You get unlimited deliveries with no minimum order size, and with 20 million eligible items</p>
+        </div>
+      </div>
+      <div class="plugin col-md-4 col-sm-4 col-xs-12">
+        <i class="now-ui-icons iconfooter shopping_delivery-fast ">
+        </i>
+        <div class="plugin-info">
+          <h5><b>FREE TWO-DAY SHIPPING</b></h5>
+          <p class="plugin-meta">You get unlimited deliveries with no minimum order size, and with 20 million eligible items</p>
+        </div>
+      </div>
+      <div class="plugin col-md-4 col-sm-4 col-xs-12">
+        <i class="now-ui-icons iconfooter shopping_delivery-fast ">
+        </i>
+        <div class="plugin-info">
+          <h5><b>FREE TWO-DAY SHIPPING</b></h5>
+          <p class="plugin-meta">You get unlimited deliveries with no minimum order size, and with 20 million eligible items</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!--  Signup login!-->
+  
+  <footer class="footer">
+    <div class="container">
+      <div class="upper-footer">
+        <h5 class="font-footer"><b>WE’RE DEDICATED TO OUR CUSTOMERS 24/7</b></h5>
+        <span>Customer Service Hotline</span>
+        <span class="now-ui-icons arrows-1_minimal-right" style="color: green"></span>
+        <span>01 222 000 966 </span>
+        <span class="now-ui-icons arrows-1_minimal-right" style="color: green"></span>
+        <span>Mochicorner@shop.com</span>
+      </div>
+      <hr class="small" style="background: grey;">
+      <div class="middle-footer">
+        <span class="font-footer subcribe"><b>GET A NEWSLETTER :</b></span>
+        <div class="input-footer col-sm-5">
+          <div class="input-group form-group-no-border">
+            <input type="text" class="form-control" placeholder="Your Email">
+            <span class="input-group-addon">
+              <i class="fa fa-user-circle"></i>
+            </span>
+          </div>
+        </div>
+        <button class="btn btn-success btn-submit">Success</button>
+      </div>
+      <hr class="small" style="background: grey;">
+      <p>@Copyright by Do Hong Quan</p>
+    </div>
+  </footer>

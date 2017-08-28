@@ -1,0 +1,13 @@
+<ul id="list" class="list-group">
+  <li class="list-li" *ngFor="let k of obj| keys" >
+    <div *ngIf="!obj[k].title" >
+      <a [routerLink]="['../',k | lowercase]"> {{k}}</a>
+      <app-ui-tree [key]="k" [data]="obj[k]"></app-ui-tree>
+    </div>
+    <div *ngIf="obj[k].title">
+      <a [routerLink]="['../',obj[k].title | lowercase]" [queryParams]="{ id: obj[k].id}"> {{obj[k].title}}</a>
+    </div>
+  </li>
+</ul>
+
+   
