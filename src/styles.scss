@@ -1,1 +1,116 @@
 /* You can add global styles to this file, and also import other style files */
+.title-font {
+	font-family: TradeGothicLTStd;
+	font-size: 20px;
+	text-transform: uppercase;
+	font-weight: bold;
+	letter-spacing: -1px;
+	transform: scale(.6, 1);
+}
+.navbar {
+	padding: 0 !important;
+}
+.title-panel {
+	a {
+	color: black !important;
+	font-size: 15px;
+	}
+}
+.panel-body, .brands-name{
+	ul li a{
+		color: black !important;
+	}
+}
+.panel-heading {
+	h4 {
+		margin-top: 0;
+	}
+} 
+.second-nav {
+	.nav-link {
+		color: black !important;
+	}
+}
+.category-in-products {
+	.category-container {
+		width: 100%;
+		padding: 0;
+		.category-item {
+			width: calc(100%/4);
+			margin-bottom: 30px;
+			position: relative;
+			.category-item-info p{
+				opacity: 1;
+				-webkit-transition: 0.3s; /* Safari */
+    		transition: 0.3s;
+			}
+			.add-to-cart-btn{
+				max-width: 100%;
+				position: absolute;
+				bottom: -100px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				-webkit-transition: 0.5s; /* Safari */
+    		transition: 0.5s;
+    		opacity: 0;	
+				a{
+					font-size: 1.2vw;
+					border: 1.5px solid black;
+					padding: 5% 10%;
+					background-color: white;
+				}
+				.rating{
+						color: orange;
+						margin-top: 20px;
+
+				}
+			}
+		}
+		.category-item:hover {
+			.category-item-info p{
+				opacity: 0;
+				-webkit-transition: 0.5s; /* Safari */
+    		transition: 0.5s;
+			}
+			.add-to-cart-btn {
+				opacity: 1;
+				-webkit-transition: 0.3s; /* Safari */
+    		transition: 0.3s;
+				bottom: 30px;
+				.btn {
+					background-color: #bdbb95;
+				}
+			}
+		}
+	}
+}
+
+#ui-tree ul li {
+	list-style: none;
+	font-family: Arial;
+		div a {
+			font-size: 13px;
+			line-height: 30px;
+			text-transform: uppercase ;
+			color: grey;
+		}
+
+	  .list-li {
+	  	a{
+	  	font-size: 13px;
+	  	text-transform: capitalize;
+	  	color: black;
+	  	padding-left: 10px;
+	  	}
+	  }
+	}
+
+.container-side {
+	max-width: 1240px;
+	margin: 0 40px;
+}
+
+.aside-category {
+
+}
