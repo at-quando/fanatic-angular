@@ -13,6 +13,7 @@ import { ProductComponent } from './product/product-list/product.component';
 import { routing, appRoutingProviders } from './app.route';
 import { HomeComponent } from './home/home.component';
 import { KeysPipe } from './shared/pipe/categories.pipe';
+import { ReplaceBlankPipe } from './shared/pipe/replaceBlank.pipe';
 import { UiTreeComponent } from './shared/layout/ui-tree/ui-tree.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { CategoryTreeComponent } from './product/category-tree/category-tree.component';
@@ -29,6 +30,7 @@ import { UiTreeAsideComponent } from './product/category-tree/ui-tree-aside/ui-t
     ProductComponent,
     HomeComponent,
     KeysPipe,
+    ReplaceBlankPipe,
     UiTreeComponent,
     ProductDetailComponent,
     CategoryTreeComponent,
