@@ -14,11 +14,11 @@ export class ProductComponent implements OnInit {
   constructor(private route: ActivatedRoute) { 
   this.sub= this.route.queryParams.subscribe(params => {
       this.id= +params['id'] || 0;
-      console.log(this.id);
+      
     });
     this.subs= this.route.params.subscribe(params => {
       this.name= params['name'];
-      console.log(this.name);
+   
     })
   }
 

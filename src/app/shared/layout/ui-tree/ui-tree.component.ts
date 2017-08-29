@@ -12,7 +12,7 @@ export class UiTreeComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-
+    console.log(this.obj);
   }
 
   scanLevel(obj)

@@ -1,13 +1,43 @@
-<ul id="list" class="list-group">
-  <li class="list-li" *ngFor="let k of mainCategory| keys" >
-    <div *ngIf="!mainCategory[k].title" >
-      <a [routerLink]="['../',k | lowercase]"> {{k}}</a>
-      <app-ui-tree [key]="k" [data]="mainCategory[k]"></app-ui-tree>
+<div *ngFor="let k of mainCategory| keys" id="cat-tree">
+  <div class="panel panel-default" *ngIf="!mainCategory.length">
+    <div class="panel-heading">
+    	<h4 class="title-panel">
+      	<a [routerLink]="['../',k | lowercase]" *ngIf="path.indexOf(k)!=-1" > 
+      		<b>{{k}}</b>	
+      	</a>
+      	<a [routerLink]="['../',k | lowercase]" *ngIf="path.indexOf(k)==-1" > 
+      		{{k}}	
+      	</a>
+      	<a data-toggle="collapse" href=#{{k|replaceBlankSpace}} >
+      		<i id="plus" class="now-ui-icons ui-1_simple-add" ></i>
+      	</a>
+      </h4>
+      <div id={{k|replaceBlankSpace}} class="panel-collapse collapse show" *ngIf="path.indexOf(k)!=-1">
+      	<ui-tree-aside [currentTree]="path" [data]="mainCategory[k]" class="panel-body"></ui-tree-aside>
+      </div>
+      <div id={{k|replaceBlankSpace}} class="panel-collapse collapse" *ngIf="path.indexOf(k)==-1">
+      	<ui-tree-aside [currentTree]="path" [data]="mainCategory[k]" class="panel-body"></ui-tree-aside>
+      </div>
     </div>
-    <div *ngIf="mainCategory[k].title">
-      <a [routerLink]="['../',mainCategory[k].title | lowercase]" [queryParams]="{ id: mainCategory[k].id}"> {{obj[k].title}}</a>
-    </div>
-  </li>
-</ul>
+  </div>
+  <div *ngIf="mainCategory.length">
+		<ul>
+			<div *ngIf="mainCategory[k].title">
+	  		<li *ngIf="path.indexOf(mainCategory[k].title)!=-1"> <a [routerLink]="['../',mainCategory[k].title | lowercase]" [queryParams]="{ id: mainCategory[k].id}"> <b><b>{{mainCategory[k].title}}</b></b></a></li>
+	  		<li *ngIf="path.indexOf(mainCategory[k].title)==-1"> <a [routerLink]="['../',mainCategory[k].title | lowercase]" [queryParams]="{ id: mainCategory[k].id}"> {{mainCategory[k].title}}</a></li>
+	  	</div>
+	  	<div *ngIf="!mainCategory[k].title">
+	  		<li *ngFor="let m of mainCategory[k]| keys">
+	  			<a [routerLink]="['../',m | lowercase]" *ngIf="path.indexOf(m)!=-1" > 
+      		<b><b>{{m}}</b></b>
+      		</a>
+      		<a [routerLink]="['../',m | lowercase]" *ngIf="path.indexOf(m)==-1" > 
+      		{{m}}	
+      		</a>
+	  			<ui-tree-aside [currentTree]="path" [data]="mainCategory[k][m]" class="panel-body"></ui-tree-aside>
+	  		</li>
+	  	</div>
+	  </ul>
+	</div>
+</div>
 
-   

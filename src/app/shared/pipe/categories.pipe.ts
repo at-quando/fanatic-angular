@@ -4,9 +4,9 @@ import { PipeTransform, Pipe } from '@angular/core';
 export class KeysPipe implements PipeTransform {
   transform(value, args:string[]) : any {
     let keys = [];
-    for (let key in value) {
-      keys.push(key);
-    }
+    	for (let key in value) {
+      	keys.push(key);
+      }
     return keys;
   }
 }
