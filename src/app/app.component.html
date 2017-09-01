@@ -1,28 +1,29 @@
-<nav class="navbar navbar-inverse navbar-toggleable-md fixed-top bg-white">
-  <div class="full-width"> 
-    <a  href="#pablo">
+<app-login></app-login>
+<nav id="navbar" class="navbar navbar-inverse navbar-toggleable-md fixed-top bg-white">
+  <div class="full-width">
+    <a href="#pablo">
       <img src="assets/img/logofanatic.png" class="brand-name">
     </a>
     <ol class="navbar-nav collapse navbar-collapse">
-      <li class="nav-item"> 
+      <li class="nav-item">
         <a class="nav-link">
-          Market 
+          Market
         </a>
       </li>
-      <li class="nav-item"> 
-        <a class="nav-link">
-          Shop Owner 
-        </a> 
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['../shop',1]">
+          Shop Owner
+        </a>
       </li>
     </ol>
     <div>
-      <ul class="navbar-nav justify-content-end"> 
+      <ul class="navbar-nav justify-content-end">
         <li class="nav-item nav-item-right dropdown" [appNavUser]="name">
-          <a class="nav-link" href="#pablo"  data-toggle="dropdown" id="navbarDropdownMenuLink1">
+          <a class="nav-link" href="#pablo" data-toggle="dropdown" id="navbarDropdownMenuLink1">
             <i class="now-ui-icons users_single-02"></i>
             <span class="now-ui-icons arrows-1_minimal-down"></span>
           </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" id="dropdown-user" >
+          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" id="dropdown-user">
             <span class="dropdown-item">Login as...</span>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" href="#" (click)="loginForm()"><i class="now-ui-icons ui-1_email-85 nav-icon"></i>Email</a>
@@ -32,12 +33,12 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" id="dropdown-user-login">
             <span class="dropdown-item">{{uid}}</span>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" href="#" (click)="loginForm()"><i class="now-ui-icons ui-1_email-85 nav-icon"></i>Information</a>
-            <a class="dropdown-item" (click)="loginFacebook()"><i class="fa fa-facebook nav-icon"></i>My History</a>
-            <a class="dropdown-item" (click)="logout()"><i class="fa fa-google nav-icon"></i>Log Out</a>
+            <a class="dropdown-item" [routerLink]="['../customer/account', {uid: uid}]"><i class="now-ui-icons design_bullet-list-67"></i> Information</a>
+            <a class="dropdown-item" (click)="loginFacebook()"><i class="now-ui-icons shopping_bag-16"></i> My History</a>
+            <a class="dropdown-item" (click)="logout()"><i class="now-ui-icons loader_gear"></i> Log Out</a>
           </ul>
         </li>
-        <li class="nav-item nav-item-right " >
+        <li class="nav-item nav-item-right ">
           <a class="nav-link" href="#pablo">
             <i class="now-ui-icons shopping_cart-simple"></i>
             <p>MY CART</p>
@@ -49,7 +50,7 @@
     <div>
       <ul class="second-nav navbar-nav collapse navbar-collapse">
         <li class="nav-item active dropdown" *ngFor="let mainCategory of categories | keys">
-          <a class="nav-link dropdown-toggle"  data-toggle="dropdown" id="dropdownCategory">{{mainCategory}}</a>
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownCategory">{{mainCategory}}</a>
           <ul class="dropdown-menu dropdown-category" aria-labelledby="dropdownCategory">
             <ul class="collection-item">
               COLLECTION
@@ -61,12 +62,12 @@
               <li class="sub-category">Sell</li>
               <li class="sub-category">City Hunter</li>
             </ul>
-            <li class="category-item" *ngFor="let subCategory of categories[mainCategory] | keys"> 
+            <li class="category-item" *ngFor="let subCategory of categories[mainCategory] | keys">
               <a class="sub-category"><span >{{subCategory}}</span></a>
               <hr class="small">
               <div id="ui-tree">
-                  <app-ui-tree [data]="categories[mainCategory][subCategory]" [key]="key" ></app-ui-tree>
-              </div>  
+                <app-ui-tree [data]="categories[mainCategory][subCategory]" [key]="key"></app-ui-tree>
+              </div>
             </li>
           </ul>
         </li>
@@ -84,64 +85,9 @@
     </div>
   </div>
 </nav>
-<app-login></app-login>
+
 <div class="main-content">
   <router-outlet></router-outlet>
 </div>
-<section class="section" id="pre-footer">
-    <div class="container">
-      <div class="plugin col-md-4 col-sm-4 col-xs-12">
-        <i class="now-ui-icons iconfooter shopping_delivery-fast ">
-        </i>
-        <div class="plugin-info">
-          <h5><b>FREE TWO-DAY SHIPPING</b></h5>
-          <p class="plugin-meta">You get unlimited deliveries with no minimum order size, and with 20 million eligible items</p>
-        </div>
-      </div>
-      <div class="plugin col-md-4 col-sm-4 col-xs-12">
-        <i class="now-ui-icons iconfooter shopping_delivery-fast ">
-        </i>
-        <div class="plugin-info">
-          <h5><b>FREE TWO-DAY SHIPPING</b></h5>
-          <p class="plugin-meta">You get unlimited deliveries with no minimum order size, and with 20 million eligible items</p>
-        </div>
-      </div>
-      <div class="plugin col-md-4 col-sm-4 col-xs-12">
-        <i class="now-ui-icons iconfooter shopping_delivery-fast ">
-        </i>
-        <div class="plugin-info">
-          <h5><b>FREE TWO-DAY SHIPPING</b></h5>
-          <p class="plugin-meta">You get unlimited deliveries with no minimum order size, and with 20 million eligible items</p>
-        </div>
-      </div>
-    </div>
-  </section>
-  <!--  Signup login!-->
-  
-  <footer class="footer">
-    <div class="container">
-      <div class="upper-footer">
-        <h5 class="font-footer"><b>WE’RE DEDICATED TO OUR CUSTOMERS 24/7</b></h5>
-        <span>Customer Service Hotline</span>
-        <span class="now-ui-icons arrows-1_minimal-right" style="color: green"></span>
-        <span>01 222 000 966 </span>
-        <span class="now-ui-icons arrows-1_minimal-right" style="color: green"></span>
-        <span>Mochicorner@shop.com</span>
-      </div>
-      <hr class="small" style="background: grey;">
-      <div class="middle-footer">
-        <span class="font-footer subcribe"><b>GET A NEWSLETTER :</b></span>
-        <div class="input-footer col-sm-5">
-          <div class="input-group form-group-no-border">
-            <input type="text" class="form-control" placeholder="Your Email">
-            <span class="input-group-addon">
-              <i class="fa fa-user-circle"></i>
-            </span>
-          </div>
-        </div>
-        <button class="btn btn-success btn-submit">Success</button>
-      </div>
-      <hr class="small" style="background: grey;">
-      <p>@Copyright by Do Hong Quan</p>
-    </div>
-  </footer>
+<!--  Signup login!-->
+<app-footer></app-footer>

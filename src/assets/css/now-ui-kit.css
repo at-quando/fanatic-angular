@@ -4309,7 +4309,7 @@ Created using IcoMoon - icomoon.io
 .modal-in {
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
-  height: 100%;
+  height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
@@ -4318,11 +4318,10 @@ Created using IcoMoon - icomoon.io
   .modal-in .modal-dialog {
     background: rgba(255, 255, 255, 0.5);
     width: 100%;
-    height: 80%;
     vertical-align: middle;
-    top: 10%;
     border-radius: 5%;
-    position: relative; }
+    position: relative;
+    height: 75%; }
     .modal-in .modal-dialog .modal-info {
       padding: 0 30px; }
       .modal-in .modal-dialog .modal-info .modal-font {

@@ -1,0 +1,93 @@
+<div class="container-side">
+	<div class="row">
+		<div class="col-sm-3">
+		<h4>Account Management</h4>
+			<ul class="list-user-action">
+				<li class="active">Your Information</li>
+				<li>Completed Orders</li>
+				<li>Your Wish List</li>
+				<li>Your review</li>
+			</ul>
+		</div>
+		<div class="col-sm-5 padding-right">
+			<form class="form" #f="ngForm" novalidate (ngSubmit)="editUserInfo(f.value)">
+			  <h5>Your Personal Information</h5>
+				<div>
+					<div>
+						<label class="label-info">Your email:</label>
+						<label>12354@email.com</label>
+					</div>
+					<div>
+						<label class="label-info">Your name:</label>
+						<input [(ngModel)]="user.name" class="col-sm-8" type="text" name="" placeholder="Do Hong Quan">
+					</div>
+					<div>
+						<label class="label-info">Your phone number:</label>
+						<input [(ngModel)]="user.phone" class="col-sm-8"type="text" name="" placeholder="1235346">
+					</div>
+					<div>
+						<label class="label-info">Your gender:</label>
+						<div class="radio">
+					    <input [(ngModel)]="user.gender" type="radio" name="radio1" id="radio1" value=0>
+					    <label for="radio1">
+					      Men
+					    </label>
+						
+					    <input [(ngModel)]="user.gender" type="radio" name="radio1" id="radio2" value=1 checked="">
+					    <label for="radio2">
+					      Women
+					    </label>
+						
+					    <input [(ngModel)]="user.gender" type="radio" name="radio1" id="radio2" value=2 checked="">
+					    <label for="radio2">
+					      Other
+					    </label>
+						</div>
+					</div>
+					<div>
+						<label class="label-info">Your address</label>
+						<input [(ngModel)]="user.address" class="col-sm-8" type="text" name="" placeholder="asdadasd">
+					</div>
+				</div>
+				<button type="submit" class="btn btn-primary">Save</button>
+			</form>
+		</div>
+		<div class="col-sm-4">
+			<h5>Wish list</h5>
+			<ul class="wish-list">
+				<li>
+					<a>
+						<img class="col-sm-5" src="http://az616578.vo.msecnd.net/files/2016/09/17/636096742373357996142416222_fashion-beauty-tips.jpg">
+						<div class="col-sm-7 margin-right">
+						<h6>name of product</h6>
+						<p>dess¥cription</p>
+						<p>$30</p>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a>
+						<img class="col-sm-5" src="http://az616578.vo.msecnd.net/files/2016/09/17/636096742373357996142416222_fashion-beauty-tips.jpg">
+						<div class="col-sm-7 margin-right">
+						<h6>name of product</h6>
+						<p>dess¥cription</p>
+						<p>$30</p>
+						</div>
+					</a>
+				</li>
+				<li>
+					<a>
+						<img class="col-sm-5" src="http://az616578.vo.msecnd.net/files/2016/09/17/636096742373357996142416222_fashion-beauty-tips.jpg">
+						<div class="col-sm-7 margin-right">
+						<h6>name of product</h6>
+						<p>dess¥cription</p>
+						<p>$30</p>
+						</div>
+					</a>
+				</li>
+			</ul>
+			<a href="" class="margin-right">SEE MORE</a>
+		</div>
+	</div>
+</div>
+

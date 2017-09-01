@@ -1,39 +1,159 @@
+<div id="noti-danger" class="alert alert-danger notification" role="alert">
+  <div class="container">
+    <div class="alert-icon">
+      <i class="now-ui-icons objects_support-17"></i>
+    </div>
+    <strong>Oh snap!</strong> Wrong email or password. Please fill again!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">
+        <i class="now-ui-icons ui-1_simple-remove"></i>
+      </span>
+    </button>
+  </div>
+</div>
+<div id="noti-warning" class="alert alert-warning notification" role="alert">
+  <div class="container">
+    <div class="alert-icon">
+      <i class="now-ui-icons ui-1_bell-53"></i>
+    </div>
+    <strong>Create Email Success!</strong> Please check email to verify your account.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">
+        <i class="now-ui-icons ui-1_simple-remove"></i>
+      </span>
+    </button>
+  </div>
+</div>
 <div id="modal-in" class="modal-in">
   <div class="modal-dialog">
     <div class="modal-info content-center">
       <div class="card card-login card-plain">
-        <form class="form form-container" method="" action="">
+        <div class="nav-account">
+          <a id="nav-login" (click)="enableForm('signup','login')">Login</a>
+          <a id="nav-signup" (click)="enableForm('login','signup')">SignUp</a>
+        </div>
+        <form id="login" #f="ngForm" class="form" novalidate (ngSubmit)="login()">
           <div class="header header-primary text-center">
             <div class="logo-container">
               <img src="assets/img/logofanatic.png" alt="" style="width: 50%">
             </div>
-            <h5> LOGIN </h5>
           </div>
-          <div class="content">
+          <div  class="content text-center">
+            <h5> LOGIN </h5>
+            <small [hidden]="name1.valid || (name1.pristine && !f.submitted)" class="text-danger">
+              <i class="now-ui-icons ui-1_simple-remove"></i> Your email format is not right.
+              </small>
             <div class="input-group form-group-no-border input-lg">
-                <span class="input-group-addon">
+              <span class="input-group-addon">
                     <i class="now-ui-icons users_circle-08"></i>
                 </span>
-                <input  type="text" class="form-control" placeholder="Email..."  >
+              <input name1="name" #name1="ngModel" [(ngModel)]="uid" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Email..." pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,4}$">
             </div>
+            <small [hidden]="password.valid || (password.pristine && !f.submitted)" class="text-danger">
+                  Password is required.
+              </small>
             <div class="input-group form-group-no-border input-lg">
-                <span class="input-group-addon">
+              <span class="input-group-addon">
                     <i class="now-ui-icons ui-1_lock-circle-open"></i>
                 </span>
-                <input type="password" placeholder="Password..." class="form-control" >
+              <input name="password" #password="ngModel" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password..." class="form-control" required>
             </div>
           </div>
           <div class="text-center">
-            <a class="btn btn-primary" (click)="login()">Get Started</a>
+            <button class="btn btn-primary" type="submit">Let's buy</button> 
           </div>
           <div class="text-center">
             <h6>
-                <a href="#pablo" class="modal-font">You want to create Account?</a>
+                <a (click)="enableForm('login','signup')" href="#" class="modal-font">You want to create Account?</a>
             </h6>
           </div>
           <div class="text-center">
             <h6>
                 <a href="#pablo" class="modal-font">Forgot Password?</a>
+            </h6>
+          </div>
+        </form>
+        <form #formRegister="ngForm" novalidate id="signup" class="form"  (ngSubmit)="signup(formRegister.value)" >
+          <div class="header header-primary text-center">
+            <div class="logo-container">
+              <img src="assets/img/logofanatic.png" alt="" style="width: 50%">
+            </div>
+          </div>
+          <div class="content text-center">
+            <h5> SignUp </h5>
+            <small [hidden]="email.valid || (email.pristine && !formRegister.submitted)" class="text-danger">
+              Your email format is not right!<br>
+            </small>
+            <small [hidden]="password.valid || (password.pristine && !formRegister.submitted)" class="text-danger">
+              Password is required!<br>
+            </small>
+            <small [hidden]="nameCreate.valid || (nameCreate.pristine && !formRegister.submitted)" class="text-danger">
+              Name is required (minimum 5 characters).<br>
+            </small>
+            <small [hidden]="phoneCreate.valid || (phoneCreate.pristine && !formRegister.submitted)" class="text-danger">
+              Phone number ( minimum 10 numbers)!<br>
+            </small>
+             <small [hidden]="addressCreate.valid || (addressCreate.pristine && !formRegister.submitted)" class="text-danger">
+              Address is required!<br>
+            </small>
+            <div class="input-group form-group-no-border input-lg input-half">
+              <span class="input-group-addon">
+                    <i class="now-ui-icons users_circle-08"></i>
+                </span>
+              <input name="email" #email="ngModel" [(ngModel)]="uidCreate"  type="text" class="form-control" placeholder="Email..." pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,4}$">
+            </div>
+            <div class="input-group form-group-no-border input-lg input-half">
+              <span class="input-group-addon">
+                    <i class="now-ui-icons ui-1_lock-circle-open"></i>
+                </span>
+              <input name="password" #password="ngModel" [(ngModel)]="passCreate"  type="password" placeholder="Password..." class="form-control" required>
+            </div>
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                    <i class="now-ui-icons users_circle-08"></i>
+                </span>
+              <input name="nameCreate" #nameCreate="ngModel" [(ngModel)]="user.name"  type="text" class="form-control" placeholder="Your Full Name..." required minlength="5">
+            </div>
+            <div class="input-group form-group-no-border input-lg">
+              GENDER:
+              <div class="radio">
+                <input type="radio" name="radio1" id="radio1" value=0 [(ngModel)]="user.gender" >
+                <label for="radio1">
+                    Men
+                </label>
+              </div>
+              <div class="radio">
+                <input type="radio" name="radio1" id="radio2" value=1 [(ngModel)]="user.gender"  checked="">
+                <label for="radio2">
+                    Women
+                </label>
+              </div>
+              <div class="radio">
+                <input type="radio" name="radio1" id="radio3" value=2 [(ngModel)]="user.gender"  checked="">
+                <label for="radio3">
+                    Other
+                </label>
+              </div>
+            </div>
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                    <i class="now-ui-icons users_circle-08"></i>
+                </span>
+              <input name="phoneCreate" #phoneCreate="ngModel" [(ngModel)]="user.phone"  type="text" class="form-control" placeholder="Phone"required minlength="10">
+            </div>
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                    <i class="now-ui-icons users_circle-08"></i>
+                </span>
+              <input name="addressCreate" #addressCreate="ngModel" [(ngModel)]="user.address"  type="text" class="form-control" placeholder="Address (number,street,district,city) ..." required>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary" type="submit" [disabled]="!formRegister.valid">CREATE ACCOUNT</button>
+          </div>
+          <div class="text-center">
+            <h6>
+                <a (click)="enableForm('signup','login')" href="#" class="modal-font">Have an account? Come to login form here!</a>
             </h6>
           </div>
         </form>
