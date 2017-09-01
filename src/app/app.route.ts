@@ -1,5 +1,5 @@
 import { Routes, RouterModule } from '@angular/router';
-import { ProductComponent } from './product/product-list/product.component';
+import { ProductComponent } from './product/product.component';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';

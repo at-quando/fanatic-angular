@@ -9,7 +9,9 @@ import { PropertyDirective } from './shared/directive/property-product.directive
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { FacebookModule } from 'ngx-facebook';
-import { ProductComponent } from './product/product-list/product.component';
+
+import { ProductComponent } from './product/product.component';
+
 import { routing, appRoutingProviders } from './app.route';
 import { HomeComponent } from './home/home.component';
 import { KeysPipe } from './shared/pipe/categories.pipe';

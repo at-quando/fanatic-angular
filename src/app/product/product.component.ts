@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../shared/services/product.service';
-import { PaginationComponent } from '../../shared/layout/pagination/pagination.component';
+import { ProductService } from '../shared/services/product.service';
+import { PaginationComponent } from '../shared/layout/pagination/pagination.component';
 
 @Component({
   selector: 'app-product',
