@@ -5,7 +5,7 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './authenticate/login/login.component';
 import { NavUserDirective } from './shared/directive/nav-user.directive';
-import { NavCategoryDirective } from './shared/directive/nav-category.directive';
+import { PropertyDirective } from './shared/directive/property-product.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { FacebookModule } from 'ngx-facebook';
@@ -18,6 +18,12 @@ import { UiTreeComponent } from './shared/layout/ui-tree/ui-tree.component';
 import { ProductDetailComponent } from './product/product-detail/product-detail.component';
 import { CategoryTreeComponent } from './product/category-tree/category-tree.component';
 import { UiTreeAsideComponent } from './product/category-tree/ui-tree-aside/ui-tree-aside.component';
+import { ConfirmEmailComponent } from './authenticate/confirm-email/confirm-email.component';
+import { FooterComponent } from './shared/layout/footer/footer.component';
+import { PaginationComponent } from './shared/layout/pagination/pagination.component';
+import { UserComponent } from './user/user.component';
+import { ShopComponent } from './shop/shop.component';
+import { ReviewComponent } from './review/review.component';
 
 
 
@@ -26,7 +32,7 @@ import { UiTreeAsideComponent } from './product/category-tree/ui-tree-aside/ui-t
     AppComponent,
     LoginComponent,
     NavUserDirective,
-    NavCategoryDirective,
+    PropertyDirective,
     ProductComponent,
     HomeComponent,
     KeysPipe,
@@ -34,7 +40,13 @@ import { UiTreeAsideComponent } from './product/category-tree/ui-tree-aside/ui-t
     UiTreeComponent,
     ProductDetailComponent,
     CategoryTreeComponent,
-    UiTreeAsideComponent
+    FooterComponent,
+    UiTreeAsideComponent,
+    ConfirmEmailComponent,
+    PaginationComponent,
+    UserComponent,
+    ShopComponent,
+    ReviewComponent
   ],
   imports: [
     BrowserModule,

@@ -8,9 +8,8 @@ import {BehaviorSubject, Subject, Subscriber} from 'rxjs';
 @Injectable()
 export class AppService {
   private apiURL = "http://172.17.19.240:3001";
-  category : any;
+  category: any;
   constructor(private http: Http) { }
-
 
   getAllCategories = () => {
     let headers = new Headers({ 'Content-Type': 'application/json' });

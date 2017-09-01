@@ -10,18 +10,14 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./ui-tree-aside.component.scss']
 })
 export class UiTreeAsideComponent implements OnInit {
-	@Input('data') mainCategory: any;
+  @Input('data') mainCategory: any;
   @Input('currentTree') path: any;
 
   constructor(private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    console.log(this.path);
   }
 
-  
+
 }
-
-  
-

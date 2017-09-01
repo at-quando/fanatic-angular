@@ -7,16 +7,14 @@ import { Input } from '@angular/core';
 
 })
 export class UiTreeComponent implements OnInit {
-	@Input('data') obj: any;
+  @Input('data') obj: any;
   @Input('key') key: string;
   constructor() { }
 
   ngOnInit() {
-    console.log(this.obj);
   }
 
-  scanLevel(obj)
-  {
-    
+  scanLevel(obj) {
+
   }
 }

@@ -1,0 +1,50 @@
+.shop-cover-picture {
+	position: relative;
+	.cover-picture {
+		max-height: 400px;
+		width: 100%;
+		z-index: 5;
+	}
+	.shop-main-info{
+		position: absolute;
+		bottom: 50%;
+		right: 50%;
+		z-index: 10;
+		color: white;
+		text-transform: capitalize;
+		font-size: 20px;
+		hr {
+			background-color: white;
+		}
+		p {
+			font-size: 15px;
+		}
+	}
+}
+.shop-navigation {
+	ul {
+		padding: 0;
+		list-style-type: none;
+		li {
+			padding: 10px 20px;
+			border: 1px solid grey;
+			a{
+				color: black;
+				font-size: 15px;
+
+			}
+		}
+		li:hover{
+			background-color: grey;
+			a{ 
+				color: white;
+			}
+		}
+		.actived {
+			background-color: grey;
+			a{ 
+				color: white;
+			}
+		}
+	}
+}
