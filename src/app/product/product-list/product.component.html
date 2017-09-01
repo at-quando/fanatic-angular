@@ -6,7 +6,7 @@
 			</div>
 			<div class="col-sm-9 padding-right category-in-products">
 				<div class="category-container">
-					<ul class="category-list">
+					<ul *ngIf="products" class="category-list">
 						<a [routerLink]="['../',title,item.id]" *ngFor="let item of products">
 							<li class="category-item">
 								<span class="sale-box">
