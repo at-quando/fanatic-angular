@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../shared/services/product.service';
 import { PaginationComponent } from '../shared/layout/pagination/pagination.component';
+import { ProductListComponent } from '../product/product-list/product-list.component'
 
 @Component({
   selector: 'app-product',
@@ -16,11 +17,11 @@ export class ProductComponent implements OnInit {
   title: any;
   page: any;
   brandId: any;
-  products: any;
   count: number;
   pageNumber: number;
 
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
+  @ViewChild(ProductListComponent) productList: ProductListComponent;
   constructor(private route: ActivatedRoute, private _product: ProductService) {
     this.subs = this.route.params.subscribe(params => {
       this.title = params['name'];
@@ -29,7 +30,7 @@ export class ProductComponent implements OnInit {
       // console.log(this.brandId);
       this._product.getProduct(this.title,this.page).subscribe(data=>{});
       this._product._productSubject.subscribe(items => {
-        this.products = items; 
+        this.productList.products = items; 
       });
       this._product._count.subscribe(count => {
         this.count = count; 

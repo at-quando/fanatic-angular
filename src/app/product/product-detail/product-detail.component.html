@@ -36,20 +36,20 @@
 							<div class="basic-info-2 text-center">
 								<label>Quantity:</label>
 								<div class="input-group form-group-no-border ">
-									<a class="input-group-addon">
+									<a class="input-group-addon" (click)="minusQuantity()">
 								        <i class="now-ui-icons ui-1_simple-delete"></i>
 								      </a>
-									<input type="text" class="form-control" value=1>
-									<a class="input-group-addon">
+									<input type="text" class="form-control" [value]="quantity">
+									<a class="input-group-addon" (click)="plusQuantity()">
 								        <i class="now-ui-icons ui-1_simple-add"></i>
 								      </a>
 								</div>
 							</div>
 						</div>
 						<div class="action text-center">
-							<button type="button" class="btn btn-fefault btn-primary cart">
+							<button type="button" class="btn btn-fefault btn-primary cart" (click)="add_to_cart(product)">
 									<i class="fa fa-shopping-cart"> </i>
-									Add to cart
+									ADD TO CART
 								</button>
 						</div>
 						<hr class="small">

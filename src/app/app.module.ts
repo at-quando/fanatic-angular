@@ -11,6 +11,7 @@ import { Angular2SocialLoginModule } from "angular2-social-login";
 import { FacebookModule } from 'ngx-facebook';
 
 import { ProductComponent } from './product/product.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
 
 import { routing, appRoutingProviders } from './app.route';
 import { HomeComponent } from './home/home.component';
@@ -26,6 +27,7 @@ import { PaginationComponent } from './shared/layout/pagination/pagination.compo
 import { UserComponent } from './user/user.component';
 import { ShopComponent } from './shop/shop.component';
 import { ReviewComponent } from './review/review.component';
+import { OrderComponent } from './order/order.component';
 
 
 
@@ -36,6 +38,7 @@ import { ReviewComponent } from './review/review.component';
     NavUserDirective,
     PropertyDirective,
     ProductComponent,
+    ProductListComponent,
     HomeComponent,
     KeysPipe,
     ReplaceBlankPipe,
@@ -48,7 +51,8 @@ import { ReviewComponent } from './review/review.component';
     PaginationComponent,
     UserComponent,
     ShopComponent,
-    ReviewComponent
+    ReviewComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,
