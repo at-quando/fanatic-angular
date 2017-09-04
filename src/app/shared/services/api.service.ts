@@ -10,12 +10,36 @@ import 'rxjs/add/operator/catch';
 export class ApiService {
   constructor( private http: Http ) {}
 
-    private setHeaders(): Headers {
+  private setHeaders(): Headers {
     const headersConfig = {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     };
     return new Headers(headersConfig);
+  }
+
+  setNotification(status,content){
+    if(status=="red") {
+      var noti = document.getElementById("noti-danger");
+      var text = document.getElementById("noti-text-danger");
+      noti.style.display = "block";
+      text.textContent= content;
+      setTimeout(function(){ noti.style.display = "none"; }, 3000);
+    }
+    if(status=="green") {
+      var noti = document.getElementById("noti-success");
+      var text = document.getElementById("noti-text-success");
+      noti.style.display = "block";
+      text.textContent= content;
+      setTimeout(function(){ noti.style.display = "none"; }, 3000);
+    }
+    if(status=="yellow") {
+      var noti = document.getElementById("noti-warning");
+      var text = document.getElementById("noti-text-warning");
+      noti.style.display = "block";
+      text.textContent= content;
+      setTimeout(function(){ noti.style.display = "none"; }, 3000);
+    }
   }
 
   private formatErrors(error: any) {

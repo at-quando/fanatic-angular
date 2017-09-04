@@ -46,9 +46,6 @@ export class LoginComponent {
   }
   
   signup(model) {
-    console.log(this.user);
-    console.log(model.email);
-    console.log(model.password);
     this._authentication.signup(this.user, model.email, model.password).subscribe(data=>{});
    
   }

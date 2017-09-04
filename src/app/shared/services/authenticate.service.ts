@@ -6,6 +6,7 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 import {BehaviorSubject, Subject, Subscriber} from 'rxjs';
 import { ApiService } from './api.service';
 import { Router } from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
@@ -18,7 +19,7 @@ export class AuthenticationService {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
 
-    return this.http.post(this.apiURL + "/session", JSON.stringify({ uid: email, password: password }), options)
+    return this.http.post(`${environment.apiURL}/session`, JSON.stringify({ uid: email, password: password }), options)
       .map((response: Response) => {
           let _headers = response.headers;
           if (_headers) {
@@ -26,7 +27,8 @@ export class AuthenticationService {
             let uid = _headers.get('uid');
             let provider = _headers.get('provider');
             let user_name = `${response.json().name}`;
-            localStorage.setItem('current_user', JSON.stringify({ access_token: access_token, user_name: user_name, uid: uid, provider: provider }));
+            let user_id = `${response.json().id}`;
+            localStorage.setItem('current_user', JSON.stringify({ user_id: user_id, access_token: access_token, user_name: user_name, uid: uid, provider: provider }));
             location.reload();
           }
       })
@@ -38,11 +40,9 @@ export class AuthenticationService {
   signup = (user, email: string, password: string) => {
     let headers = new Headers({ 
       'Content-Type': 'application/json',
-      'Uid': email,
-      'Password': password
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.apiURL + "/users", JSON.stringify(user), options)
+    return this.http.post(`${environment.apiURL}/users`, { user, uid: email, password: password }, options)
       .map((response: Response) => {
         let noti = document.getElementById("noti-warning");
         noti.style.display = "block";
@@ -61,7 +61,7 @@ export class AuthenticationService {
       'Provider': 'facebook'
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.apiURL + "/omni_auth", JSON.stringify({}), options).map((response: Response) => {
+    return this.http.post(`${environment.apiURL}/omni_auth`, JSON.stringify({}), options).map((response: Response) => {
       let _headers = response.headers;
       if (_headers) {
         let access_token = _headers.get('access-token');
@@ -83,7 +83,7 @@ export class AuthenticationService {
       'Provider': currentUser.provider
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.delete(this.apiURL + `/session/1`, options)
+    return this.http.delete(`${environment.apiURL}/session/1`, options)
       .map((response: Response) => {
         localStorage.removeItem('current_user');
         location.reload();

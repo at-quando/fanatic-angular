@@ -33,8 +33,8 @@
           <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" id="dropdown-user-login">
             <span class="dropdown-item">{{uid}}</span>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" [routerLink]="['../customer/account', {uid: uid}]"><i class="now-ui-icons design_bullet-list-67"></i> Information</a>
-            <a class="dropdown-item" (click)="loginFacebook()"><i class="now-ui-icons shopping_bag-16"></i> My History</a>
+            <a class="dropdown-item" [routerLink]="['../customer/account']" [queryParams]="{id: id,uid: uid}"><i class="now-ui-icons design_bullet-list-67"></i> Information</a>
+            <a class="dropdown-item"><i class="now-ui-icons shopping_bag-16"></i> My History</a>
             <a class="dropdown-item" (click)="logout()"><i class="now-ui-icons loader_gear"></i> Log Out</a>
           </ul>
         </li>
@@ -85,6 +85,7 @@
     </div>
   </div>
 </nav>
+<notification></notification>
 
 <div class="main-content">
   <router-outlet></router-outlet>

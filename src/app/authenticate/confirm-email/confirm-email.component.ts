@@ -13,11 +13,16 @@ export class ConfirmEmailComponent implements OnInit {
   subs: any;
   token: any;
   success: any;
+  uid: any;
+  provider: any;
+
   constructor(private route: ActivatedRoute, private confirm_email: ConfirmEmailService) {
     this.sub = this.route.params.subscribe(params => {
       this.token = params['token'];
+      this.uid = params['uid'];
+      this.provider = params['provider'];
     });
-    this.confirm_email.checkToken(this.token).subscribe(data => { });
+    this.confirm_email.checkToken(this.token, this.uid, this.provider).subscribe(data => {});
     this.subs = this.confirm_email._success.subscribe((value => { this.success = value }));
 
   }

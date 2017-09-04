@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import {BehaviorSubject, Subject, Subscriber} from 'rxjs';
 import { Product } from '../models/Product';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ProductService {
@@ -21,7 +22,7 @@ export class ProductService {
     params.set('page', page);
     let options = new RequestOptions();
     options.search=params;
-    return this.http.get(this.apiURL + "/products", options)
+    return this.http.get(`${environment.apiURL}/products`, options)
       .map((response: Response) => {
         let _header = response.headers;
         let _body = response.json();
@@ -35,7 +36,7 @@ export class ProductService {
     params.set('id', id);
     let options = new RequestOptions();
     options.search=params;
-    return this.http.get(this.apiURL + `/products/${id}`, options)
+    return this.http.get(`${environment.apiURL}/products/${id}`, options)
       .map((response: Response) => {
         let _body = response.json();
         this._oneProductSubject.next(_body.product);
