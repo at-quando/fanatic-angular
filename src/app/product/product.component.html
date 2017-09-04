@@ -4,51 +4,10 @@
 			<div class="col-sm-3">
 				<category-tree></category-tree>
 			</div>
-			<div class="col-sm-9 padding-right category-in-products">
-				<div class="category-container">
-					<ul *ngIf="products" class="category-list">
-						<a [routerLink]="['../',title,item.id]" *ngFor="let item of products">
-							<li class="category-item">
-								<span class="sale-box">
-										<span class="label-sale">SALE</span>
-								</span>
-								<div class="category-item-picture" *ngIf="item.properties[0].images.length==0 ||item.properties.length==0">
-									<img src="http://cdn.shopify.com/s/files/1/1137/0048/t/2/assets/slideshow_image_1.jpg?1928721178739775374" class="image-size" >
-								</div>
-								<div class="category-item-picture" *ngIf="item.properties[0].images.length!=0">
-									<img src={{item.properties[0].images[0].image}} class="image-size">
-								</div>
-								<div class="category-item-info">
-									<p>{{item.name}}</p>
-									<div class="product-price">
-										<!-- <span class="old-price">$40.00</span> -->
-										<span class="new-price">${{item.properties[0].price}}</span>
-									</div>
-								</div>
-								<div class="add-to-cart-btn">
-									<a class="add-to-cart">
-											<i class="now-ui-icons shopping_cart-simple"></i>
-											ADD TO CART
-										</a>
-									<div class="rating">
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-										<i class="fa fa-star"></i>
-									</div>
-									<div class="wish-list">
-										<button class="btn"><i class="fa fa-heart"> Wish list</i></button>
-									</div>
-								</div>
-							</li>
-						</a>
-					</ul>
-				</div>
-					<pagination ></pagination>
+			<div class="col-sm-9 padding-right">
+				<product-list></product-list>
+				<pagination ></pagination>
 			</div>
-
 		</div>
-
-				
 	</section>
-
 </div>

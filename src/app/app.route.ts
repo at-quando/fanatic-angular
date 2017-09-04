@@ -6,14 +6,17 @@ import { ProductDetailComponent } from './product/product-detail/product-detail.
 import { ConfirmEmailComponent } from './authenticate/confirm-email/confirm-email.component';
 import { UserComponent } from './user/user.component';
 import { ShopComponent } from './shop/shop.component';
+import { OrderComponent } from './order/order.component'
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'order', component: OrderComponent },
   { path: ':name', component: ProductComponent},
   { path: 'confirm_email/:token', component: ConfirmEmailComponent},
   { path: 'customer/account', component: UserComponent},
   { path: 'shop/:id', component: ShopComponent},
   { path: ':name/:id', component: ProductDetailComponent}
+  
 
 ];
 
