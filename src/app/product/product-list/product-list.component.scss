@@ -1,0 +1,103 @@
+.category-container {
+  overflow: hidden;
+  margin-bottom: 30px;
+}
+
+a {
+  cursor: pointer;
+}
+
+.category-in-products {
+  .category-container {
+    width: 100%;
+    padding: 0;
+    .category-item {
+      width: calc(100%/4);
+      margin-bottom: 30px;
+      position: relative;
+      height: 350px;
+      .category-item-picture {
+        height: 250px;
+        overflow: hidden;
+        .image-size {
+          object-fit: cover;
+          height: 100%;
+          width: 100%;
+        }
+      }
+      .category-item-info {
+        .product-price {
+          .new-price {
+          font-size: 17px;
+          }
+        }
+        p {
+          text-transform: lowercase;
+          opacity: 1;
+          letter-spacing: -1px;
+          font-size: 18px;
+          color: black;
+          -webkit-transition: 0.3s; /* Safari */
+          transition: 0.3s;
+          margin-bottom: 0;
+        }
+      }
+      .add-to-cart-btn{
+        color: black;
+        max-width: 100%;
+        position: absolute;
+        bottom: -100px;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        -webkit-transition: 0.5s; /* Safari */
+        transition: 0.5s;
+        opacity: 0; 
+        a{
+          font-size: 1.2vw;
+          
+          padding: 5% 10%;
+          background-color: white;
+        }
+        .rating{
+            color: orange;
+            margin-top: 20px;
+
+        }
+      }
+    }
+    .category-item:hover {
+      box-shadow: -1px -1px 5px grey;
+      .category-item-info {
+        .product-price {
+          opacity: 0;
+        }
+        p {
+          opacity: 0;
+          -webkit-transition: 0.5s; /* Safari */
+          transition: 0.5s;
+        }
+      }
+      .add-to-cart-btn {
+        opacity: 1;
+        -webkit-transition: 0.3s; /* Safari */
+        transition: 0.3s;
+        bottom: 30px;
+        .btn {
+          background-color: white;
+          color:black;
+        }
+        .btn:hover {
+        background-color: black;
+        color: white;
+        }
+      }
+      .add-to-cart:hover {
+        background-color: black;
+        -webkit-transition: 0.3s; /* Safari */
+        transition: 0.3s;
+        color: white;
+      }
+    }
+  }
+}

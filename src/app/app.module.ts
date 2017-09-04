@@ -12,6 +12,8 @@ import { FacebookModule } from 'ngx-facebook';
 
 import { ProductComponent } from './product/product.component';
 import { NotificationComponent } from './shared/layout/notification/notification.component';
+import { ProductListComponent } from './product/product-list/product-list.component';
+
 
 import { routing, appRoutingProviders } from './app.route';
 import { HomeComponent } from './home/home.component';
@@ -28,6 +30,8 @@ import { UserComponent } from './user/user.component';
 import { ShopComponent } from './shop/shop.component';
 import { ReviewComponent } from './review/review.component';
 import { ApiService } from './shared/services/api.service';
+import { OrderComponent } from './order/order.component';
+
 
 
 
@@ -38,6 +42,7 @@ import { ApiService } from './shared/services/api.service';
     NavUserDirective,
     PropertyDirective,
     ProductComponent,
+    ProductListComponent,
     HomeComponent,
     KeysPipe,
     ReplaceBlankPipe,
@@ -51,7 +56,8 @@ import { ApiService } from './shared/services/api.service';
     UserComponent,
     ShopComponent,
     ReviewComponent,
-    NotificationComponent
+    NotificationComponent,
+    OrderComponent
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,28 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../shared/services/product.service';
+import { OrdersService } from '../../shared/services/orders.service'
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
-  providers: [ProductService]
+  providers: [ProductService, OrdersService]
 })
 export class ProductDetailComponent implements OnInit {
+  quantity: number;
   sub: any;
   category: any;
   id: any;
   product: any;
   property: any;
-  constructor(private route: ActivatedRoute, private _product: ProductService) { }
+  constructor(
+    private route: ActivatedRoute, 
+    private _product: ProductService,
+    private _order: OrdersService
+  ) { 
+    this.quantity = 1;
+  }
 
   ngOnInit() {
     this.sub = this.route.params.subscribe(params => {
@@ -27,5 +35,17 @@ export class ProductDetailComponent implements OnInit {
          this.property = this.product.properties;
       });
     });
+  }
+
+  minusQuantity() {
+    this.quantity--
+  }
+
+  plusQuantity() {
+    this.quantity++
+  }
+
+  add_to_cart(item: any) {
+    this._order.addToCart(item, this.quantity);
   }
 }
