@@ -16,7 +16,7 @@ export class AppComponent {
   private categories: any;
   sub: any;
   name: string;
-  uidname: any;
+  id: any;
   sublogout: any;
   key: string = 'category';
   uid: any;
@@ -30,6 +30,7 @@ export class AppComponent {
     if (localStorage.current_user) {
       this.name = JSON.parse(localStorage.current_user).user_name;
       this.uid = JSON.parse(localStorage.current_user).uid;
+      this.id = JSON.parse(localStorage.current_user).user_id;
     }
   }
   ngOnInit() {

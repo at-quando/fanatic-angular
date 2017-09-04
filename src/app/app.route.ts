@@ -10,7 +10,7 @@ import { ShopComponent } from './shop/shop.component';
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: ':name', component: ProductComponent},
-  { path: 'confirm_email/:token', component: ConfirmEmailComponent},
+  { path: 'confirm_email/:token/:uid/:provider', component: ConfirmEmailComponent},
   { path: 'customer/account', component: UserComponent},
   { path: 'shop/:id', component: ShopComponent},
   { path: ':name/:id', component: ProductDetailComponent}

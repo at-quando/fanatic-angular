@@ -4,6 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import {BehaviorSubject, Subject, Subscriber} from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AppService {
@@ -14,7 +15,7 @@ export class AppService {
   getAllCategories = () => {
     let headers = new Headers({ 'Content-Type': 'application/json' });
     let options = new RequestOptions({ headers: headers });
-    return this.http.get(this.apiURL + "/categories")
+    return this.http.get(`${environment.apiURL}/categories`)
       .map(response => response.json());
   }
 
