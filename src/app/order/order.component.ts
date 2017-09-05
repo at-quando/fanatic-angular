@@ -9,16 +9,41 @@ import { OrdersService } from '../shared/services/orders.service'
   providers: [OrdersService]
 })
 export class OrderComponent implements OnInit {
-  private products: ProductOrder[]=[];
+  private productsSubject: any;
+  private products: any;
   constructor(
     private _order: OrdersService
-  ) { 
-    this.products = [];
+  ) {
   }
 
   ngOnInit() {
-    this.products = JSON.parse(localStorage.getItem('ordersList'));
-    console.log(this.products);
+
+    this.productsSubject = this._order.getItem();
+    this.productsSubject.subscribe(data =>{this.products = data});
+    console.log(this._order.getItem());
   }
 
+  getTotal() {
+    return this._order.getTotal();
+  }
+
+  deleteOrderItem(item: any) {
+    this._order.deleteItem(item);
+  }
+
+  minusQuantity(item :any) {
+    this._order.minusQuantity(item);
+  }
+
+  plusQuantity(item :any) {
+    this._order.plusQuantity(item);
+  }
+
+  numberItem() {
+    return this._order.numberItemOrder();
+  }
+
+  payment() {
+    this._order.payMent();
+  }
 }

@@ -1,15 +1,16 @@
 import { Component, ViewChild } from '@angular/core';
 import { LoginComponent } from './authenticate/login/login.component';
 import { AuthenticationService } from "./shared/services/authenticate.service";
-import { AppService } from "./app.service";
-import { AuthService } from "angular2-social-login";
+import { AppService } from './app.service';
+import { OrdersService } from './shared/services/orders.service'
+import { AuthService } from 'angular2-social-login';
 import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent } from 'ngx-facebook';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [AuthenticationService, AppService]
+  providers: [AuthenticationService, AppService, OrdersService]
 })
 export class AppComponent {
   public user;
@@ -22,7 +23,12 @@ export class AppComponent {
   uid: any;
 
   @ViewChild(LoginComponent) login: LoginComponent;
-  constructor(private _auth: AuthenticationService, private fb: FacebookService, private app: AppService) {
+  constructor(
+    private _auth: AuthenticationService,
+    private fb: FacebookService,
+    private app: AppService,
+    private _order: OrdersService
+  ) {
     fb.init({
       appId: '107975049932344',
       version: 'v2.9'
@@ -281,6 +287,10 @@ export class AppComponent {
   resolve(obj) {
 
     return obj["category"];
+  }
+
+  numberItem() {
+    return this._order.numberItemOrder();
   }
 
   disableScrolling() {

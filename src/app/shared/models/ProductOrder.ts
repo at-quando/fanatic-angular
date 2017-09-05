@@ -10,6 +10,5 @@ export interface ProductOrder {
   quantity?: number;
   // number_review?: number;
   shop?: Shop;
-  property?: Property[];
+  properties?: Property[];
 }
-      

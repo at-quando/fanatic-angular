@@ -1,6 +1,5 @@
 .orders {
   float: left;
-
 }
 
 .payment {
@@ -44,6 +43,9 @@
       h4{
         margin: 0;
       }
+    }
+    a {
+      cursor: pointer;
     }
   }
 

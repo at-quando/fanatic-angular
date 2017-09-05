@@ -40,7 +40,9 @@
         </li>
         <li class="nav-item nav-item-right ">
           <a class="nav-link" [routerLink]="['/order']">
-            <i class="now-ui-icons shopping_cart-simple"></i>
+            <i class="now-ui-icons shopping_cart-simple my-cart">
+              <span class="number-item">{{numberItem()}}</span>
+            </i>
             <p>MY CART</p>
           </a>
         </li>

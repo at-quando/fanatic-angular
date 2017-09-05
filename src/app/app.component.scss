@@ -1,76 +1,91 @@
 .brand-name {
-	width: 10%;
-	float: left;
-	vertical-align: middle !important;
-	padding-top: 20px;
+  width: 10%;
+  float: left;
+  vertical-align: middle !important;
+  padding-top: 20px;
 }
 a {
-	cursor: pointer;
+  cursor: pointer;
 }
 .navbar-collapse {
-	width: 20% !important;
-	float: left;
+  width: 20% !important;
+  float: left;
 }
 
 .second-nav {
-	.nav-link {
-		color: black !important;
-	}
+  .nav-link {
+    color: black !important;
+  }
 }
 
 .second-nav-right {
-	float: right;
+  float: right;
 }
 
 .full-width {
-	width: 100%;
+  width: 100%;
 }
 
 #dropdown-user-login {
-	display: none;
+  display: none;
 }
 
 .main-content {
-	margin-top: 110px;
+  margin-top: 110px;
 }
 
 .dropdown:hover > .dropdown-menu {
-	display: block;
+  display: block;
 }
 
 .category-item {
-	float: left;
-	padding-left: 50px;
-	margin-top: 25px;
-	list-style-type: none;
-	margin-bottom: 50px;
+  float: left;
+  padding-left: 50px;
+  margin-top: 25px;
+  list-style-type: none;
+  margin-bottom: 50px;
 
-	.sub-category {
-		font-family: Poppins-Bold;
-		letter-spacing: -1px;
-		font-weight: 100;
-		text-transform: uppercase !important;
-		color: black !important;
-	}
+  .sub-category {
+    font-family: Poppins-Bold;
+    letter-spacing: -1px;
+    font-weight: 100;
+    text-transform: uppercase !important;
+    color: black !important;
+  }
 }
 
 .collection-item {
-	float: left;
-	padding-left: 60px;
-	margin-top: 25px;
-	list-style-type: none;
+  float: left;
+  padding-left: 60px;
+  margin-top: 25px;
+  list-style-type: none;
 
-	.sub-category {
-		font-family: Arial;
-		text-transform: capitalize !important;
-		color: black !important;
-		font-size: 14px;
-	}
+  .sub-category {
+    font-family: Arial;
+    text-transform: capitalize !important;
+    color: black !important;
+    font-size: 14px;
+  }
 }
 
 .dropdown-category {
-	min-width: 800px;
-	font-family: Poppins-Bold;
-	letter-spacing: -1px;
-	font-weight: 100;
+  min-width: 800px;
+  font-family: Poppins-Bold;
+  letter-spacing: -1px;
+  font-weight: 100;
+}
+
+.my-cart {
+  position: relative;
+  .number-item {
+    position: absolute;
+    left: -17px;
+    width: 15px;
+    height: 15px;
+    background-color: red;
+    border-radius: 50%;
+    font-size: 11px;
+    color: white;
+    vertical-align: middle;
+  }
 }
