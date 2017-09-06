@@ -34,11 +34,16 @@ export class CurrentUserActionService {
   }
 
   editUserInfo = (user,id) => {
+    let currentUser = JSON.parse(localStorage.getItem('current_user'));
     let headers = new Headers({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json;charset=utf-8',
+      'Access-Token': currentUser.access_token,
+      'Uid': currentUser.uid,
+      'Provider': currentUser.provider
     });
     let options = new RequestOptions({ headers: headers });
     return this.http.patch(`${environment.apiURL}/users/${id}`,JSON.stringify(user), options).map((response: Response) => {
+      console.log(123);
       this.api.setNotification("green","Your Information are updated!");
       var currentUser=JSON.parse(localStorage.getItem('current_user'));
       currentUser.user_name = user.name;

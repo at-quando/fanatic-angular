@@ -2,14 +2,14 @@
   <h5>My order</h5>
   <div class="row">
     <div class="col-sm-9 orders">
-      <table class="table-orders table" *ngIf="products">
+      <table class="table-orders table">
         <tr>
           <th class="product">{{numberItem()}} PRODUCTS</th>
           <th class="price">PRICE</th>
           <th class="number">NUMBER</th>
         </tr>
         <tr *ngIf="numberItem()==0">
-          <p>Bạn chưa chọn sản phẩm nào, xin mời chọn sản phẩm!!!</p>
+          <p>You don't have any products, please choice first!!!</p>
         </tr>
         <tr class="item" *ngFor="let orderItem of products">
           <td class="item-order">

@@ -17,7 +17,6 @@ export class OrderComponent implements OnInit {
   }
 
   ngOnInit() {
-
     this.productsSubject = this._order.getItem();
     this.productsSubject.subscribe(data =>{this.products = data});
   }
