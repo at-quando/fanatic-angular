@@ -25,7 +25,7 @@ export class AuthenticationService {
             let access_token = _headers.get('access-token');
             let uid = _headers.get('uid');
             let provider = _headers.get('provider');
-            let user_name = `${response.json().name}`;
+            let user_name = `${response.json().user.name}`;
             localStorage.setItem('current_user', JSON.stringify({ access_token: access_token, user_name: user_name, uid: uid, provider: provider }));
             location.reload();
           }

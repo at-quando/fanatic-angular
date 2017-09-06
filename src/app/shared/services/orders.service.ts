@@ -88,7 +88,7 @@ export class OrdersService {
   numberItemOrder() {
     this.products = JSON.parse(localStorage.getItem('ordersList'));
     this.productsSubject.next(this.products);
-    return this.products.length ? this.products.length : 0;
+    return this.products != null ? this.products.length : 0;
   }
 
   payMent = () => {
@@ -100,7 +100,6 @@ export class OrdersService {
       item['property'] = _item.properties[0].id;
       orders.push(item);
     })
-    // console.log(orders);
     let currentUser = JSON.parse(localStorage.getItem('current_user'));
     let headers = new Headers({
       'Content-Type': 'application/json;charset=utf-8',
@@ -111,8 +110,9 @@ export class OrdersService {
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.apiURL + `/orders`, JSON.stringify({ orders: orders }), options)
       .map((response: Response) => {
-        localStorage.removeItem('current_user');
-        location.reload();
+        console.log(123);
+        // localStorage.removeItem('current_user');
+        // location.reload();
       });
   }
 }
