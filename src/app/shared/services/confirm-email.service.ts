@@ -5,6 +5,7 @@ import 'rxjs/add/operator/map';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import {BehaviorSubject, Subject, Subscriber} from 'rxjs';
 import {Router} from '@angular/router';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ConfirmEmailService {
@@ -14,14 +15,13 @@ export class ConfirmEmailService {
   constructor(private http: Http, private router: Router) {
   }
 
-  checkToken = (token) => {
+  checkToken = (token, uid, provider) => {
     let headers = new Headers({
       'Content-Type': 'application/json',
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.apiURL + "/confirm_user", JSON.stringify({ confirm_token: token }), options).map((response: Response) => {
+    return this.http.post(`${environment.apiURL}/confirm_user`, JSON.stringify({ confirm_token: token, uid: uid, provider: provider }), options).map((response: Response) => {
       let body = response.json();
-      console.log(body);
       if (body) {
         if (body["status"] == "ok") {
           this._success.next(true);

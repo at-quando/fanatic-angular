@@ -5,40 +5,44 @@ import 'rxjs/add/operator/map';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import {BehaviorSubject, Subject, Subscriber} from 'rxjs';
 import {Router} from '@angular/router';
+import { ApiService } from './api.service';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CurrentUserActionService {
   private apiURL = "http://localhost:3000";
   _personalInfo: Subject<any> = new Subject<any>();
-  constructor(private http: Http, private router: Router) {
+  constructor(private http: Http, private router: Router, private api: ApiService) {
   }
 
-  getUserInfo = (uid) => {
-    let headers = new Headers({
-      'Content-Type': 'application/json',
-      'Uid': uid
-    });
-    let options = new RequestOptions({ headers: headers });
-    return this.http.get(this.apiURL + "/edit", options).map((response: Response) => {
-      let _header = response.headers;
-      console.log(_header);
-      if (_header) {
-       //get info and order
-      }
-    });
-  }
-
-  editUserInfo = (user) => {
+  getUserInfo = (id) => {
     let headers = new Headers({
       'Content-Type': 'application/json'
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.apiURL + "/edit", options).map((response: Response) => {
-      let _header = response.headers;
-      console.log(_header);
-      if (_header) {
-       //get info and order
+    return this.http.get(`${environment.apiURL}/users/${id}`, options).map((response: Response) => {
+      let _user = response.json();
+      if (_user) {
+        this._personalInfo.next(_user);
       }
+    });
+  }
+
+  editUserInfo = (user,id) => {
+    let headers = new Headers({
+      'Content-Type': 'application/json'
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.patch(`${environment.apiURL}/users/${id}`,JSON.stringify(user), options).map((response: Response) => {
+      this.api.setNotification("green","Your Information are updated!");
+      var currentUser=JSON.parse(localStorage.getItem('current_user'));
+      currentUser.user_name = user.name;
+      localStorage.setItem('current_user',JSON.stringify(currentUser));
+
+    })
+    .catch((err: Response) => {
+      this.api.setNotification("red","Something went wrong now! Please try again later!")
+      return Observable.throw(err);
     });
   }
 }

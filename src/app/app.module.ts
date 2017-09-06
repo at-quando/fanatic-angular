@@ -11,7 +11,9 @@ import { Angular2SocialLoginModule } from "angular2-social-login";
 import { FacebookModule } from 'ngx-facebook';
 
 import { ProductComponent } from './product/product.component';
+import { NotificationComponent } from './shared/layout/notification/notification.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+
 
 import { routing, appRoutingProviders } from './app.route';
 import { HomeComponent } from './home/home.component';
@@ -27,7 +29,9 @@ import { PaginationComponent } from './shared/layout/pagination/pagination.compo
 import { UserComponent } from './user/user.component';
 import { ShopComponent } from './shop/shop.component';
 import { ReviewComponent } from './review/review.component';
+import { ApiService } from './shared/services/api.service';
 import { OrderComponent } from './order/order.component';
+
 
 
 
@@ -52,6 +56,7 @@ import { OrderComponent } from './order/order.component';
     UserComponent,
     ShopComponent,
     ReviewComponent,
+    NotificationComponent,
     OrderComponent
   ],
   imports: [
@@ -63,7 +68,7 @@ import { OrderComponent } from './order/order.component';
     Angular2SocialLoginModule,
     FacebookModule.forRoot()
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

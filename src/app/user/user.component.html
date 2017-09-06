@@ -10,43 +10,41 @@
 			</ul>
 		</div>
 		<div class="col-sm-5 padding-right">
-			<form class="form" #f="ngForm" novalidate (ngSubmit)="editUserInfo(f.value)">
+			<form class="form" #f="ngForm" novalidate (ngSubmit)="editUserInfo(f.value,f.dirty)">
 			  <h5>Your Personal Information</h5>
 				<div>
 					<div>
 						<label class="label-info">Your email:</label>
-						<label>12354@email.com</label>
+						<label>{{uid}}</label>
 					</div>
 					<div>
 						<label class="label-info">Your name:</label>
-						<input [(ngModel)]="user.name" class="col-sm-8" type="text" name="" placeholder="Do Hong Quan">
+						<input [(ngModel)]="user.name" class="col-sm-8" type="text" name="name" >
 					</div>
 					<div>
 						<label class="label-info">Your phone number:</label>
-						<input [(ngModel)]="user.phone" class="col-sm-8"type="text" name="" placeholder="1235346">
+						<input  [(ngModel)]="user.phone" class="col-sm-8" type="text" name="phone">
 					</div>
 					<div>
 						<label class="label-info">Your gender:</label>
-						<div class="radio">
-					    <input [(ngModel)]="user.gender" type="radio" name="radio1" id="radio1" value=0>
-					    <label for="radio1">
-					      Men
-					    </label>
-						
-					    <input [(ngModel)]="user.gender" type="radio" name="radio1" id="radio2" value=1 checked="">
-					    <label for="radio2">
-					      Women
-					    </label>
-						
-					    <input [(ngModel)]="user.gender" type="radio" name="radio1" id="radio2" value=2 checked="">
-					    <label for="radio2">
-					      Other
-					    </label>
-						</div>
+						<div class="col-sm-8 margin-right">
+              <input type="radio" name="gender" id="radiomen" [value]=0 [(ngModel)]="user.gender" [checked]="user.gender=='0'">
+              <label class="radio-btn"for="radio1">
+                  Men
+              </label>
+              <input type="radio" name="gender" id="radiowomen" [value]=1 [(ngModel)]="user.gender" [checked]="user.gender=='1'">
+              <label class="radio-btn"for="radio2">
+                  Women
+              </label>
+              <input type="radio" name="gender" id="radioother" [value]=2 [(ngModel)]="user.gender" [checked]="user.gender=='2'">
+              <label class="radio-btn"for="radio3">
+                  Other
+              </label>
+            </div>
 					</div>
 					<div>
 						<label class="label-info">Your address</label>
-						<input [(ngModel)]="user.address" class="col-sm-8" type="text" name="" placeholder="asdadasd">
+						<input [(ngModel)]="user.address" class="col-sm-8" type="text" name="address">
 					</div>
 				</div>
 				<button type="submit" class="btn btn-primary">Save</button>

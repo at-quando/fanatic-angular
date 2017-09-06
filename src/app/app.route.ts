@@ -12,7 +12,7 @@ export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'order', component: OrderComponent },
   { path: ':name', component: ProductComponent},
-  { path: 'confirm_email/:token', component: ConfirmEmailComponent},
+  { path: 'confirm_email/:token/:uid/:provider', component: ConfirmEmailComponent},
   { path: 'customer/account', component: UserComponent},
   { path: 'shop/:id', component: ShopComponent},
   { path: ':name/:id', component: ProductDetailComponent}
