@@ -1,3 +1,29 @@
+<div id="noti-danger" class="alert alert-danger notification" role="alert">
+  <div class="container">
+    <div class="alert-icon">
+      <i class="now-ui-icons objects_support-17"></i>
+    </div>
+    <strong>Oh snap!</strong> Wrong email or password. Please fill again!
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">
+        <i class="now-ui-icons ui-1_simple-remove"></i>
+      </span>
+    </button>
+  </div>
+</div>
+<div id="noti-warning" class="alert alert-warning notification" role="alert">
+  <div class="container">
+    <div class="alert-icon">
+      <i class="now-ui-icons ui-1_bell-53"></i>
+    </div>
+    <strong>Create Email Success!</strong> Please check email to verify your account.
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+      <span aria-hidden="true">
+        <i class="now-ui-icons ui-1_simple-remove"></i>
+      </span>
+    </button>
+  </div>
+</div>
 <div id="modal-in" class="modal-in">
   <div class="modal-dialog">
     <div class="modal-info content-center">
@@ -21,16 +47,16 @@
               <span class="input-group-addon">
                     <i class="now-ui-icons users_circle-08"></i>
                 </span>
-              <input name1="name" #name1="ngModel" [(ngModel)]="uid" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Email..." pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,4}$">
+              <input name="name1" #name1="ngModel" [(ngModel)]="uid"  type="text" class="form-control" placeholder="Email..." pattern="[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{1,4}$" required>
             </div>
-            <small [hidden]="password.valid || (password.pristine && !f.submitted)" class="text-danger">
-                  Password is required.
-              </small>
+            <small [hidden]="password1.valid || (password1.pristine && !f.submitted)" class="text-danger">
+                  Password is required!.
+            </small>
             <div class="input-group form-group-no-border input-lg">
               <span class="input-group-addon">
                     <i class="now-ui-icons ui-1_lock-circle-open"></i>
                 </span>
-              <input name="password" #password="ngModel" [(ngModel)]="pass" [ngModelOptions]="{standalone: true}" type="password" placeholder="Password..." class="form-control" required>
+              <input name="password1" #password1="ngModel" [(ngModel)]="pass"  type="password" placeholder="Password..." class="form-control" required>
             </div>
           </div>
           <div class="text-center">

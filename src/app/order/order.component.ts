@@ -20,7 +20,6 @@ export class OrderComponent implements OnInit {
 
     this.productsSubject = this._order.getItem();
     this.productsSubject.subscribe(data =>{this.products = data});
-    console.log(this._order.getItem());
   }
 
   getTotal() {
