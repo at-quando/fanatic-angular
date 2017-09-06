@@ -2,15 +2,19 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../shared/services/product.service';
 import { OrdersService } from '../../shared/services/orders.service';
+import { ReviewService } from '../../shared/services/review.service';
 import { ImageZoomModule } from 'angular2-image-zoom';
 import * as $ from 'jquery';
+import { ProductListComponent } from '../product-list/product-list.component';
+import { ReviewComponent } from '../../review/review.component';
 
 @Component({
   selector: 'app-product-detail',
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.scss'],
-  providers: [ProductService, OrdersService]
+  providers: [ProductService, OrdersService, ReviewService]
 })
+
 export class ProductDetailComponent implements OnInit {
   quantity: number;
   sub: any;
@@ -21,22 +25,21 @@ export class ProductDetailComponent implements OnInit {
   property: any;
   zoomImage: any;
   productAnalyze: any;
+  productRecommend: any;
 
+  @ViewChild(ProductListComponent) productList: ProductListComponent;
+  @ViewChild(ReviewComponent) reviewList: ReviewComponent;
   constructor(
     private route: ActivatedRoute, 
     private _product: ProductService,
-    private _order: OrdersService) { 
+    private _order: OrdersService,
+    private _review: ReviewService) { 
     this.quantity = 1;
     this.productAnalyze={};
   }
 
   ngOnInit() {
-    
-  }
-
-  ngAfterViewInit() {
     var color= document.getElementById("propertycolorist");
-    console.log(color);
     this.sub = this.route.params.subscribe(params => {
       this.category = params['name'].toUpperCase();
       this.ids = params['id'];
@@ -44,10 +47,20 @@ export class ProductDetailComponent implements OnInit {
       this._product._oneProductSubject.subscribe(obj => {
         this.product = obj;
         this.property=this.product.properties;
+        this._product.getRecommendProduct(this.category,this.ids,this.product.brand.id).subscribe(obj => {});
+        this._product._recommendProductSubject.subscribe(obj => {
+          this.productRecommend=obj;
+          this.productList.products=this.productRecommend;
+        });
+        
         this.setProperty(this.property);
-        setTimeout(()=>{this.showColor(Object.keys(this.productAnalyze)[0])},100);
+        setTimeout(()=>{this.showColor(Object.keys(this.productAnalyze)[0])},50);
       });
     });
+  }
+
+  ngAfterViewInit() {
+    
   }
 
   minusQuantity() {
@@ -72,8 +85,15 @@ export class ProductDetailComponent implements OnInit {
   }
 
   setProperty(prop) {
+    this.productAnalyze=[];
     for(var k in prop) {
-      var l=this.property[k].storage.toString();
+      if(this.property[k].storage!=null && this.property[k].size==null) {
+        var a=`${this.property[k].storage} GB`;
+      }
+      else if(this.property[k].storage==null && this.property[k].size!=null) {
+        var a = `${this.property[k].size}`;
+      }
+      var l=a.toString();
       if(!this.productAnalyze[l]) {
         this.productAnalyze[l]=[];
         this.productAnalyze[l].push({id: prop[k].id, price: prop[k].price, color: prop[k].color});
@@ -82,10 +102,9 @@ export class ProductDetailComponent implements OnInit {
         this.productAnalyze[l].push({id: prop[k].id, price: prop[k].price, color: prop[k].color})
       }
     }
-    console.log(this.productAnalyze);
   }
 
-  showColor(prop){
+  showColor(prop) {
     if(event) {this.enableClickBtn('item',event.currentTarget)};
     var colorist= document.getElementById("propertycolorist");
     var price= document.getElementById("productprice");
@@ -123,7 +142,7 @@ export class ProductDetailComponent implements OnInit {
     this.id=this.productAnalyze[prop][0].id;
   }
 
-  enableClickBtn(cls,obj){
+  enableClickBtn(cls,obj) {
     var items= document.getElementsByClassName(cls);
     for(var i = 0; i < items.length; i++) {
       items[i].classList.remove('active');
@@ -131,7 +150,7 @@ export class ProductDetailComponent implements OnInit {
     $(obj).addClass('active');
   }
 
-  addToCart(product){
+  addToCart(product) {
     var props=product.properties.filter(item => item.id ==this.id);  
     product.properties=props;
     console.log(this.quantity);
