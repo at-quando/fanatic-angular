@@ -5,7 +5,6 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './authenticate/login/login.component';
 import { NavUserDirective } from './shared/directive/nav-user.directive';
-import { PropertyDirective } from './shared/directive/property-product.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { FacebookModule } from 'ngx-facebook';
@@ -13,6 +12,7 @@ import { FacebookModule } from 'ngx-facebook';
 import { ProductComponent } from './product/product.component';
 import { NotificationComponent } from './shared/layout/notification/notification.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
+import {ImageZoomModule} from 'angular2-image-zoom';
 
 
 import { routing, appRoutingProviders } from './app.route';
@@ -31,6 +31,7 @@ import { ShopComponent } from './shop/shop.component';
 import { ReviewComponent } from './review/review.component';
 import { ApiService } from './shared/services/api.service';
 import { OrderComponent } from './order/order.component';
+import { PropertyComponent } from './product/property/property.component';
 
 
 
@@ -40,7 +41,6 @@ import { OrderComponent } from './order/order.component';
     AppComponent,
     LoginComponent,
     NavUserDirective,
-    PropertyDirective,
     ProductComponent,
     ProductListComponent,
     HomeComponent,
@@ -57,10 +57,12 @@ import { OrderComponent } from './order/order.component';
     ShopComponent,
     ReviewComponent,
     NotificationComponent,
-    OrderComponent
+    OrderComponent,
+    PropertyComponent
   ],
   imports: [
     BrowserModule,
+    ImageZoomModule,
     FormsModule,
     HttpModule,
     routing,

@@ -38,7 +38,6 @@ export class CurrentUserActionService {
       var currentUser=JSON.parse(localStorage.getItem('current_user'));
       currentUser.user_name = user.name;
       localStorage.setItem('current_user',JSON.stringify(currentUser));
-
     })
     .catch((err: Response) => {
       this.api.setNotification("red","Something went wrong now! Please try again later!")

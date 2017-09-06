@@ -1,0 +1,18 @@
+<div class="property-combobox" *ngIf="product!={}">
+	<p>● Storage:</p>
+	<ul class="property-list">
+		<div *ngFor="let i = index; let property of product |keys">
+			<li class="item active" *ngIf="i==0" (click)="showColor(this.property)">
+			  <a ><b>{{property}} GB</b></a>
+			</li>
+			<li class="item" *ngIf="i!=0" (click)="showColor(property)">
+			  <a >{{property}} GB</a>
+			</li>
+		</div>
+	</ul>
+</div>
+<div class="property-color">
+	<p>● Color we have:</p>
+	<div id="propertycolor">
+	</div>
+</div>

@@ -8,19 +8,21 @@
       width: 20%;
       max-height: 70px;
       max-width: 70px;
+      padding-right: 10px;
 
       img {
-        padding-bottom: 20px;
+        padding-bottom: 10px;
         width: 70px;
+        min-height: 70px;
       }
     }
 
     .main-image {
-      width: 80%;
+      width: 90%;
       float: left;
 
       img {
-        max-height: 500px;
+        width: 100%;
       }
     }
   }
@@ -57,14 +59,36 @@
       }
 
       .basic-info-1 {
-        float: left;
+        h5{
+          margin: 0;
+        }
+        p{
+          width: 100%;
+        }
+        .price{
+          border: 0.5px solid grey;
+          padding: 5px 5px;
+          text-align: center;
+          float: left;
+          width: 20%;
+          margin-left: 10px;
+        }
+        #productprice{
+          overflow: hidden;
+          margin-bottom: 10px;
+        }
       }
 
       .basic-info-2 {
-        float: right;
-        margin-top: 40px;
         padding-left: 20px;
-
+        .info{
+          width: 50%;
+          float: left;
+        }
+        .quantity{
+          width: 50%;
+          float: left;
+        }
         input {
           text-align: center;
           font-family: Arial;
@@ -76,7 +100,9 @@
 
     .action {
       margin: 40px 0;
-
+      p{
+        font-size: 11px;
+      }
       button {
         width: 80%;
         height: 60px;
@@ -87,23 +113,7 @@
     }
   }
 
-  .property-product {
-    font-family: Arial;
-
-    .property-color {
-      overflow: hidden;
-      padding-bottom: 20px;
-
-      .filled-circle {
-        float: left;
-        width: 25px;
-        height: 25px;
-        margin-right: 15px;
-        border-radius: 50%;
-        box-shadow: 2px 2px 5px grey;
-      }
-    }
-  }
+  
 }
 
 .container-side {
