@@ -31,6 +31,8 @@ import { ShopComponent } from './shop/shop.component';
 import { ReviewComponent } from './review/review.component';
 import { ApiService } from './shared/services/api.service';
 import { OrderComponent } from './order/order.component';
+import { InforComponent } from './user/infor/infor.component';
+import { HistoryComponent } from './user/history/history.component'
 
 
 
@@ -56,7 +58,9 @@ import { OrderComponent } from './order/order.component';
     ShopComponent,
     ReviewComponent,
     NotificationComponent,
-    OrderComponent
+    OrderComponent,
+    InforComponent,
+    HistoryComponent
   ],
   imports: [
     BrowserModule,
