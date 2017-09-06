@@ -11,7 +11,7 @@ import { environment } from '../../../environments/environment';
 @Injectable()
 export class AuthenticationService {
  //private apiURL = "http://172.17.19.240:3001"
-  private apiURL = "http://localhost:3000"
+  private apiURL = "http://localhost:3001"
   constructor(private http: Http, private router: Router) { }
 
 
@@ -26,9 +26,10 @@ export class AuthenticationService {
             let access_token = _headers.get('access-token');
             let uid = _headers.get('uid');
             let provider = _headers.get('provider');
-            let user_name = `${response.json().name}`;
-            let user_id = `${response.json().id}`;
-            localStorage.setItem('current_user', JSON.stringify({ user_id: user_id, access_token: access_token, user_name: user_name, uid: uid, provider: provider }));
+
+            let user_name = `${response.json().user.name}`;
+            let user_id = `${response.json().user.id}`;
+            localStorage.setItem('current_user', JSON.stringify({user_id: user_id, access_token: access_token, user_name: user_name, uid: uid, provider: provider }));
             location.reload();
           }
       })
