@@ -10,18 +10,23 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CurrentUserActionService {
-  private apiURL = "http://localhost:3000";
+  private apiURL = "http://localhost:3001";
   _personalInfo: Subject<any> = new Subject<any>();
   constructor(private http: Http, private router: Router, private api: ApiService) {
   }
 
   getUserInfo = (id) => {
+    let currentUser = JSON.parse(localStorage.getItem('current_user'));
     let headers = new Headers({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json;charset=utf-8',
+      'Access-Token': currentUser.access_token,
+      'Uid': currentUser.uid,
+      'Provider': currentUser.provider
     });
     let options = new RequestOptions({ headers: headers });
     return this.http.get(`${environment.apiURL}/users/${id}`, options).map((response: Response) => {
-      let _user = response.json();
+      let _user = response.json().user;
+      console.log(_user);
       if (_user) {
         this._personalInfo.next(_user);
       }

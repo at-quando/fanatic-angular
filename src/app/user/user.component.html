@@ -27,16 +27,16 @@
 					</div>
 					<div>
 						<label class="label-info">Your gender:</label>
-						<div class="col-sm-8 margin-right">
-              <input type="radio" name="gender" id="radiomen" [value]=0 [(ngModel)]="user.gender" [checked]="user.gender=='0'">
+						<div class="col-sm-9 margin-right">
+              <input type="radio" name="gender" id="radiomen" [value]='Male' [(ngModel)]="user.gender" [checked]="user.gender === 'Male'">
               <label class="radio-btn"for="radio1">
                   Men
               </label>
-              <input type="radio" name="gender" id="radiowomen" [value]=1 [(ngModel)]="user.gender" [checked]="user.gender=='1'">
+              <input type="radio" name="gender" id="radiowomen" [value]='Female' [(ngModel)]="user.gender" [checked]="user.gender === 'Female'">
               <label class="radio-btn"for="radio2">
                   Women
               </label>
-              <input type="radio" name="gender" id="radioother" [value]=2 [(ngModel)]="user.gender" [checked]="user.gender=='2'">
+              <input type="radio" name="gender" id="radioother" [value]='Other' [(ngModel)]="user.gender" [checked]="user.gender === 'Other'">
               <label class="radio-btn"for="radio3">
                   Other
               </label>

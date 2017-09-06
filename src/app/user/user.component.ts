@@ -32,7 +32,8 @@ export class UserComponent implements OnInit {
       this.uid = params['uid'];
       this.userAction.getUserInfo(this.id).subscribe(data => {});
       this.userAction._personalInfo.subscribe(userInfo => {
-        this.user=userInfo;
+        this.user = userInfo;
+        console.log(this.user.gender);
       })
     });
   }   
