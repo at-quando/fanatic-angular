@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../shared/services/product.service';
 import { OrdersService } from '../../shared/services/orders.service';
-import { PropertyComponent } from './property/property.component';
 import { ImageZoomModule } from 'angular2-image-zoom';
 import * as $ from 'jquery';
 

@@ -31,7 +31,6 @@ import { ShopComponent } from './shop/shop.component';
 import { ReviewComponent } from './review/review.component';
 import { ApiService } from './shared/services/api.service';
 import { OrderComponent } from './order/order.component';
-import { PropertyComponent } from './product/product-detail/property/property.component';
 
 
 
@@ -57,8 +56,7 @@ import { PropertyComponent } from './product/product-detail/property/property.co
     ShopComponent,
     ReviewComponent,
     NotificationComponent,
-    OrderComponent,
-    PropertyComponent
+    OrderComponent
   ],
   imports: [
     BrowserModule,
