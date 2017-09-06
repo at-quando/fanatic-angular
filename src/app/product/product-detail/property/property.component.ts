@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ProductService } from '../../shared/services/product.service';
-import { OrdersService } from '../../shared/services/orders.service';
+import { ProductService } from '../../../shared/services/product.service';
+import { OrdersService } from '../../../shared/services/orders.service';
 import * as $ from 'jquery';
 
 @Component({
@@ -11,7 +11,7 @@ import * as $ from 'jquery';
 })
 
 export class PropertyComponent implements OnInit {
-	public property: any;
+	property: any;
   sub: any;
   category: any;
   id: any;
@@ -26,9 +26,10 @@ export class PropertyComponent implements OnInit {
     private _order: OrdersService) { 
   	this.product={};
   	this.property=[];
-  	this.sub = this.route.params.subscribe(params => {
-      this.id = params['id'];
-  });
+  	console.log(this.property);
+  	// this.sub = this.route.params.subscribe(params => {
+   //    this.id = params['id'];
+  	// });
   }
 
   ngOnInit() {
@@ -98,6 +99,6 @@ export class PropertyComponent implements OnInit {
 		}​
     $(obj).addClass('active');
 	}
-
-
 }
+
+

@@ -56,7 +56,7 @@
 						</div>
 						<div class="action text-center">
 							<p>Please choose all property of the product before buy it!</p>
-							<button type="button" class="btn btn-fefault btn-primary cart" (click)="add_to_cart(product)">
+							<button type="button" class="btn btn-fefault btn-primary cart" (click)="addToCart(product)">
 									<i class="fa fa-shopping-cart"> </i>
 									ADD TO CART
 								</button>
@@ -64,7 +64,24 @@
 						<hr class="small">
 					</div>
 					<div class="property-product">
-						<myproperties></myproperties>
+						<div class="property-combobox">
+							<p>● Storage:</p>
+							<ul class="property-list">
+								<div *ngFor="let i = index; let property of productAnalyze |keys">
+									<li class="item active" *ngIf="i==0" (click)="showColor(this.property)">
+									  <a ><b>{{property}} GB</b></a>
+									</li>
+									<li class="item" *ngIf="i!=0" (click)="showColor(property)">
+									  <a >{{property}} GB</a>
+									</li>
+								</div>
+							</ul>
+						</div>
+						<div class="property-color">
+							<p>● Color we have:</p>
+							<div id="propertycolorist">
+							</div>
+						</div>
 					</div>
 					<!--/product-information-->
 				</div>

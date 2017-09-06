@@ -31,7 +31,7 @@ import { ShopComponent } from './shop/shop.component';
 import { ReviewComponent } from './review/review.component';
 import { ApiService } from './shared/services/api.service';
 import { OrderComponent } from './order/order.component';
-import { PropertyComponent } from './product/property/property.component';
+import { PropertyComponent } from './product/product-detail/property/property.component';
 
 
 
