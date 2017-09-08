@@ -1,16 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { AppService } from '../app.service'
+
+import { Component, OnInit, Input } from '@angular/core';
+
 
 @Component({
-  selector: 'app-shop',
+  selector: 'shop',
   templateUrl: './shop.component.html',
   styleUrls: ['./shop.component.scss'],
   providers: [AppService]
 })
 export class ShopComponent implements OnInit {
-  private sub: any;
-  private shopId: any;
+	@Input('shop') shop: any;
 
 
   constructor(

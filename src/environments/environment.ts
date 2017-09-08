@@ -5,6 +5,7 @@
 
 export const environment = {
   production: false,
-  apiURL: 'http://localhost:3001'
+  apiURL: 'http://localhost:3000',
+  mapGoogle: 'https://www.google.com/maps/embed/v1/search?key=AIzaSyB2pWEO7SWqwRCMbE9sMJcSzN8jSLH_YjY&q='
   //apiURL: 'http://172.17.19.240:3001'
 };

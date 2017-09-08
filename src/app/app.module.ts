@@ -8,13 +8,10 @@ import { NavUserDirective } from './shared/directive/nav-user.directive';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { Angular2SocialLoginModule } from "angular2-social-login";
 import { FacebookModule } from 'ngx-facebook';
-
 import { ProductComponent } from './product/product.component';
 import { NotificationComponent } from './shared/layout/notification/notification.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import {ImageZoomModule} from 'angular2-image-zoom';
-
-
 import { routing, appRoutingProviders } from './app.route';
 import { HomeComponent } from './home/home.component';
 import { KeysPipe } from './shared/pipe/categories.pipe';
@@ -33,6 +30,9 @@ import { ApiService } from './shared/services/api.service';
 import { OrderComponent } from './order/order.component';
 import { InforComponent } from './user/infor/infor.component';
 import { HistoryComponent } from './user/history/history.component'
+import { ShopListComponent } from './shop/shop-list/shop-list.component';
+import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
+
 
 
 
@@ -61,6 +61,8 @@ import { HistoryComponent } from './user/history/history.component'
     OrderComponent,
     InforComponent,
     HistoryComponent
+    ShopListComponent,
+    ShopDetailComponent
   ],
   imports: [
     BrowserModule,

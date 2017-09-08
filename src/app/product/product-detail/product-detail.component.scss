@@ -1,8 +1,9 @@
 .product-details {
+  margin-bottom: 100px;
+  overflow: hidden;
   .view-product {
     max-height: 500px;
     overflow: hidden;
-
     .aside-image {
       float: left;
       width: 20%;
@@ -146,4 +147,6 @@
     }
     
   }
-
+h3 {
+  font-weight: 800;
+}

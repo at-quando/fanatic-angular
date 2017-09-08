@@ -38,7 +38,7 @@
 								<div class="info">
 									<p>Availability: <b>In Stock</b></p>
 									<p>Condition: <b>New</b></p>
-									<p>Brand: <b>Iphone</b></p>
+									<p>Brand: <b>{{product.brand.branch}}</b></p>
 								</div>
 								<div class="quantity text-center">
 									<label>Quantity:</label>
@@ -69,10 +69,10 @@
 							<ul class="property-list">
 								<div *ngFor="let i = index; let property of productAnalyze |keys">
 									<li class="item active" *ngIf="i==0" (click)="showColor(this.property)">
-									  <a ><b>{{property}} GB</b></a>
+									  <a><b>{{property}}</b></a>
 									</li>
 									<li class="item" *ngIf="i!=0" (click)="showColor(property)">
-									  <a >{{property}} GB</a>
+									  <a>{{property}}</a>
 									</li>
 								</div>
 							</ul>
@@ -87,6 +87,13 @@
 				</div>
 			</div>
 			<!--/product-details-->
+			<div>
+				<h3>RECOMMEND PRODUCTS</h3>
+				<product-list id="recommend"></product-list>
+			</div>
+			<div>
+				<review></review>
+			</div>
 		</div>
 	</div>
 </div>
