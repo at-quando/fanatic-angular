@@ -13,6 +13,9 @@ export class ProductService {
   _productSubject: Subject<Product[]> = new Subject<Product[]>();
   _oneProductSubject: Subject<Product[]> = new Subject<Product[]>();
   _count: Subject<number> = new Subject<number>();
+  _countShop: Subject<number> = new Subject<number>();
+  _recommendProductSubject: Subject<Product[]> = new Subject<Product[]>();
+  _ProductByShopSubject: Subject<Product[]> = new Subject<Product[]>();
 
   constructor(private http: Http) { }
 
@@ -28,6 +31,36 @@ export class ProductService {
         let _body = response.json();
         this._productSubject.next(_body.products);
         this._count.next(_body.meta.count);
+      });
+  }
+
+  getRecommendProduct = (title,id,brandId) => {
+    let params = new URLSearchParams();
+    params.set('title', title);
+    params.set('id', id);
+    params.set('brand_id', brandId);
+    let options = new RequestOptions();
+    options.search=params;
+    return this.http.get(`${environment.apiURL}/recommend_products`, options)
+      .map((response: Response) => {
+        let _header = response.headers;
+        let _body = response.json();
+        this._recommendProductSubject.next(_body.products);
+      });
+  }
+
+   getProductByShop = (id, page) => {
+    let params = new URLSearchParams();
+    params.set('id', id);
+    params.set('page', page);
+    let options = new RequestOptions();
+    options.search=params;
+    return this.http.get(`${environment.apiURL}/shop_products`, options)
+      .map((response: Response) => {
+        let _body = response.json();
+        console.log(response.json());
+        this._ProductByShopSubject.next(_body.products);
+        this._countShop.next(_body.meta.count);
       });
   }
 

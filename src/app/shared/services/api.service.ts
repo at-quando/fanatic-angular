@@ -18,6 +18,16 @@ export class ApiService {
     return new Headers(headersConfig);
   }
 
+  checkLogin(){
+    let currentUser = JSON.parse(localStorage.getItem('current_user'));
+    if(currentUser) { 
+      return true
+    }
+    else {
+      return false;
+    }
+  }
+  
   setNotification(status,content){
     if(status=="red") {
       var noti = document.getElementById("noti-danger");

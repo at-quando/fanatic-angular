@@ -24,6 +24,7 @@ export class ProductListComponent implements OnInit {
     this.products = [];
     this.subs = this.route.params.subscribe(params => {
       this.title = params['name'];
+      this.id = params['id'];
   });
 }
 
@@ -36,5 +37,9 @@ export class ProductListComponent implements OnInit {
 
   add_to_cart(item: any, quantity: number) {
     this._order.addToCart(item, quantity);
+  }
+  
+  topPage(){
+     window.scrollTo(0, 0);
   }
 }
