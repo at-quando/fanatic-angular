@@ -19,5 +19,17 @@ export class AppService {
       .map(response => response.json());
   }
 
+  getAllShops = () => {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(this.apiURL + "/shops")
+      .map(response => response.json());
+  }
 
+  getDetailShop = (id: number) => {
+    let headers = new Headers({ 'Content-Type': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(this.apiURL + `/shops/id`)
+      .map(response => response.json());
+  }
 }

@@ -15,6 +15,7 @@ import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBV
 export class AppComponent {
   public user;
   private categories: any;
+  private shops: any;
   sub: any;
   name: string;
   id: any;
@@ -40,6 +41,14 @@ export class AppComponent {
     }
   }
   ngOnInit() {
+    this.app.getAllShops().subscribe(
+      data => {
+        this.shops = data.shops;
+        console.log(this.shops);
+      },
+      err => console.log("can't get data", err.status, err.url),
+      () => console.log("Get complete")
+    );
     // this.app.getAllCategories().subscribe(
     // //   data => {
     // //     this.categories = data.category;

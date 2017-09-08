@@ -28,8 +28,11 @@ import { ShopComponent } from './shop/shop.component';
 import { ReviewComponent } from './review/review.component';
 import { ApiService } from './shared/services/api.service';
 import { OrderComponent } from './order/order.component';
+import { InforComponent } from './user/infor/infor.component';
+import { HistoryComponent } from './user/history/history.component'
 import { ShopListComponent } from './shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
+
 
 
 
@@ -56,6 +59,8 @@ import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
     ReviewComponent,
     NotificationComponent,
     OrderComponent,
+    InforComponent,
+    HistoryComponent
     ShopListComponent,
     ShopDetailComponent
   ],
