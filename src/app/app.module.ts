@@ -28,9 +28,12 @@ import { ShopComponent } from './shop/shop.component';
 import { ReviewComponent } from './review/review.component';
 import { ApiService } from './shared/services/api.service';
 import { OrderComponent } from './order/order.component';
+import { InforComponent } from './user/infor/infor.component';
+import { HistoryComponent } from './user/history/history.component'
 import { ShopListComponent } from './shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
 import { UiTreeBrandAsideComponent } from './product/category-tree/ui-tree-brand-aside/ui-tree-brand-aside.component'
+
 
 
 
@@ -57,6 +60,8 @@ import { UiTreeBrandAsideComponent } from './product/category-tree/ui-tree-brand
     ReviewComponent,
     NotificationComponent,
     OrderComponent,
+    InforComponent,
+    HistoryComponent
     ShopListComponent,
     ShopDetailComponent,
     UiTreeBrandAsideComponent

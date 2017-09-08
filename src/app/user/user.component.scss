@@ -1,46 +1,27 @@
 .container-side {
-	padding: 70px 0;
+  padding: 50px 0;
 }
-.label-info{
-	width: 20%;
-	font-weight: 800;
-	letter-spacing: -1px;
-}
-.radio{
-	padding-left: 20%;
-}
-.btn {
-	margin-top: 20px;
-	margin-left: 40%;
-}
-h4 {
-	margin-top: 0;
-}
+
 .list-user-action {
-	list-style-type: none;
-	padding: 0;
-	li {
-		border: 1px solid grey;
-		padding: 10px;
-	}
-	.active{
-		background-color: grey;
-		color: white;
-	}
+  list-style-type: none;
+  padding: 0;
+  li {
+    border: 1px solid grey;
+    padding: 10px;
+  }
+  .active{
+    background-color: grey;
+    color: white;
+  }
 }
-.wish-list {
-	list-style-type: none;
-	li{
-		padding: 20px 0;
-	}
-	
-	li:hover {
-		box-shadow: 0 0 3px grey;
-	}
+
+.side-bar {
+  float: left;
+  h4 {
+    margin-top: 0;
+  }
 }
-.margin-right {
-		float: right;
-	}
-.radio-btn {
-	padding-right: 40px;
+
+.infor-user {
+  float: left;
 }

@@ -12,6 +12,7 @@ import { environment } from '../../../environments/environment';
 export class CurrentUserActionService {
   private apiURL = "http://localhost:3001";
   _personalInfo: Subject<any> = new Subject<any>();
+  _persionalHistory: Subject<any> = new Subject<any>();
   constructor(private http: Http, private router: Router, private api: ApiService) {
   }
 
@@ -50,6 +51,24 @@ export class CurrentUserActionService {
     .catch((err: Response) => {
       this.api.setNotification("red","Something went wrong now! Please try again later!")
       return Observable.throw(err);
+    });
+  }
+
+  historyUser = () => {
+    let currentUser = JSON.parse(localStorage.getItem('current_user'));
+    let headers = new Headers({
+      'Content-Type': 'application/json;charset=utf-8',
+      'Access-Token': currentUser.access_token,
+      'Uid': currentUser.uid,
+      'Provider': currentUser.provider
+    });
+    let options = new RequestOptions({ headers: headers });
+    return this.http.get(`${environment.apiURL}/history`, options).map((response: Response) => {
+      let _history = response.json().orders;
+      if (_history) {
+        this._persionalHistory.next(_history);
+      }
+      console.log(_history);
     });
   }
 }
