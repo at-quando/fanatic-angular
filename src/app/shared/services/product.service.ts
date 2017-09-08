@@ -16,22 +16,24 @@ export class ProductService {
   _countShop: Subject<number> = new Subject<number>();
   _recommendProductSubject: Subject<Product[]> = new Subject<Product[]>();
   _ProductByShopSubject: Subject<Product[]> = new Subject<Product[]>();
+  _brandSubject: Subject<any> = new Subject<any>();
 
   constructor(private http: Http) { }
 
-  getProduct = (title, page) => {
+  getProduct = (title, page, brand_id) => {
     let params = new URLSearchParams();
     params.set('title', title);
     params.set('page', page);
+    params.set('brand_id', brand_id.toString());
     let options = new RequestOptions();
     options.search=params;
     return this.http.get(`${environment.apiURL}/products`, options)
-      .map((response: Response) => {
-        let _header = response.headers;
-        let _body = response.json();
-        this._productSubject.next(_body.products);
-        this._count.next(_body.meta.count);
-      });
+    .map((response: Response) => {
+      let _header = response.headers;
+      let _body = response.json();
+      this._productSubject.next(_body.products);
+      this._count.next(_body.meta.count);
+    });
   }
 
   getRecommendProduct = (title,id,brandId) => {
@@ -42,26 +44,26 @@ export class ProductService {
     let options = new RequestOptions();
     options.search=params;
     return this.http.get(`${environment.apiURL}/recommend_products`, options)
-      .map((response: Response) => {
-        let _header = response.headers;
-        let _body = response.json();
-        this._recommendProductSubject.next(_body.products);
-      });
+    .map((response: Response) => {
+      let _header = response.headers;
+      let _body = response.json();
+      this._recommendProductSubject.next(_body.products);
+    });
   }
 
-   getProductByShop = (id, page) => {
+  getProductByShop = (id, page) => {
     let params = new URLSearchParams();
     params.set('id', id);
     params.set('page', page);
     let options = new RequestOptions();
     options.search=params;
     return this.http.get(`${environment.apiURL}/shop_products`, options)
-      .map((response: Response) => {
-        let _body = response.json();
-        console.log(response.json());
-        this._ProductByShopSubject.next(_body.products);
-        this._countShop.next(_body.meta.count);
-      });
+    .map((response: Response) => {
+      let _body = response.json();
+      console.log(response.json());
+      this._ProductByShopSubject.next(_body.products);
+      this._countShop.next(_body.meta.count);
+    });
   }
 
   getOneProduct = (id) => {
@@ -70,9 +72,21 @@ export class ProductService {
     let options = new RequestOptions();
     options.search=params;
     return this.http.get(`${environment.apiURL}/products/${id}`, options)
-      .map((response: Response) => {
-        let _body = response.json();
-        this._oneProductSubject.next(_body.product);
-      });
+    .map((response: Response) => {
+      let _body = response.json();
+      this._oneProductSubject.next(_body.product);
+    });
+  }
+
+  getBrand = (title: any) => {
+    let params = new URLSearchParams();
+    params.set('title', title);
+    let options = new RequestOptions();
+    options.search = params;
+    return this.http.get(`${environment.apiURL}/brands`, options)
+    .map((response: Response) => {
+      let _body = response.json();
+      this._brandSubject.next(_body.brands);
+    });
   }
 }

@@ -26,7 +26,6 @@ export class CurrentUserActionService {
     let options = new RequestOptions({ headers: headers });
     return this.http.get(`${environment.apiURL}/users/${id}`, options).map((response: Response) => {
       let _user = response.json().user;
-      console.log(_user);
       if (_user) {
         this._personalInfo.next(_user);
       }
@@ -43,7 +42,6 @@ export class CurrentUserActionService {
     });
     let options = new RequestOptions({ headers: headers });
     return this.http.patch(`${environment.apiURL}/users/${id}`,JSON.stringify(user), options).map((response: Response) => {
-      console.log(123);
       this.api.setNotification("green","Your Information are updated!");
       var currentUser=JSON.parse(localStorage.getItem('current_user'));
       currentUser.user_name = user.name;

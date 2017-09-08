@@ -18,17 +18,17 @@ export class ShopDetailComponent {
 	products: any;
 	page: number;
 	url: any;
-	mapGG: any;
+	mapGG: string;
 
 
 	@ViewChild(PaginationComponent) pagination: PaginationComponent;
 	@ViewChild(ProductListComponent) productList: ProductListComponent;
   constructor(private route: ActivatedRoute, 
-  						private shopsService: ShopsService,
-  						private productService: ProductService,
-  						private router: Router) { 
-  	$('#locationMap').attr("src", "https://www.google.com/maps/embed/v1/search?key=AIzaSyB2pWEO7SWqwRCMbE9sMJcSzN8jSLH_YjY&q=43 Tống Phước Phổ");
-  	this.mapGG = "https://www.google.com/maps/embed/v1/search?key=AIzaSyB2pWEO7SWqwRCMbE9sMJcSzN8jSLH_YjY&q=43 Tống Phước Phổ";}
+    private shopsService: ShopsService,
+    private productService: ProductService,
+    private router: Router) { 
+  	// $('#locationMap').attr("src", "https://www.google.com/maps/embed/v1/search?key=AIzaSyB2pWEO7SWqwRCMbE9sMJcSzN8jSLH_YjY&q=43 Tống Phước Phổ");
+  }
 
   ngAfterViewInit() {
   	this.url=this.router.url;
@@ -38,7 +38,7 @@ export class ShopDetailComponent {
   		this.shopsService.getShop(this.id).subscribe(data => {});
   		this.shopsService._shopSubject.subscribe(shop => {
   			this.shop = shop;
-  			
+  			// this.mapGG = `https://www.google.com/maps/embed/v1/search?key=AIzaSyB2pWEO7SWqwRCMbE9sMJcSzN8jSLH_YjY&q=${this.shop.address}`;
   		})
   		this.productService.getProductByShop(this.id,this.page).subscribe(data => {});
   		this.productService._ProductByShopSubject.subscribe(product => {

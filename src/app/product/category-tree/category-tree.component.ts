@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'category-tree',
   templateUrl: './category-tree.component.html',
-  styleUrls: ['./category-tree.component.scss']
+  styleUrls: ['./category-tree.component.scss'],
 })
 export class CategoryTreeComponent implements OnInit {
   categories: any;

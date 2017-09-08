@@ -16,9 +16,10 @@ export class ProductComponent implements OnInit {
   subs: any
   title: any;
   page: any;
-  brandId: any;
+  brandId: any = 0;
   count: number;
   pageNumber: number;
+  brand: any;
 
   @ViewChild(PaginationComponent) pagination: PaginationComponent;
   @ViewChild(ProductListComponent) productList: ProductListComponent;
@@ -26,12 +27,14 @@ export class ProductComponent implements OnInit {
     this.subs = this.route.params.subscribe(params => {
       this.title = params['name'];
       this.page = +params['page'];
-      // this.brandId = +params['brandId'];
-      // console.log(this.brandId);
-      this._product.getProduct(this.title,this.page).subscribe(data=>{});
+      if(params['brand_id'] != 0) {
+        this.brandId = +params['brand_id']
+      }
+      this._product.getProduct(this.title,this.page, this.brandId).subscribe(data=>{});
       this._product._productSubject.subscribe(items => {
         this.productList.products = items; 
       });
+
       this._product._count.subscribe(count => {
         this.count = count; 
         this.pageNumber= Math.ceil(this.count/8);

@@ -30,6 +30,7 @@ import { ApiService } from './shared/services/api.service';
 import { OrderComponent } from './order/order.component';
 import { ShopListComponent } from './shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
+import { UiTreeBrandAsideComponent } from './product/category-tree/ui-tree-brand-aside/ui-tree-brand-aside.component'
 
 
 
@@ -57,7 +58,8 @@ import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
     NotificationComponent,
     OrderComponent,
     ShopListComponent,
-    ShopDetailComponent
+    ShopDetailComponent,
+    UiTreeBrandAsideComponent
   ],
   imports: [
     BrowserModule,

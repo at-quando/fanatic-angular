@@ -72,7 +72,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   add_to_cart(item: any) {
-    console.log(item);
     this._order.addToCart(item, this.quantity);
   }
 
@@ -153,7 +152,6 @@ export class ProductDetailComponent implements OnInit {
   addToCart(product) {
     var props=product.properties.filter(item => item.id ==this.id);  
     product.properties=props;
-    console.log(this.quantity);
     this._order.addToCart(product,this.quantity);
   }
 }

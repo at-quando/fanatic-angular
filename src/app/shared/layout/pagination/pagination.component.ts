@@ -29,7 +29,6 @@ export class PaginationComponent implements OnInit {
       else {
       	this.pageActive = +params['page'];
       }
-      console.log(this.pageActive);
     });
   }
  
@@ -40,6 +39,5 @@ export class PaginationComponent implements OnInit {
   	for(let i=1; i<=this.pageNumber;i++) {
       	this.pages.push(i);
     }
-    console.log(this.pages);
   }
 }
