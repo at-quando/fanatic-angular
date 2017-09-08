@@ -27,7 +27,6 @@ export class CurrentUserActionService {
     let options = new RequestOptions({ headers: headers });
     return this.http.get(`${environment.apiURL}/users/${id}`, options).map((response: Response) => {
       let _user = response.json().user;
-      console.log(_user);
       if (_user) {
         this._personalInfo.next(_user);
       }

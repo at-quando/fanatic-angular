@@ -46,7 +46,7 @@
       <hr class="mar">
       <span>Total price(Total for pay):</span> <span class="price-info">${{getTotal()}}</span> 
       <hr class="mar">
-      <a class="btn btn-primary" (click)="payment()">Payment</a>
+      <button type="button" class="btn btn-primary" (click)="payment()" [disabled]="products==null || products.length==0">Payment</button>
     </div>
   </div>
   

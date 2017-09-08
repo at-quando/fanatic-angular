@@ -1,18 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductOrder } from '../shared/models/ProductOrder';
 import { OrdersService } from '../shared/services/orders.service'
+import { ApiService } from '../shared/services/api.service'
 
 @Component({
   selector: 'app-order',
   templateUrl: './order.component.html',
   styleUrls: ['./order.component.scss'],
-  providers: [OrdersService]
+  providers: [OrdersService, ApiService]
 })
 export class OrderComponent implements OnInit {
   private productsSubject: any;
   private products: any;
   constructor(
-    private _order: OrdersService
+    private _order: OrdersService,
+    private api: ApiService
     ) {
   }
 
@@ -61,6 +63,8 @@ export class OrderComponent implements OnInit {
     }
     else {
       this._order.payMent().subscribe(data => {});
+      this.api.setNotification("green", "Success to order products, please check mail to more detail! ");
+      localStorage.removeItem('ordersList');
     }
   }
 }
