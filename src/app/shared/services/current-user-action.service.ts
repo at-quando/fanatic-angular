@@ -30,8 +30,13 @@ export class CurrentUserActionService {
       if (_user) {
         this._personalInfo.next(_user);
       }
+    })
+    .catch((err: Response) => {
+      this.api.setNotification("red","Unauthorize!, You do not have permission to perform this operation!")
+      return Observable.throw(err);
     });
   }
+
 
   editUserInfo = (user,id) => {
     let currentUser = JSON.parse(localStorage.getItem('current_user'));
@@ -68,7 +73,6 @@ export class CurrentUserActionService {
       if (_history) {
         this._persionalHistory.next(_history);
       }
-      console.log(_history);
     });
   }
 }

@@ -19,6 +19,8 @@ export class ProductService {
   _brandSubject: Subject<any> = new Subject<any>();
   _clothesCareProduct: Subject<any> = new Subject<any>();
   _electronicCareProduct: Subject<any> = new Subject<any>();
+  _suggestSearchName: Subject<any> = new Subject<any>();
+  _searchProductname: Subject<any> = new Subject<any>();
 
   constructor(private http: Http) { }
 
@@ -26,7 +28,6 @@ export class ProductService {
     let params = new URLSearchParams();
     params.set('title', title);
     params.set('page', page);
-    console.log(title);
     params.set('brand_id', brand_id.toString());
     let options = new RequestOptions();
     options.search=params;
@@ -107,6 +108,30 @@ export class ProductService {
       .map((response: Response) => {
         let _body = response.json();
         this._electronicCareProduct.next(_body.products);
+      })
+  }
+
+  getSuggestSearch = (search: any) => {
+    let params = new URLSearchParams();
+    params.set('suggest_name', search);
+    let options = new RequestOptions();
+    options.search = params;
+    return this.http.get(`${environment.apiURL}/suggest_search`, options)
+      .map((response: Response) => {
+      let _body = response.json();
+      this._suggestSearchName.next(_body.products);
+    });
+  }
+
+  searchProductByName = (nameSearchProduct) => {
+    let params = new URLSearchParams();
+    params.set('name', nameSearchProduct);
+    let options = new RequestOptions();
+    options.search = params;
+    return this.http.get(`${environment.apiURL}/search`, options)
+      .map((response: Response) => {
+        let _body = response.json();
+        this._searchProductname.next(_body.products);
       })
   }
 }

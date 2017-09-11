@@ -4,13 +4,14 @@ import { AuthenticationService } from "./shared/services/authenticate.service";
 import { AppService } from './app.service';
 import { OrdersService } from './shared/services/orders.service'
 import { AuthService } from 'angular2-social-login';
+import { ProductService } from './shared/services/product.service'
 import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent } from 'ngx-facebook';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [AuthenticationService, AppService, OrdersService]
+  providers: [AuthenticationService, AppService, OrdersService, ProductService]
 })
 export class AppComponent {
   public user;
@@ -22,13 +23,17 @@ export class AppComponent {
   sublogout: any;
   key: string = 'category';
   uid: any;
+  search: string;
+  searchName: any;
+  searchList: any;
 
   @ViewChild(LoginComponent) login: LoginComponent;
   constructor(
     private _auth: AuthenticationService,
     private fb: FacebookService,
     private app: AppService,
-    private _order: OrdersService
+    private _order: OrdersService,
+    private _product: ProductService
   ) {
     fb.init({
       appId: '107975049932344',
@@ -337,4 +342,37 @@ export class AppComponent {
     console.error('Error processing action', error);
   }
 
+  somethingSearch(newvalue) {
+    this.search = newvalue;
+    if(this.search) {
+      this._product.getSuggestSearch(this.search).subscribe(data => {});
+      this._product._suggestSearchName.subscribe(items => {
+        if(this.search) {
+          this.searchName = items;
+        }
+        else {
+          this.search = null;
+        }
+      })
+    }
+  }
+
+  showListSearch(event:any) {
+    let key = event.keyCode || event.which;
+    if(key == 13) {
+      this._product.searchProductByName(this.search).subscribe(data => {});
+      this._product._searchProductname.subscribe(items => {
+        this.searchList = items;
+        console.log(this.searchList);
+      })
+    }
+  }
+
+  disableSearch(){
+    $('.search-name').hide();
+  }
+
+  enableSearch(){
+    $('.search-name').show();
+  }
 }

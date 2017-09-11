@@ -80,12 +80,15 @@ export class OrdersService {
   getTotal() {
     this.products = JSON.parse(localStorage.getItem('ordersList'));
     this.productsSubject.next(this.products);
-    if(this.products != null || this.products.length != 0) {
+    if(this.products != null) {
       return this.products.reduce((prev, curr: ProductOrder) => {
         return prev + curr.properties[0].price*curr.quantity;
       }, 0) > 0 ? this.products.reduce((prev, curr: ProductOrder) => {
         return prev + curr.properties[0].price*curr.quantity;
       }, 0) : 0;
+    }
+    else {
+      return 0;
     }
   }
 
@@ -114,7 +117,6 @@ export class OrdersService {
     let options = new RequestOptions({ headers: headers });
     return this.http.post(this.apiURL + `/orders`, JSON.stringify({ orders: orders }), options)
     .map((response: Response) => {
-      console.log(123);
       // localStorage.removeItem('current_user');
       // location.reload();
     });

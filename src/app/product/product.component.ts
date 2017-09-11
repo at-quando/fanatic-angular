@@ -36,7 +36,6 @@ export class ProductComponent implements OnInit {
       this._product.getProduct(this.title,this.page, this.brandId).subscribe(data=>{});
       this._product._productSubject.subscribe(items => {
         this.productList.products = items;
-        console.log(this.productList.products);
       });
 
       this._product._count.subscribe(count => {

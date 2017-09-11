@@ -22,13 +22,13 @@ export class ReviewComponent implements OnInit {
 
   constructor(private _review: ReviewService, private route: ActivatedRoute, private api: ApiService) {
     this.current_user=JSON.parse(localStorage.getItem('current_user'));
-  	this.sub = this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
       this.productId = params['id'];
-  	});
-    this._review.getReviewProduct(this.productId).subscribe(data => {});
-        this._review._reviewSubject.subscribe(review => {
-          this.reviews=review['comments'];
-        });
+      this._review.getReviewProduct(this.productId).subscribe(data => {});
+      this._review._reviewSubject.subscribe(review => {
+        this.reviews=review['comments'];
+      });
+    });
     this.reviewEdit= {
       title:  '',
       content: ''
