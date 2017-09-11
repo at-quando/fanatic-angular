@@ -41,11 +41,12 @@ export class ProductDetailComponent implements OnInit {
   ngOnInit() {
     var color= document.getElementById("propertycolorist");
     this.sub = this.route.params.subscribe(params => {
-      this.category = params['name'].toUpperCase();
+      
       this.ids = params['id'];
       this._product.getOneProduct(this.ids).subscribe(data=>{});
       this._product._oneProductSubject.subscribe(obj => {
         this.product = obj;
+        this.category = this.product.category.title.toUpperCase();
         this.property=this.product.properties;
         this._product.getRecommendProduct(this.category,this.ids,this.product.brand.id).subscribe(obj => {});
         this._product._recommendProductSubject.subscribe(obj => {

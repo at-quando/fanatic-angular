@@ -61,7 +61,7 @@ import { UiTreeBrandAsideComponent } from './product/category-tree/ui-tree-brand
     NotificationComponent,
     OrderComponent,
     InforComponent,
-    HistoryComponent
+    HistoryComponent,
     ShopListComponent,
     ShopDetailComponent,
     UiTreeBrandAsideComponent

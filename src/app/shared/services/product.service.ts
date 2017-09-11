@@ -17,6 +17,8 @@ export class ProductService {
   _recommendProductSubject: Subject<Product[]> = new Subject<Product[]>();
   _ProductByShopSubject: Subject<Product[]> = new Subject<Product[]>();
   _brandSubject: Subject<any> = new Subject<any>();
+  _clothesCareProduct: Subject<any> = new Subject<any>();
+  _electronicCareProduct: Subject<any> = new Subject<any>();
 
   constructor(private http: Http) { }
 
@@ -24,6 +26,7 @@ export class ProductService {
     let params = new URLSearchParams();
     params.set('title', title);
     params.set('page', page);
+    console.log(title);
     params.set('brand_id', brand_id.toString());
     let options = new RequestOptions();
     options.search=params;
@@ -60,7 +63,6 @@ export class ProductService {
     return this.http.get(`${environment.apiURL}/shop_products`, options)
     .map((response: Response) => {
       let _body = response.json();
-      console.log(response.json());
       this._ProductByShopSubject.next(_body.products);
       this._countShop.next(_body.meta.count);
     });
@@ -88,5 +90,23 @@ export class ProductService {
       let _body = response.json();
       this._brandSubject.next(_body.brands);
     });
+  }
+
+  getClothesCareProduct = () => {
+    let options = new RequestOptions();
+    return this.http.get(`${environment.apiURL}/clothes_care_products`, options)
+      .map((response: Response) => {
+        let _body = response.json();
+        this._clothesCareProduct.next(_body.products);
+      })
+  }
+
+  getElectronicCareProduct = () => {
+    let options = new RequestOptions();
+    return this.http.get(`${environment.apiURL}/electronic_care_products`, options)
+      .map((response: Response) => {
+        let _body = response.json();
+        this._electronicCareProduct.next(_body.products);
+      })
   }
 }

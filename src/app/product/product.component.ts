@@ -28,11 +28,15 @@ export class ProductComponent implements OnInit {
       this.title = params['name'];
       this.page = +params['page'];
       if(params['brand_id'] != 0) {
-        this.brandId = +params['brand_id']
+        this.brandId = +params['brand_id'];
+      }
+      else {
+        this.brandId = 0;
       }
       this._product.getProduct(this.title,this.page, this.brandId).subscribe(data=>{});
       this._product._productSubject.subscribe(items => {
-        this.productList.products = items; 
+        this.productList.products = items;
+        console.log(this.productList.products);
       });
 
       this._product._count.subscribe(count => {

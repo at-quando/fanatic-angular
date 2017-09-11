@@ -44,7 +44,6 @@ export class AppComponent {
     this.app.getAllShops().subscribe(
       data => {
         this.shops = data.shops;
-        console.log(this.shops);
       },
       err => console.log("can't get data", err.status, err.url),
       () => console.log("Get complete")
@@ -304,6 +303,7 @@ export class AppComponent {
   }
 
   disableScrolling() {
+    window.scrollTo(0,0);
     var x = window.scrollX;
     var y = window.scrollY;
     window.onscroll = function() { window.scrollTo(x, y); };

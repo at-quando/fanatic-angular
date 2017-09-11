@@ -40,7 +40,6 @@ export class ReviewComponent implements OnInit {
   }
 
   submitReview(title,content) {
-  	console.log(this.productId);
   	this._review.addReviewProduct(title,content,this.productId).subscribe(data =>{});
   }
 
@@ -65,6 +64,6 @@ export class ReviewComponent implements OnInit {
   }
 
   deleteComment(id) {
-    this._review.deleteReviewProduct(id).subscribe(data =>{});
+    this._review.deleteReviewProduct(id, this.productId).subscribe(data =>{});
   }
 }

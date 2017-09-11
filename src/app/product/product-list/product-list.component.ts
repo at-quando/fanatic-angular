@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, ViewChild, Input  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ProductService } from '../../shared/services/product.service';
 import { OrdersService } from '../../shared/services/orders.service'
@@ -16,20 +16,23 @@ export class ProductListComponent implements OnInit {
   products: any;
   title: any;
 
+  @Input('list') listProduct: any;
+  @Input('titleCare') titleCare: string;
   constructor(
     private _product: ProductService,
     private _order: OrdersService,
     private route: ActivatedRoute
   ) {
-    this.products = [];
     this.subs = this.route.params.subscribe(params => {
-      this.title = params['name'];
       this.id = params['id'];
   });
 }
 
   ngOnInit() {
-
+    if(this.listProduct) {
+      this.products = this.listProduct;
+      this.title = this.titleCare;
+    }
   }
 
   ngOnDestroy() {

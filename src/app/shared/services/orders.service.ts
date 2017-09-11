@@ -80,10 +80,12 @@ export class OrdersService {
   getTotal() {
     this.products = JSON.parse(localStorage.getItem('ordersList'));
     this.productsSubject.next(this.products);
-    if(this.products != null) {
+    if(this.products != null || this.products.length != 0) {
       return this.products.reduce((prev, curr: ProductOrder) => {
         return prev + curr.properties[0].price*curr.quantity;
-      }, 0);
+      }, 0) > 0 ? this.products.reduce((prev, curr: ProductOrder) => {
+        return prev + curr.properties[0].price*curr.quantity;
+      }, 0) : 0;
     }
   }
 

@@ -5,7 +5,7 @@
         <span class="sale-box">
           <span class="label-sale">SALE</span>
         </span>
-        <a [routerLink]="['/',title,item.id]" (click)="topPage()">
+        <a [routerLink]="['/',item.category.title,item.id]" (click)="topPage()">
           <div class="category-item-picture" *ngIf="item.properties[0].images.length==0 ||item.properties.length==0">
             <img src="http://cdn.shopify.com/s/files/1/1137/0048/t/2/assets/slideshow_image_1.jpg?1928721178739775374" class="image-size" >
           </div>
@@ -14,7 +14,9 @@
           </div>
         </a>
         <div class="category-item-info">
-          <p>{{item.name}}</p>
+          <div class="product-name">
+            <p>{{item.name}}</p>
+          </div>
           <div class="product-price">
             <!-- <span class="old-price">$40.00</span> -->
             <span class="new-price">${{item.properties[0].price}}</span>

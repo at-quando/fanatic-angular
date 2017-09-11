@@ -20,6 +20,7 @@ export class HistoryComponent implements OnInit {
     this.userAction.historyUser().subscribe(data => {})
     this.userAction._persionalHistory.subscribe(userHistory => {
       this.history = userHistory;
+      console.log(this.history);
     })
   }
 }

@@ -1,4 +1,4 @@
-
+import { AppService } from '../shared/services/app.service'
 import { Component, OnInit, Input } from '@angular/core';
 
 
@@ -11,17 +11,11 @@ import { Component, OnInit, Input } from '@angular/core';
 export class ShopComponent implements OnInit {
 	@Input('shop') shop: any;
 
-
   constructor(
-    private route: ActivatedRoute,
     private _app: AppService
   ) { }
 
   ngOnInit() {
-    this.sub = this.route.params.subscribe(params => {
-      this.shopId = params['id'];
-      console.log(this.shopId);
-      this
-    });
+    
   }
 }

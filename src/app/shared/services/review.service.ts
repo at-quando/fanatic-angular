@@ -71,7 +71,7 @@ export class ReviewService {
     }
   }
 
-  deleteReviewProduct = (id) => {
+  deleteReviewProduct = (id, product_id) => {
     let currentUser = JSON.parse(localStorage.getItem('current_user'));
     if(currentUser) {
       let headers = new Headers({
@@ -80,7 +80,10 @@ export class ReviewService {
         'Uid': currentUser.uid,
         'Provider': currentUser.provider
       });
+      let params = new URLSearchParams();
+      params.set('product_id', product_id);
       let options = new RequestOptions({ headers: headers });
+      options.search = params;
       return this.http.delete(`${environment.apiURL}/comments/${id}`, options)
         .map((response: Response) => {
           var filterReviews=this.reviews.comments.filter(item => item.id != id);
