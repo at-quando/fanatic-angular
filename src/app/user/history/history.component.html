@@ -1,24 +1,26 @@
 <div class="col-sm-12 padding-right infor-user">
   <h5>Your History Order</h5>
-  <p *ngIf="history != null">
+  <p *ngIf="history == null">
     You don't have history, please order first!
   </p>
   <ul *ngIf="history" class="orders-list">
-    <li *ngFor="let obj of history">
-      <p>
+    <li class="order-detail" *ngFor="let obj of history">
+      <p class="order-id">
         ID order: {{obj.id}}
       </p>
       <div class="order">
-        <p>
-          Status: {{obj.status}}
-        </p>
-        <p>
-          Date order: {{obj.created_at}}
-        </p>
+        <div class="inline-infor clr">
+          <p class="status">
+            Status: {{obj.status}}
+          </p>
+          <p class="date-order">
+            Date order: {{obj.created_at}}
+          </p>
+        </div>
         <p class="detail-order">
-          <a>Detail order:</a>
+          <a (click)="showDetailOrder(obj.id)">Detail order:</a>
         </p>
-        <table class="table-orders">
+        <table class="table-orders table-orders{{obj.id}}">
           <tr>
             <th class="product">{{obj.order_items.length}} PRODUCTS</th>
             <th class="price">PRICE</th>
@@ -28,7 +30,7 @@
           <tr class="item" *ngFor="let order_items of obj.order_items">
             <td class="item-order">
               <div class="img">
-                <img class="" src='../../assets/img/avatar.jpg' alt="">
+                <img class="" src="{{order_items.product.properties[0].images[0].image}}" alt="">
               </div>
               <div class="title">
                 <p>
@@ -37,7 +39,7 @@
               </div>
             </td>
             <td>
-              <h5>${{order_items.product.property.price}}</h5>
+              <h5>${{order_items.product.properties[0].price}}</h5>
             </td>
             <td class="center">
               {{order_items.quantity}}
@@ -48,7 +50,9 @@
           </tr>
           <tr class="total">
             <td colspan=4>
-              <span class="total-label">TOTAL:</span> <span class="total-price">$100</span>
+              <div>
+                <span class="total-label">TOTAL:</span> <span *ngIf="obj.total" class="total-price">${{obj.total}}</span>
+              </div>
             </td>
           </tr>
         </table>

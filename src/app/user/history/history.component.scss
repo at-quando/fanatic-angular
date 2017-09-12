@@ -2,21 +2,34 @@ p {
   margin-bottom: 0;
 }
 
-.order {
-  padding-left: 15px;
-}
-
 .detail-order {
-  &:hover + .table-orders {
-    display: block;
-    transition: height 2s;
-  }
-  // &:visited + .table-orders {
-  //   display: block;
-  // }
   a {
     color: grey;
     font-size: 17px;
+  }
+}
+
+.orders-list {
+  list-style: none;
+  padding-left: 0;
+  .order-detail {
+    margin-top: 10px;
+    .order-id {
+    }
+    .order {
+      padding-left: 15px;
+      .inline-infor {
+        .status {
+          float: left;
+          width: 15%;
+        }
+        .date-order {
+          width: 35%;
+          margin-left: 2%;
+          float: left;
+        }
+      }
+    }
   }
 }
 
@@ -90,4 +103,10 @@ p {
     float: left;
     padding: 0 10px;
   }
+}
+
+.clr::After {
+  content: '';
+  display: block;
+  clear: both;
 }

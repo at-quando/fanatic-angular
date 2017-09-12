@@ -22,6 +22,12 @@ a {
   float: right;
   .search-content {
     position: relative;
+    .clear-search-box {
+      position: absolute;
+      right: 25px;
+      font-size: 20px;
+      top: 5px;
+    }
     .search-name {
       position: absolute;
       max-height: 400px;
