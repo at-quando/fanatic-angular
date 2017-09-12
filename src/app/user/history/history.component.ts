@@ -20,6 +20,16 @@ export class HistoryComponent implements OnInit {
     this.userAction.historyUser().subscribe(data => {})
     this.userAction._persionalHistory.subscribe(userHistory => {
       this.history = userHistory;
+      for(let order of this.history) {
+        order['total'] = 0
+        for(let item of order.order_items) {
+          order['total'] = order['total'] + item.total;
+        }
+      }
     })
+  }
+
+  showDetailOrder(id: number) {
+    $(`.table-orders${id}`).fadeIn('slow').css('height', 'auto');
   }
 }

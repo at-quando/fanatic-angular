@@ -8,11 +8,12 @@ import { ApiService } from './api.service';
 import { Router } from '@angular/router';
 import { environment } from '../../../environments/environment';
 
+
 @Injectable()
 export class AuthenticationService {
  //private apiURL = "http://172.17.19.240:3001"
   private apiURL = "http://localhost:3001"
-  constructor(private http: Http, private router: Router) { }
+  constructor(private http: Http, private router: Router, private api: ApiService) { }
 
 
   login = (email: string, password: string) => {
@@ -34,6 +35,7 @@ export class AuthenticationService {
           }
       })
       .catch((err: Response) => {
+          this.api.setNotification("red","Email or password incorrect, please try again!")
           return Observable.throw(err);
         })
   }

@@ -52,7 +52,6 @@ export class OrderComponent implements OnInit {
   payment() {
     let current_user = localStorage.getItem('current_user');
     if(current_user == null) {
-      // console.log('Ban phai dang nhap truoc');
       var login = document.getElementById("modal-in");
       var signupForm = document.getElementById("signup");
       var navLogin = document.getElementById("nav-login");

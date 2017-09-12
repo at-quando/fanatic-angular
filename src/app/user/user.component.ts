@@ -16,23 +16,7 @@ export class UserComponent implements OnInit {
   constructor(private route: ActivatedRoute, 
               private userAction: CurrentUserActionService,
               private api: ApiService) {
-    this.user= {
-      name:'',
-      phone: '',
-      gender: '',
-      address: '',
-      avatar: null
-    }
-
-    this.route.queryParams.subscribe(params =>{
-      this.id = params['id'];
-      this.uid = params['uid'];
-      this.userAction.getUserInfo(this.id).subscribe(data => {});
-      this.userAction._personalInfo.subscribe(userInfo => {
-        this.user = userInfo;
-      })
-    });
-  }   
+  }
 
   ngOnInit() {
   }

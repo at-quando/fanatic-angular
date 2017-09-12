@@ -26,9 +26,12 @@ a {
         }
       }
       .category-item-info {
+        .product-name {
+          height: 80px;
+        }
         .product-price {
           .new-price {
-          font-size: 17px;
+            font-size: 17px;
           }
         }
         p {
@@ -60,8 +63,8 @@ a {
           background-color: white;
         }
         .rating{
-            color: orange;
-            margin-top: 20px;
+          color: orange;
+          margin-top: 20px;
 
         }
       }
@@ -88,8 +91,8 @@ a {
           color:black;
         }
         .btn:hover {
-        background-color: black;
-        color: white;
+          background-color: black;
+          color: white;
         }
       }
       .add-to-cart:hover {

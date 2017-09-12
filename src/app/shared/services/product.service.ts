@@ -17,6 +17,10 @@ export class ProductService {
   _recommendProductSubject: Subject<Product[]> = new Subject<Product[]>();
   _ProductByShopSubject: Subject<Product[]> = new Subject<Product[]>();
   _brandSubject: Subject<any> = new Subject<any>();
+  _clothesCareProduct: Subject<any> = new Subject<any>();
+  _electronicCareProduct: Subject<any> = new Subject<any>();
+  _suggestSearchName: Subject<any> = new Subject<any>();
+  _searchProductname: Subject<any> = new Subject<any>();
 
   constructor(private http: Http) { }
 
@@ -60,7 +64,6 @@ export class ProductService {
     return this.http.get(`${environment.apiURL}/shop_products`, options)
     .map((response: Response) => {
       let _body = response.json();
-      console.log(response.json());
       this._ProductByShopSubject.next(_body.products);
       this._countShop.next(_body.meta.count);
     });
@@ -86,7 +89,51 @@ export class ProductService {
     return this.http.get(`${environment.apiURL}/brands`, options)
     .map((response: Response) => {
       let _body = response.json();
-      this._brandSubject.next(_body.brands);
+      this._brandSubject.next(_body.category_brands);
     });
+  }
+
+  getClothesCareProduct = () => {
+    let options = new RequestOptions();
+    return this.http.get(`${environment.apiURL}/clothes_care_products`, options)
+    .map((response: Response) => {
+      let _body = response.json();
+      this._clothesCareProduct.next(_body.products);
+    })
+  }
+
+  getElectronicCareProduct = () => {
+    let options = new RequestOptions();
+    return this.http.get(`${environment.apiURL}/electronic_care_products`, options)
+    .map((response: Response) => {
+      let _body = response.json();
+      if(_body) {
+        this._electronicCareProduct.next(_body.products);
+      }
+    })
+  }
+
+  getSuggestSearch = (search: any) => {
+    let params = new URLSearchParams();
+    params.set('suggest_name', search);
+    let options = new RequestOptions();
+    options.search = params;
+    return this.http.get(`${environment.apiURL}/suggest_search`, options)
+    .map((response: Response) => {
+      let _body = response.json();
+      this._suggestSearchName.next(_body.products);
+    });
+  }
+
+  searchProductByName = (nameSearchProduct) => {
+    let params = new URLSearchParams();
+    params.set('name', nameSearchProduct);
+    let options = new RequestOptions();
+    options.search = params;
+    return this.http.get(`${environment.apiURL}/search`, options)
+    .map((response: Response) => {
+      let _body = response.json();
+      this._searchProductname.next(_body.products);
+    })
   }
 }

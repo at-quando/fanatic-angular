@@ -4,13 +4,14 @@ import { AuthenticationService } from "./shared/services/authenticate.service";
 import { AppService } from './app.service';
 import { OrdersService } from './shared/services/orders.service'
 import { AuthService } from 'angular2-social-login';
+import { ProductService } from './shared/services/product.service'
 import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent } from 'ngx-facebook';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  providers: [AuthenticationService, AppService, OrdersService]
+  providers: [AuthenticationService, AppService, OrdersService, ProductService]
 })
 export class AppComponent {
   public user;
@@ -22,14 +23,18 @@ export class AppComponent {
   sublogout: any;
   key: string = 'category';
   uid: any;
+  search: string;
+  searchName: any;
+  searchList: any;
 
   @ViewChild(LoginComponent) login: LoginComponent;
   constructor(
     private _auth: AuthenticationService,
     private fb: FacebookService,
     private app: AppService,
-    private _order: OrdersService
-  ) {
+    private _order: OrdersService,
+    private _product: ProductService
+    ) {
     fb.init({
       appId: '107975049932344',
       version: 'v2.9'
@@ -44,26 +49,25 @@ export class AppComponent {
     this.app.getAllShops().subscribe(
       data => {
         this.shops = data.shops;
-        console.log(this.shops);
       },
       err => console.log("can't get data", err.status, err.url),
       () => console.log("Get complete")
-    );
+      );
     // this.app.getAllCategories().subscribe(
     // //   data => {
-    // //     this.categories = data.category;
-    // //     console.log(this.categories.length);
-    // //     console.log(this.categories.Electronic.Laptop);
-    // //     console.log(this.categories.Clothes["Men's clothes"]);
-    // //   },
-    // //   err => console.log("can't get data",err.status, err.url),
-    // //   () => console.log("Get complete")
-    // // );
+      // //     this.categories = data.category;
+      // //     console.log(this.categories.length);
+      // //     console.log(this.categories.Electronic.Laptop);
+      // //     console.log(this.categories.Clothes["Men's clothes"]);
+      // //   },
+      // //   err => console.log("can't get data",err.status, err.url),
+      // //   () => console.log("Get complete")
+      // // );
 
-    this.categories = {
-      "category": {
-        "Electronic": {
-          "Computer": [
+      this.categories = {
+        "category": {
+          "Electronic": {
+            "Computer": [
             {
               "id": 15,
               "title": "Laptop",
@@ -77,47 +81,47 @@ export class AppComponent {
             },
             {
               "PC": [
-                {
-                  "id": 19,
-                  "title": "RAM",
-                  "parent_id": 16,
-                  "lft": 6,
-                  "rgt": 7,
-                  "depth": 3,
-                  "children_count": 0,
-                  "created_at": "2017-08-29T01:45:16.000Z",
-                  "updated_at": "2017-08-29T01:45:17.000Z"
-                },
-                {
-                  "id": 20,
-                  "title": "Vega",
-                  "parent_id": 16,
-                  "lft": 8,
-                  "rgt": 9,
-                  "depth": 3,
-                  "children_count": 0,
-                  "created_at": "2017-08-29T01:45:16.000Z",
-                  "updated_at": "2017-08-29T01:45:17.000Z"
-                }
+              {
+                "id": 19,
+                "title": "RAM",
+                "parent_id": 16,
+                "lft": 6,
+                "rgt": 7,
+                "depth": 3,
+                "children_count": 0,
+                "created_at": "2017-08-29T01:45:16.000Z",
+                "updated_at": "2017-08-29T01:45:17.000Z"
+              },
+              {
+                "id": 20,
+                "title": "Vega",
+                "parent_id": 16,
+                "lft": 8,
+                "rgt": 9,
+                "depth": 3,
+                "children_count": 0,
+                "created_at": "2017-08-29T01:45:16.000Z",
+                "updated_at": "2017-08-29T01:45:17.000Z"
+              }
               ]
             },
             {
               "Console": [
-                {
-                  "id": 18,
-                  "title": "PS4",
-                  "parent_id": 17,
-                  "lft": 12,
-                  "rgt": 13,
-                  "depth": 3,
-                  "children_count": 0,
-                  "created_at": "2017-08-29T01:45:16.000Z",
-                  "updated_at": "2017-08-29T01:45:17.000Z"
-                }
+              {
+                "id": 18,
+                "title": "PS4",
+                "parent_id": 17,
+                "lft": 12,
+                "rgt": 13,
+                "depth": 3,
+                "children_count": 0,
+                "created_at": "2017-08-29T01:45:16.000Z",
+                "updated_at": "2017-08-29T01:45:17.000Z"
+              }
               ]
             }
-          ],
-          "Phone & Tablet": [
+            ],
+            "Phone & Tablet": [
             {
               "id": 10,
               "title": "Tablet",
@@ -142,32 +146,32 @@ export class AppComponent {
             },
             {
               "Accossories": [
-                {
-                  "id": 13,
-                  "title": "Bao da",
-                  "parent_id": 12,
-                  "lft": 22,
-                  "rgt": 23,
-                  "depth": 3,
-                  "children_count": 0,
-                  "created_at": "2017-08-29T01:45:15.000Z",
-                  "updated_at": "2017-08-29T01:45:17.000Z"
-                },
-                {
-                  "id": 14,
-                  "title": "Battery",
-                  "parent_id": 12,
-                  "lft": 24,
-                  "rgt": 25,
-                  "depth": 3,
-                  "children_count": 0,
-                  "created_at": "2017-08-29T01:45:15.000Z",
-                  "updated_at": "2017-08-29T01:45:17.000Z"
-                }
+              {
+                "id": 13,
+                "title": "Bao da",
+                "parent_id": 12,
+                "lft": 22,
+                "rgt": 23,
+                "depth": 3,
+                "children_count": 0,
+                "created_at": "2017-08-29T01:45:15.000Z",
+                "updated_at": "2017-08-29T01:45:17.000Z"
+              },
+              {
+                "id": 14,
+                "title": "Battery",
+                "parent_id": 12,
+                "lft": 24,
+                "rgt": 25,
+                "depth": 3,
+                "children_count": 0,
+                "created_at": "2017-08-29T01:45:15.000Z",
+                "updated_at": "2017-08-29T01:45:17.000Z"
+              }
               ]
             }
-          ],
-          "Camera & Recorder": [
+            ],
+            "Camera & Recorder": [
             {
               "id": 21,
               "title": "Action camera",
@@ -190,8 +194,8 @@ export class AppComponent {
               "created_at": "2017-08-29T01:45:16.000Z",
               "updated_at": "2017-08-29T01:45:17.000Z"
             }
-          ],
-          "TV & Digital devices": [
+            ],
+            "TV & Digital devices": [
             {
               "id": 23,
               "title": "Smart TV",
@@ -214,10 +218,10 @@ export class AppComponent {
               "created_at": "2017-08-29T01:45:17.000Z",
               "updated_at": "2017-08-29T01:45:17.000Z"
             }
-          ]
-        },
-        "Clothes": {
-          "Men's clothes": [
+            ]
+          },
+          "Clothes": {
+            "Men's clothes": [
             {
               "id": 25,
               "title": "Men's shoes",
@@ -240,8 +244,8 @@ export class AppComponent {
               "created_at": "2017-08-29T01:45:17.000Z",
               "updated_at": "2017-08-29T01:45:18.000Z"
             }
-          ],
-          "Women's clothes": [
+            ],
+            "Women's clothes": [
             {
               "id": 26,
               "title": "Women's shoes",
@@ -264,8 +268,8 @@ export class AppComponent {
               "created_at": "2017-08-29T01:45:17.000Z",
               "updated_at": "2017-08-29T01:45:18.000Z"
             }
-          ],
-          "Child's clothes": [
+            ],
+            "Child's clothes": [
             {
               "id": 27,
               "title": "Child's shoes",
@@ -288,53 +292,89 @@ export class AppComponent {
               "created_at": "2017-08-29T01:45:17.000Z",
               "updated_at": "2017-08-29T01:45:18.000Z"
             }
-          ]
+            ]
+          }
         }
       }
+      this.categories = this.resolve(this.categories);
     }
-    this.categories = this.resolve(this.categories);
-  }
-  resolve(obj) {
+    resolve(obj) {
 
-    return obj["category"];
-  }
+      return obj["category"];
+    }
 
-  numberItem() {
-    return this._order.numberItemOrder();
-  }
+    numberItem() {
+      return this._order.numberItemOrder();
+    }
 
-  disableScrolling() {
-    var x = window.scrollX;
-    var y = window.scrollY;
-    window.onscroll = function() { window.scrollTo(x, y); };
-  }
+    disableScrolling() {
+      window.scrollTo(0,0);
+      var x = window.scrollX;
+      var y = window.scrollY;
+      window.onscroll = function() { window.scrollTo(x, y); };
+    }
 
-  loginForm() {
-    var login = document.getElementById("modal-in");
-    var signupForm = document.getElementById("signup");
-    var navLogin = document.getElementById("nav-login");
-    login.style.display = "block";
-    signupForm.style.display = "none";
-    navLogin.classList.add("actived");
-    this.disableScrolling();
-  }
-  
-  loginFacebook() {
-    this.fb.login()
+    loginForm() {
+      var login = document.getElementById("modal-in");
+      var signupForm = document.getElementById("signup");
+      var navLogin = document.getElementById("nav-login");
+      login.style.display = "block";
+      signupForm.style.display = "none";
+      navLogin.classList.add("actived");
+      this.disableScrolling();
+    }
+
+    loginFacebook() {
+      this.fb.login()
       .then((res: LoginResponse) => {
         console.log('Logged in', res);
         this._auth.pushTokenFacebook(res.authResponse).subscribe(data => { });
       })
       .catch(this.handleError);
+    }
+
+    logout() {
+      this.sublogout = this._auth.logout().subscribe(data => { });
+    }
+
+
+    private handleError(error) {
+      console.error('Error processing action', error);
+    }
+
+    somethingSearch(newvalue) {
+      this.search = newvalue;
+      this._product.getSuggestSearch(this.search).subscribe(data => {});
+      this._product._suggestSearchName.subscribe(items => {
+        if(this.search) {
+          this.searchName = items;
+        }
+        else {
+          this.search = null;
+        }
+      })
+    }
+
+    showListSearch(event:any) {
+      let key = event.keyCode || event.which;
+      if(key == 13) {
+        this._product.searchProductByName(this.search).subscribe(data => {});
+        this._product._searchProductname.subscribe(items => {
+          this.searchList = items;
+        })
+      }
+    }
+
+    closeSearch() {
+      this.search = null;
+      $('.search-name').hide();
+    }
+
+    disableSearch(){
+      $('.search-name').hide();
+    }
+
+    enableSearch(){
+      $('.search-name').show();
+    }
   }
-
-  logout() {
-    this.sublogout = this._auth.logout().subscribe(data => { });
-  }
-
-
-  private handleError(error) {
-    console.error('Error processing action', error);
-  }
-
-}

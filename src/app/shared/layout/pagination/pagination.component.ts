@@ -9,35 +9,42 @@ import { ProductService } from '../../services/product.service';
   styleUrls: ['./pagination.component.scss']
 })
 export class PaginationComponent implements OnInit {
-	subs: any;
-	name: any;
-	pageNumber: any;
-	pages: any;
-	pageActive: any;
-	count: any;
+  subs: any;
+  name: any;
+  pageNumber: any;
+  pages: any;
+  pageActive: any;
+  count: any;
+  brandId: number;
 
   constructor(private route: ActivatedRoute, private _product: ProductService) { 
-  	this.pages=[];
+    this.pages=[];
     }
 
   ngOnInit() {
-  	this.subs = this.route.params.subscribe(params => {
+    this.subs = this.route.params.subscribe(params => {
       this.name = params['name'];
-      if(!+params['page']) {
-      	this.pageActive = 1;
+      if(params['brand_id'] != null) {
+        this.brandId = +params['brand_id'];
       }
       else {
-      	this.pageActive = +params['page'];
+        this.brandId = 0;
+      }
+      if(!+params['page']) {
+        this.pageActive = 1;
+      }
+      else {
+        this.pageActive = +params['page'];
       }
     });
   }
  
   setPageNumber(num) {
-  	window.scrollTo(0,0);
-  	this.pages=[];
-  	this.pageNumber=num;
-  	for(let i=1; i<=this.pageNumber;i++) {
-      	this.pages.push(i);
+    window.scrollTo(0,0);
+    this.pages=[];
+    this.pageNumber=num;
+    for(let i=1; i<=this.pageNumber;i++) {
+        this.pages.push(i);
     }
   }
 }

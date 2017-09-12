@@ -22,13 +22,13 @@ export class ReviewComponent implements OnInit {
 
   constructor(private _review: ReviewService, private route: ActivatedRoute, private api: ApiService) {
     this.current_user=JSON.parse(localStorage.getItem('current_user'));
-  	this.sub = this.route.params.subscribe(params => {
+    this.sub = this.route.params.subscribe(params => {
       this.productId = params['id'];
-  	});
-    this._review.getReviewProduct(this.productId).subscribe(data => {});
-        this._review._reviewSubject.subscribe(review => {
-          this.reviews=review['comments'];
-        });
+      this._review.getReviewProduct(this.productId).subscribe(data => {});
+      this._review._reviewSubject.subscribe(review => {
+        this.reviews=review['comments'];
+      });
+    });
     this.reviewEdit= {
       title:  '',
       content: ''
@@ -40,7 +40,6 @@ export class ReviewComponent implements OnInit {
   }
 
   submitReview(title,content) {
-  	console.log(this.productId);
   	this._review.addReviewProduct(title,content,this.productId).subscribe(data =>{});
   }
 
@@ -65,6 +64,6 @@ export class ReviewComponent implements OnInit {
   }
 
   deleteComment(id) {
-    this._review.deleteReviewProduct(id).subscribe(data =>{});
+    this._review.deleteReviewProduct(id, this.productId).subscribe(data =>{});
   }
 }

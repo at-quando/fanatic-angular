@@ -7,7 +7,8 @@ import {BehaviorSubject, Subject, Subscriber} from 'rxjs';
 
 @Injectable()
 export class AppService {
-  private apiURL = "http://172.17.19.240:3001";
+  // private apiURL = "http://172.17.19.240:3001";
+  private apiURL = "http://localhost:3001";
   category: any;
   constructor(private http: Http) { }
 

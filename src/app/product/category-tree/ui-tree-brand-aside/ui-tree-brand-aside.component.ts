@@ -27,7 +27,6 @@ export class UiTreeBrandAsideComponent implements OnInit {
       this._product.getBrand(this.title).subscribe(data => {});
       this._product._brandSubject.subscribe(items => {
         this.brands = items;
-        console.log(this.brands);
       })
     })
   }

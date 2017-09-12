@@ -34,7 +34,7 @@
             <span class="dropdown-item">{{uid}}</span>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" [routerLink]="['../customer/account']" [queryParams]="{id: id}"><i class="now-ui-icons design_bullet-list-67"></i> Information</a>
-            <a class="dropdown-item"><i class="now-ui-icons shopping_bag-16"></i> My History</a>
+            <a class="dropdown-item" [routerLink]="['/customer/account/history']"><i class="now-ui-icons shopping_bag-16"></i> My History</a>
             <a class="dropdown-item" (click)="logout()"><i class="now-ui-icons loader_gear"></i> Log Out</a>
           </ul>
         </li>
@@ -76,8 +76,22 @@
       </ul>
       <div class="second-nav-right">
         <div class="col-sm-10">
-          <div class="input-group form-group-no-border">
-            <input type="text" class="form-control" placeholder="Search something">
+          <div class="input-group form-group-no-border search-content">
+            <input #searchSomething type="text" class="form-control" id="search-input" placeholder="Search something" [ngModel]="search" (ngModelChange)="somethingSearch($event)" (click)="enableSearch()" (keydown)="showListSearch($event)">
+            <a *ngIf="search" (click)="closeSearch()" class="clear-search-box">x</a>
+            <ul class="search-name" *ngIf="search" (click)="disableSearch()">
+              <li *ngFor="let nameSearch of searchName" class="search-item">
+                <div class="infor-search clr">
+                  <a class="success-active" [routerLink]="['/', nameSearch.category.title, nameSearch.id]">
+                    <img class="image-search" src="{{nameSearch.properties[0].images[0].image}}">
+                    <span class="name-price-search">
+                      <span class="search-name-product">{{nameSearch.name}}</span>
+                      <p class="search-price-product">${{nameSearch.properties[0].price}}</p>
+                    </span>
+                  </a>
+                </div>
+              </li>
+            </ul>
             <span class="input-group-addon">
               <i class="now-ui-icons ui-1_zoom-bold"></i>
             </span>
