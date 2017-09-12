@@ -89,26 +89,28 @@ export class ProductService {
     return this.http.get(`${environment.apiURL}/brands`, options)
     .map((response: Response) => {
       let _body = response.json();
-      this._brandSubject.next(_body.brands);
+      this._brandSubject.next(_body.category_brands);
     });
   }
 
   getClothesCareProduct = () => {
     let options = new RequestOptions();
     return this.http.get(`${environment.apiURL}/clothes_care_products`, options)
-      .map((response: Response) => {
-        let _body = response.json();
-        this._clothesCareProduct.next(_body.products);
-      })
+    .map((response: Response) => {
+      let _body = response.json();
+      this._clothesCareProduct.next(_body.products);
+    })
   }
 
   getElectronicCareProduct = () => {
     let options = new RequestOptions();
     return this.http.get(`${environment.apiURL}/electronic_care_products`, options)
-      .map((response: Response) => {
-        let _body = response.json();
+    .map((response: Response) => {
+      let _body = response.json();
+      if(_body) {
         this._electronicCareProduct.next(_body.products);
-      })
+      }
+    })
   }
 
   getSuggestSearch = (search: any) => {
@@ -117,7 +119,7 @@ export class ProductService {
     let options = new RequestOptions();
     options.search = params;
     return this.http.get(`${environment.apiURL}/suggest_search`, options)
-      .map((response: Response) => {
+    .map((response: Response) => {
       let _body = response.json();
       this._suggestSearchName.next(_body.products);
     });
@@ -129,9 +131,9 @@ export class ProductService {
     let options = new RequestOptions();
     options.search = params;
     return this.http.get(`${environment.apiURL}/search`, options)
-      .map((response: Response) => {
-        let _body = response.json();
-        this._searchProductname.next(_body.products);
-      })
+    .map((response: Response) => {
+      let _body = response.json();
+      this._searchProductname.next(_body.products);
+    })
   }
 }

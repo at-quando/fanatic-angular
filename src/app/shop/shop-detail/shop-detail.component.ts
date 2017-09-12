@@ -12,7 +12,7 @@ import { environment } from '../../../environments/environment';
   styleUrls: ['./shop-detail.component.scss'],
   providers: [ShopsService, ProductService]
 })
-export class ShopDetailComponent {
+export class ShopDetailComponent implements OnInit{
 	id: number;
 	shop: any;
 	products: any;
@@ -30,7 +30,7 @@ export class ShopDetailComponent {
   	// $('#locationMap').attr("src", "https://www.google.com/maps/embed/v1/search?key=AIzaSyB2pWEO7SWqwRCMbE9sMJcSzN8jSLH_YjY&q=43 Tống Phước Phổ");
   }
 
-  ngAfterViewInit() {
+  ngOnInit() {
   	this.url=this.router.url;
   	this.route.params.subscribe(params => {
   		this.id=params['name'];

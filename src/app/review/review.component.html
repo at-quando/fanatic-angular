@@ -17,7 +17,7 @@
 						<img src={{review.user.avatar}} class="comment-avatar">
 					</div>
 					<div class="comment-info">
-						<div id="action" class="dropdown dropdown-action" *ngIf="this.review.user.id==this.current_user.user_id">
+						<div id="action" class="dropdown dropdown-action" *ngIf="this.current_user && this.review.user.id==this.current_user.user_id">
 					    <a data-toggle="dropdown" id="navbarDropdownMenuLink1">
 					    	<i class="now-ui-icons arrows-1_minimal-down"></i>
 					    </a>
