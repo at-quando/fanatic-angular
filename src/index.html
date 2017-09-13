@@ -15,13 +15,13 @@
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <!-- CSS Files -->
-
+  <link rel="stylesheet" media="screen, projection" href="./assets/css/drift-basic.css" />
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/now-ui-kit.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
   <link href="./assets/css/demo.css" rel="stylesheet" />
   <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
-  
+  <script type="text/javascript" src="./assets/js/Drift.js"></script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="-50">
   <app-root></app-root>
@@ -35,24 +35,12 @@
   <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
   <!-- Control Center for Now Ui Kit: parallax effects, scripts for the example pages etc -->
 
-
 </body>
 <script type="text/javascript">
   $(document).ready(function() {
-    $('.small-image').click(function() {
+    $(document).on("click",".small-image",function() {
       $('.big-image').attr('src',this.src);
     });
-    // $('#sliderRegular').noUiSlider({
-    //   start: 40,
-    //   connect: "lower",
-    //   range: {
-    //     min: 0,
-    //     max: 100
-    //   }
-    // });
 });
-  
-  
-
 </script>
 </html>

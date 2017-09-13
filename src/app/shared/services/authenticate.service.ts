@@ -11,8 +11,6 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AuthenticationService {
- //private apiURL = "http://172.17.19.240:3001"
-  private apiURL = "http://localhost:3001"
   constructor(private http: Http, private router: Router, private api: ApiService) { }
 
 

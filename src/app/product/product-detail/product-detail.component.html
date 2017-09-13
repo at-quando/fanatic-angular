@@ -6,10 +6,13 @@
         <div class="col-sm-8" style="float: left">
           <div class="view-product text-center" *ngIf="product.properties[0].images.length!=0">
             <div class="aside-image">
-              <img class="small-image" allowZoom=false src={{image.image}} alt="" *ngFor="let image of product.properties[0].images" (click)="toggleImage(image.image)">
+              <img class="small-image" src={{image.image}} alt="" *ngFor="let image of product.properties[0].images" (click)="toggleImage(image.image)">
             </div>
-            <div class="main-image">
-              <img class="big-image" imageZoom={{zoomImage}} src={{product.properties[0].images[0].image}} lensWidth=300 lensHeight=300 lensStyle="lens" >
+            <div class="wrapper ">
+              <img class="big-image drift-demo-trigger" data-zoom="" src={{product.properties[0].images[0].image}}  >
+              <p>Hover picture to zoom!</p>
+              <div class="detail" >
+             </div>
             </div>
           </div>
         </div>
@@ -46,7 +49,7 @@
                     <a class="input-group-addon" (click)="minusQuantity()">
                           <i class="now-ui-icons ui-1_simple-delete"></i>
                         </a>
-                    <input type="text" class="form-control" [value]="quantity">
+                    <input type="text" class="form-control" [value]="quantity" >
                     <a class="input-group-addon" (click)="plusQuantity()">
                           <i class="now-ui-icons ui-1_simple-add"></i>
                         </a>
@@ -97,3 +100,4 @@
     </div>
   </div>
 </div>
+

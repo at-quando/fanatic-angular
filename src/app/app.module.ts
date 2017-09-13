@@ -11,7 +11,7 @@ import { FacebookModule } from 'ngx-facebook';
 import { ProductComponent } from './product/product.component';
 import { NotificationComponent } from './shared/layout/notification/notification.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
-import {ImageZoomModule} from 'angular2-image-zoom';
+import { ImageZoomModule } from 'angular2-image-zoom';
 import { routing, appRoutingProviders } from './app.route';
 import { HomeComponent } from './home/home.component';
 import { KeysPipe } from './shared/pipe/categories.pipe';
@@ -68,7 +68,6 @@ import { UiTreeBrandAsideComponent } from './product/category-tree/ui-tree-brand
   ],
   imports: [
     BrowserModule,
-    ImageZoomModule,
     FormsModule,
     HttpModule,
     routing,

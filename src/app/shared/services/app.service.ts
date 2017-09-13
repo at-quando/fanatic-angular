@@ -8,7 +8,6 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class AppService {
-  private apiURL = "http://172.17.19.240:3001";
   category: any;
   constructor(private http: Http) { }
 

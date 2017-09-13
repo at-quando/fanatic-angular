@@ -5,10 +5,10 @@ import 'rxjs/add/operator/map';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import {BehaviorSubject, Subject, Subscriber} from 'rxjs';
 import { ProductOrder } from '../models/ProductOrder';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class OrdersService {
-  private apiURL = "http://172.17.19.240:3001";
   private productsConvert: ProductOrder;
   productsSubject:  Subject<ProductOrder[]> = new Subject();
   totalSubject: Subject<Number> = new Subject();
@@ -115,7 +115,7 @@ export class OrdersService {
       'Provider': currentUser.provider
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.apiURL + `/orders`, JSON.stringify({ orders: orders }), options)
+    return this.http.post(`${environment.apiURL}/orders`, JSON.stringify({ orders: orders }), options)
     .map((response: Response) => {
       // localStorage.removeItem('current_user');
       // location.reload();

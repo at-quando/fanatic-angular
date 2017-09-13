@@ -10,7 +10,6 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class CurrentUserActionService {
-  private apiURL = "http://localhost:3001";
   _personalInfo: Subject<any> = new Subject<any>();
   _persionalHistory: Subject<any> = new Subject<any>();
   constructor(private http: Http, private router: Router, private api: ApiService) {
