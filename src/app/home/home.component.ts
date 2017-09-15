@@ -23,13 +23,17 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this._product.getClothesCareProduct().subscribe(data => {});
     this._product._clothesCareProduct.subscribe(items => {
-      this.clothesCareProducts = items;
-      this.clothesTitle = 'best-care-clothes'
+      if(items !=[]) {
+        this.clothesCareProducts = items;
+        this.clothesTitle = 'best-care-clothes';
+      }
     })
     this._product.getElectronicCareProduct().subscribe(data => {});
     this._product._electronicCareProduct.subscribe(items => {
-      this.electronicCareProducts = items;
-      this.electronicTitle = 'best-care-electronic'
-    })
+      if(items !=[]) {
+        this.electronicCareProducts = items;
+        this.electronicTitle = 'best-care-electronic';
+      }
+    });
   }
 }

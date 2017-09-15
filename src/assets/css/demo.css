@@ -346,7 +346,6 @@
 
 #navbar .navbar-toggler,
 #menu-dropdown .navbar-toggler{
-    pointer-events: none;
 }
 .section-tabs{
     background: #EEEEEE;

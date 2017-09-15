@@ -65,20 +65,16 @@
 	padding:  40px 20%;
 	text-align: center;
 	.category-list{
-		margin-top: 80px;
+		margin-top: 50px;
+        padding: 0;
 		.category-item{
-			position: relative;
-			width: calc(100%/3);
-			min-height: 150px;
-			max-height: 369px;
+            padding-top: 2%;
 			list-style-type: none;
 			float: left;
-			padding: 0 5px;
 			.category-item-picture{
-				background: $light-gray;
 			}
 			.category-item-info{
-				padding-top: 15px;
+				padding-top: 7px;
 			}
 			.sale-box{
 				width: 47px;

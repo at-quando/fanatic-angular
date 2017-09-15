@@ -30,6 +30,13 @@ export class HistoryComponent implements OnInit {
   }
 
   showDetailOrder(id: number) {
-    $(`.table-orders${id}`).fadeIn('slow').css('height', 'auto');
+    if( !$(`.table-orders${id}`).hasClass('active') ) {
+      $(`.table-orders${id}`).fadeIn('normal').css('height', 'auto');
+      $(`.table-orders${id}`).addClass('active');
+    }
+     else {
+      $(`.table-orders${id}`).fadeOut('normal').css('height', 'auto');
+      $(`.table-orders${id}`).removeClass('active');
+    }
   }
 }

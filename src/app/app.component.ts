@@ -46,6 +46,7 @@ export class AppComponent {
     }
   }
   ngOnInit() {
+    $('.search-name').hide();
     this.app.getAllShops().subscribe(
       data => {
         this.shops = data.shops;
@@ -299,7 +300,6 @@ export class AppComponent {
       this.categories = this.resolve(this.categories);
     }
     resolve(obj) {
-
       return obj["category"];
     }
 
@@ -351,6 +351,7 @@ export class AppComponent {
         }
         else {
           this.search = null;
+           this.searchName = null;
         }
       })
     }
