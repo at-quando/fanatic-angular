@@ -9,7 +9,6 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ConfirmEmailService {
-  private apiURL = "http://localhost:3000";
   _success: Subject<boolean> = new Subject<boolean>();
   success: any;
   constructor(private http: Http, private router: Router) {

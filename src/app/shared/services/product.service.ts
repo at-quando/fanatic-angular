@@ -9,7 +9,6 @@ import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ProductService {
-  private apiURL = "http://172.17.19.240:3001";
   _productSubject: Subject<Product[]> = new Subject<Product[]>();
   _oneProductSubject: Subject<Product[]> = new Subject<Product[]>();
   _count: Subject<number> = new Subject<number>();

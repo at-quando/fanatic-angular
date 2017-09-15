@@ -27,19 +27,22 @@ a {
       }
       .category-item-info {
         .product-name {
-          height: 80px;
+          font-family: Poppins;
+          height: 50px;
         }
         .product-price {
           .new-price {
+            font-family: Arial;
+            letter-spacing: -1px;
             font-size: 17px;
           }
         }
         p {
-          text-transform: lowercase;
+          text-transform: capitalize;
           opacity: 1;
           letter-spacing: -1px;
-          font-size: 18px;
-          color: black;
+          font-size: 15px;
+          color: #23637f;
           -webkit-transition: 0.3s; /* Safari */
           transition: 0.3s;
           margin-bottom: 0;

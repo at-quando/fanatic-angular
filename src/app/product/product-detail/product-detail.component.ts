@@ -7,6 +7,9 @@ import { ImageZoomModule } from 'angular2-image-zoom';
 import * as $ from 'jquery';
 import { ProductListComponent } from '../product-list/product-list.component';
 import { ReviewComponent } from '../../review/review.component';
+declare var Drift: any;
+
+
 
 @Component({
   selector: 'app-product-detail',
@@ -36,25 +39,37 @@ export class ProductDetailComponent implements OnInit {
     private _review: ReviewService) { 
     this.quantity = 1;
     this.productAnalyze={};
+
   }
 
   ngOnInit() {
     var color= document.getElementById("propertycolorist");
     this.sub = this.route.params.subscribe(params => {
-      
       this.ids = params['id'];
       this._product.getOneProduct(this.ids).subscribe(data=>{});
       this._product._oneProductSubject.subscribe(obj => {
         this.product = obj;
         this.category = this.product.category.title.toUpperCase();
-        this.property=this.product.properties;
+        this.property = this.product.properties;
+        $(document).ready(function() {
+           new Drift(document.querySelector('.drift-demo-trigger'), {
+                paneContainer: document.querySelector('.detail'),
+                inlinePane: 900,
+                inlineOffsetY: -85,
+                containInline: true,
+                hoverBoundingBox: true,
+                hoverDelay: 0,
+                touchDelay: 0
+              });
+          });
         this._product.getRecommendProduct(this.category,this.ids,this.product.brand.id).subscribe(obj => {});
         this._product._recommendProductSubject.subscribe(obj => {
           this.productRecommend=obj;
           this.productList.products=this.productRecommend;
         });
-        
         this.setProperty(this.property);
+        this.zoomImage = this.product.properties[0].images[0].image;
+        setTimeout(()=>{$('.drift-demo-trigger').attr('data-zoom',this.zoomImage)},100);
         setTimeout(()=>{this.showColor(Object.keys(this.productAnalyze)[0])},50);
       });
     });
@@ -65,7 +80,9 @@ export class ProductDetailComponent implements OnInit {
   }
 
   minusQuantity() {
-    this.quantity--;
+    if(this.quantity > 0) {
+      this.quantity--;
+    }
   }
 
   plusQuantity() {
@@ -78,6 +95,7 @@ export class ProductDetailComponent implements OnInit {
 
   toggleImage(src) {
     this.zoomImage= src;
+    $('.drift-demo-trigger').attr('data-zoom',this.zoomImage);
   }
 
   ngDestroy() {
