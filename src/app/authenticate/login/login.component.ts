@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthenticationService } from '../../shared/services/authenticate.service';
 import { User } from '../../shared/models/User' ;
+import { ApiService } from '../../shared/services/api.service'
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
-  providers: [AuthenticationService]
+  providers: [AuthenticationService, ApiService]
 })
 export class LoginComponent {
   user_name: any;
@@ -16,7 +17,7 @@ export class LoginComponent {
   uidCreate: string = '';
   passCreate: string = '';
   user: User;
-  constructor(private _authentication: AuthenticationService) {
+  constructor(private _authentication: AuthenticationService, private api: ApiService) {
     this.user= {
       name:'',
       phone: '',
@@ -47,7 +48,8 @@ export class LoginComponent {
   
   signup(model) {
     this._authentication.signup(this.user, model.email, model.password).subscribe(data=>{});
-   
+   $('#modal-in').fadeOut('2000');
+   this.api.setNotification('green', 'Success to sign up, please check your email to confirm account!');
   }
   //off a and turn b
   enableForm(login,signup) { 

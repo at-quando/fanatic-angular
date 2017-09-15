@@ -41,6 +41,8 @@ export class ReviewComponent implements OnInit {
 
   submitReview(title,content) {
   	this._review.addReviewProduct(title,content,this.productId).subscribe(data =>{});
+    this.title = '';
+    this.content = '';
   }
 
   enableEditForm(num) {

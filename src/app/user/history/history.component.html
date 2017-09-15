@@ -1,6 +1,6 @@
 <div class="col-sm-12 padding-right infor-user">
   <h5>Your History Order</h5>
-  <p *ngIf="history == null">
+  <p *ngIf="history == null || history.length == 0">
     You don't have history, please order first!
   </p>
   <ul *ngIf="history" class="orders-list">
@@ -45,7 +45,7 @@
               {{order_items.quantity}}
             </td>
             <td class="center">
-              {{order_items.total}}
+              ${{order_items.total}}
             </td>
           </tr>
           <tr class="total">
