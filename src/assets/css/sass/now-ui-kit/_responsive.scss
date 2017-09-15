@@ -1,10 +1,77 @@
 @media screen and (max-width: 991px){
+    .brand-name {
+      width: 100px !important ;
+    }
+
+    .full-width{
+        width: 0;
+    }
+    .nav-open {
+      #navbar{
+        width: 60%;
+        }
+        .navbar-collapse{
+            width: 40% !important;
+        }
+        .navbar .navbar-toggler.navbar-toggler-right{
+        right: -270px;
+         }
+    }
+
+    .navbar-translate{
+        .navbar-toggler-right {
+            pointer-events: click !important;
+        }
+    }
+    .col-md-2{
+        display: none;
+    }
+    .col-md-10{
+        max-width: 100%;
+        flex: 100%;
+    }
+    .main-content{
+        margin-top: 30px !important;
+    }
+    .third-navbar{
+        ul {
+          display: inline-block;
+          -webkit-box-orient: horizontal !important;
+            li{
+                display: flex;
+                float: left;
+                width: 40%;
+                a{
+                    span{
+                        display:none;
+                    }
+                    p{
+                        display: none;
+
+                    }
+                }
+
+            }
+            li:first-child {
+                width: 15%;
+            }
+        }
+    }
+    .category-in-products {
+    .category-container {
+      .category-item {
+        width: calc(100%/4);
+        .category-item-picture{
+          max-height: 200px
+        }
+      }
+    }
+  }    
     .navbar-collapse{
         position: fixed;
         display: block;
         top: 0;
         height: 100vh !important;
-        width: 300px;
         right: 0;
         z-index: 1032;
         visibility: visible;
@@ -12,7 +79,6 @@
         overflow-y: visible;
         border-top: none;
         text-align: left;
-
         max-height: none !important;
 
         @include transform-translate-x(300px);
@@ -27,7 +93,7 @@
             background: -webkit-linear-gradient($brand-primary 0%, #000 80%); /* For Safari 5.1 to 6.0 */
             background: -o-linear-gradient($brand-primary 0%, #000 80%); /* For Opera 11.1 to 12.0 */
             background: -moz-linear-gradient($brand-primary 0%, #000 80%); /* For Firefox 3.6 to 15 */
-            background: linear-gradient($brand-primary 0%, #000 80%); /* Standard syntax (must be last) */
+            background: linear-gradi  ent($brand-primary 0%, #000 80%); /* Standard syntax (must be last) */
             @include opacity(.76);
 
             display: block;
@@ -45,6 +111,7 @@
                 margin: 0 1rem;
                 color: $white-color;
             }
+            
         }
 
         .menu-on-left &{
@@ -59,7 +126,7 @@
     }
 
     [class*="navbar-toggleable-"] .navbar-collapse{
-        width: 300px;
+        
     }
 
     .button-dropdown{
@@ -67,40 +134,39 @@
     }
 
     .navbar{
+        .brand-name{
+          padding-top: 0 !important; 
+        }
         .navbar-brand{
             padding-top: .5rem;
             padding-bottom: .5rem;
         }
-
+        .small{
+          display: none;
+        }
+        .second-nav-right {
+          width: 50% !important;
+          margin-left: 10%;
+          float: left !important;
+        }
+        .third-navbar{
+          height: 0 !important;
+        }
+        .text-empty {
+          display: none;
+        }
         .navbar-nav{
-            margin-top: 53px;
-
-            .nav-link{
-                padding-top: 0.75rem;
-                padding-bottom: .75rem;
+            width: 20%;
+            
+            li{
+              display: inline;
             }
-
             &.navbar-logo{
                 top: 0;
                 height: 53px;
             }
         }
 
-        .dropdown.show .dropdown-menu,
-        .dropdown .dropdown-menu{
-            background-color: transparent;
-            border: 0;
-            transition: none;
-            -webkit-box-shadow: none;
-            box-shadow: none;
-            width: auto;
-            margin: 0 1rem;
-            margin-top: -18px;
-
-            &:before{
-                display: none;
-            }
-        }
 
         .dropdown-menu .dropdown-item:focus,
         .dropdown-menu .dropdown-item:hover{
@@ -260,14 +326,6 @@
         margin-top: 65px;
     }
 
-    .navbar-nav{
-        .nav-link{
-            i.fa,
-            i.now-ui-icons{
-                opacity: .5;
-            }
-        }
-    }
 
     .section-images{
         height: 500px;
@@ -291,50 +349,32 @@
     }
 }
 
-@media screen and (min-width: 992px){
-    .navbar-collapse{
-        background: none !important;
-    }
+@media screen and (max-width: 767px){
+     .section-images{
+        height: 300px;
+        max-height: 300px;
 
-    .navbar-nav{
-        .nav-link{
-            &.profile-photo{
-                padding: 0;
-                margin: 7px $padding-base-horizontal;
-            }
-        }
-    }
-
-    .section-nucleo-icons .icons-container{
-        margin: 0 0 0 auto;
-    }
-
-    .dropdown-menu .dropdown-item{
-        color: inherit;
-    }
-
-    .footer{
-        .copyright{
-            float: right;
-        }
-    }
-}
-
-@media screen and (min-width: 768px){
-    .image-container{
-        &.image-right{
-            top: 80px;
-            margin-left: - 100px;
-            margin-bottom: 130px;
+        .hero-images-container{
+            max-width: 380px;
         }
 
-        &.image-left{
-            margin-right: -100px;
+        .hero-images-container-1{
+            right: 7%;
+            top: 87%;
+            max-width: 210px;
+        }
+
+        .hero-images-container-2{
+            right: 1%;
+            max-width: 133px;
+            top: 99%;
         }
     }
-}
-
-@media screen and (max-width: 768px){
+    .footer nav{
+        display: block;
+        margin-bottom: 5px;
+        float: none;
+    }
     .image-container{
         &.image-left{
             margin-bottom: 220px;
@@ -369,6 +409,18 @@
 }
 
 @media screen and (max-width: 576px){
+  .brand-name {
+          width: 100px !important;
+        }
+        .search-input{
+          padding: 0 30%;
+        }
+        .small{
+          display: none;
+        }
+        .text-empty {
+          display: none;
+        }
     .navbar[class*='navbar-toggleable-'] .container{
         margin-left: 0;
         margin-right: 0;
@@ -399,59 +451,72 @@
     }
 }
 
-@media screen and (min-width: 991px) and (max-width: 1200px){
-    .section-images{
-        .hero-images-container-1{
-            right: 9%;
-            max-width: 370px;
-        }
-
-        .hero-images-container-2{
-            right: 2%;
-            max-width: 216px;
-        }
+@media screen and (max-width: 1399px){
+  .full-width{
+   .third-navbar {
+    height: 40px;
     }
+  }
+  #recommend{
+  ul {
+  .category-item {
+      width: calc(100%/5) !important;
+      margin-bottom: 30px;
+    }
+  }
+}
+  .container-side {
+    max-width: 1240px;
+    margin: 0 40px;
+  }
+  .category-in-products {
+    .category-container {
+      .category-item {
+        width: calc(100%/4);
+      }
+    }
+  }    
+  .section-images{
+      .hero-images-container-1{
+          right: 9%;
+          max-width: 370px;
+      }
+
+      .hero-images-container-2{
+          right: 2%;
+          max-width: 216px;
+      }
+  }
 }
 
-@media screen and (max-width: 768px){
-    .section-images{
-        height: 300px;
-        max-height: 300px;
-
-        .hero-images-container{
-            max-width: 380px;
-        }
-
-        .hero-images-container-1{
-            right: 7%;
-            top: 87%;
-            max-width: 210px;
-        }
-
-        .hero-images-container-2{
-            right: 1%;
-            max-width: 133px;
-            top: 99%;
-        }
+@media screen and (min-width: 1440px) and (max-width: 1920px){
+  .full-width{
+    .third-navbar {
+    height: 40px;
     }
-
-    .footer nav{
-        display: block;
-        margin-bottom: 5px;
-        float: none;
+  }
+  .container-side {
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  .category-in-products {
+    .category-container {
+      .category-item {
+        width: calc(100%/5);
+      }
     }
+  }   
+  .section-images{
+      .hero-images-container-1{
+          right: 9%;
+          max-width: 370px;
+      }
+
+      .hero-images-container-2{
+          right: 2%;
+          max-width: 216px;
+      }
+  }
 }
 
-@media screen and (min-width: 1200px) {
-    .section-images{
-        .hero-images-container-1{
-            top: 51%;
-            right: 21%;
-        }
 
-        .hero-images-container-2{
-            top: 66%;
-            right: 14%;
-        }
-    }
-}

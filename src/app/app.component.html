@@ -1,5 +1,12 @@
 <app-login></app-login>
 <nav id="navbar" class="navbar navbar-inverse navbar-toggleable-md fixed-top bg-white">
+  <div class="navbar-translate">
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-bar bar1"></span>
+        <span class="navbar-toggler-bar bar2"></span>
+        <span class="navbar-toggler-bar bar3"></span>
+    </button>
+  </div>
   <div class="full-width">
     <a href="#pablo">
       <img src="assets/img/logofanatic.png" class="brand-name">
@@ -16,8 +23,8 @@
         </a>
       </li>
     </ol>
-    <div>
-      <ul class="navbar-nav justify-content-end">
+    <div class="third-navbar">
+      <ul class="navbar-nav justify-content-end collapse">
         <li class="nav-item nav-item-right dropdown" [appNavUser]="name">
           <a class="nav-link" href="#pablo" data-toggle="dropdown" id="navbarDropdownMenuLink1">
             <i class="now-ui-icons users_single-02"></i>
@@ -30,7 +37,7 @@
             <a class="dropdown-item" (click)="loginFacebook()"><i class="fa fa-facebook nav-icon"></i>Facebook</a>
             <a class="dropdown-item" (click)="gotoGoogle()"><i class="fa fa-google nav-icon"></i>Google</a>
           </ul>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1" id="dropdown-user-login">
+          <ul class="dropdown-menu user-menu" aria-labelledby="navbarDropdownMenuLink1" id="dropdown-user-login" style="top: 30px">
             <span class="dropdown-item">{{uid}}</span>
             <div class="dropdown-divider"></div>
             <a class="dropdown-item" [routerLink]="['../customer/account']" [queryParams]="{id: id}"><i class="now-ui-icons design_bullet-list-67"></i> Information</a>
@@ -75,11 +82,13 @@
         </li>
       </ul>
       <div class="second-nav-right">
-        <div class="col-sm-10">
+        <div class="col-md-12">
           <div class="input-group form-group-no-border search-content">
-            <input #searchSomething type="text" class="form-control" id="search-input" placeholder="Search something" [ngModel]="search" (ngModelChange)="somethingSearch($event)" (click)="enableSearch()" (keydown)="showListSearch($event)">
-            <a *ngIf="search" (click)="closeSearch()" class="clear-search-box">x</a>
-            <ul class="search-name" *ngIf="search" (click)="disableSearch()">
+            <input #searchSomething type="text" class="form-control search-input" id="searchInput" placeholder="Search something" [ngModel]="search" (ngModelChange)="somethingSearch($event)" (focus)="enableSearch()" (keydown)="showListSearch($event)">
+            <ul class="search-name" (click)="disableSearch()">
+              <li class="search-item" *ngIf="searchName==null">
+                <p> No Item Found </p>
+              </li>
               <li *ngFor="let nameSearch of searchName" class="search-item">
                 <div class="infor-search clr">
                   <a class="success-active" [routerLink]="['/', nameSearch.category.title, nameSearch.id]">

@@ -3,7 +3,7 @@
     <div class="col-sm-12">
       <div class="product-details">
         <!--product-details-->
-        <div class="col-sm-8" style="float: left">
+        <div class="col-sm-7" style="float: left">
           <div class="view-product text-center" *ngIf="product.properties[0].images.length!=0">
             <div class="aside-image">
               <img class="small-image" src={{image.image}} alt="" *ngFor="let image of product.properties[0].images" (click)="toggleImage(image.image)">
@@ -16,7 +16,7 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-4" style="float: left">
+        <div class="col-sm-5" style="float: left">
           <div class="product-information">
             <div>
               <!--/product-information-->

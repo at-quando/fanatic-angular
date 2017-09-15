@@ -10,18 +10,15 @@
       max-height: 70px;
       max-width: 70px;
       padding-right: 10px;
-
       img {
         padding-bottom: 10px;
         width: 70px;
         min-height: 70px;
       }
     }
-
     .main-image {
       width: 90%;
       float: left;
-
       img {
         width: 100%;
       }
@@ -102,10 +99,11 @@
     .action {
       margin: 40px 0;
       p{
+        text-align: center;
         font-size: 11px;
       }
       button {
-        width: 80%;
+        width: 60%;
         height: 60px;
         font-size: 20px;
         text-transform: uppercase;

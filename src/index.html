@@ -16,10 +16,11 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
   <!-- CSS Files -->
   <link rel="stylesheet" media="screen, projection" href="./assets/css/drift-basic.css" />
+  <link href="./assets/css/demo.css" rel="stylesheet" />
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/now-ui-kit.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
-  <link href="./assets/css/demo.css" rel="stylesheet" />
+ 
   <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGw-bQBkDDF3ERpXRELFIbMnvEuxtlXBc" async defer>
 </script>
@@ -43,6 +44,13 @@
     $(document).on("click",".small-image",function() {
       $('.big-image').attr('src',this.src);
     });
+   $("body").not('#searchInput').click(function() {
+      if(event.target===$('#searchInput')[0]) {
+        return false;
+      }
+      $('.search-name').hide();
+   })
+});
     // $('#sliderRegular').noUiSlider({
     //   start: 40,
     //   connect: "lower",

@@ -1,14 +1,19 @@
+.user-menu {
+  a {
+    color: black;
+  }
+}
 .brand-name {
   width: 10%;
   float: left;
   vertical-align: middle !important;
-  padding-top: 20px;
+  padding-top: 15px;
 }
 a {
   cursor: pointer;
 }
 .navbar-collapse {
-  width: 20% !important;
+  width: 20% ;
   float: left;
 }
 
@@ -20,6 +25,7 @@ a {
 
 .second-nav-right {
   float: right;
+  width: 20%;
   .search-content {
     position: relative;
     .clear-search-box {
@@ -34,12 +40,15 @@ a {
       overflow: scroll;
       overflow-x: hidden;
       top: 50px;
-      left: -200px;
+      right: 0;
       background-color: white;
       list-style: none;
       padding-left: 0;
       box-shadow: 1px 0px 5px 0px #888888;
       border-radius: 10px;
+      .search-item:hover {
+        background-color: rgba(222, 222, 222, 0.3);
+      }
       .search-item {
         border-bottom: 1px solid rgba(222, 222, 222, 0.3);
         padding: 10px 0;
