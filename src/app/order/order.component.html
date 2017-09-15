@@ -14,7 +14,7 @@
         <tr class="item" *ngFor="let orderItem of products">
           <td class="item-order">
             <div class="img">
-              <img class="" src='../../assets/img/avatar.jpg' alt="">
+              <img class="" src="{{orderItem.properties[0].images[0].image}}" alt="">
             </div>
 
             <div class="title">

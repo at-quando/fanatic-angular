@@ -46,13 +46,13 @@ export class AppComponent {
     }
   }
   ngOnInit() {
-    this.app.getAllShops().subscribe(
-      data => {
-        this.shops = data.shops;
-      },
-      err => console.log("can't get data", err.status, err.url),
-      () => console.log("Get complete")
-      );
+    // this.app.getAllShops().subscribe(
+    //   data => {
+    //     this.shops = data.shops;
+    //   },
+    //   err => console.log("can't get data", err.status, err.url),
+    //   () => console.log("Get complete")
+    //   );
     // this.app.getAllCategories().subscribe(
     // //   data => {
       // //     this.categories = data.category;
@@ -315,13 +315,19 @@ export class AppComponent {
     }
 
     loginForm() {
-      var login = document.getElementById("modal-in");
+      var modal_in = document.getElementById("modal-in");
+      var login = document.getElementById("login");
       var signupForm = document.getElementById("signup");
       var navLogin = document.getElementById("nav-login");
+      var navSignUp = document.getElementById("nav-signup")
+      modal_in.style.display = "block";
       login.style.display = "block";
       signupForm.style.display = "none";
       navLogin.classList.add("actived");
-      this.disableScrolling();
+      if(navSignUp.classList.contains("actived")) {
+        navSignUp.classList.remove("actived")
+      }
+      // this.disableScrolling();
     }
 
     loginFacebook() {

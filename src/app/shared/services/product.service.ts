@@ -98,7 +98,9 @@ export class ProductService {
     return this.http.get(`${environment.apiURL}/clothes_care_products`, options)
     .map((response: Response) => {
       let _body = response.json();
-      this._clothesCareProduct.next(_body.products);
+      if(_body) {
+        this._clothesCareProduct.next(_body.products);
+      }
     })
   }
 

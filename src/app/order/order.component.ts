@@ -20,7 +20,9 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.productsSubject = this._order.getItem();
-    this.productsSubject.subscribe(data =>{this.products = data});
+    this.productsSubject.subscribe(data => {
+      this.products = data
+    });
   }
 
   getTotal() {
@@ -52,13 +54,20 @@ export class OrderComponent implements OnInit {
   payment() {
     let current_user = localStorage.getItem('current_user');
     if(current_user == null) {
-      var login = document.getElementById("modal-in");
+      this.api.setNotification('yellow', 'Have you had account?, sign up to join!')
+      var modal_in = document.getElementById("modal-in");
+      var login = document.getElementById("login");
       var signupForm = document.getElementById("signup");
+      var navSignUp = document.getElementById("nav-signup");
       var navLogin = document.getElementById("nav-login");
-      login.style.display = "block";
-      signupForm.style.display = "none";
-      navLogin.classList.add("actived");
-      this.disableScrolling();
+      login.style.display = "none";
+      modal_in.style.display = "block";
+      signupForm.style.display = "block";
+      navSignUp.classList.add("actived");
+      if(navLogin.classList.contains("actived")) {
+        navLogin.classList.remove("actived")
+      }
+      // this.disableScrolling();
     }
     else {
       this._order.payMent().subscribe(data => {});
