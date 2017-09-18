@@ -1,0 +1,97 @@
+<div id="modal-info-order" class="modal-in">
+  <div class="modal-dialog text-center">
+    <div class="modal-info content-center">
+      <div class="card card-login card-plain">
+
+        <form id="info-order" #f="ngForm" class="form" novalidate (ngSubmit)="payment()">
+          <div class="header header-primary text-center">
+            <div class="logo-container">
+              <img src="assets/img/logofanatic.png" alt="" style="width: 50%">
+            </div>
+          </div>
+          <div  class="content text-center">
+            <h5> INFO ORDER </h5>
+            <small [hidden]="true" class="text-danger">
+              <i class="now-ui-icons ui-1_simple-remove"></i>Receiver is required!.
+            </small>
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                <i class="now-ui-icons users_single-02"></i>
+              </span>
+              <input name="receiver" type="text" class="form-control" placeholder="Receiver..."  [(ngModel)]="receiver" required>
+            </div>
+            <small [hidden]="true" class="text-danger">
+              Phone is required!.
+            </small>
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                <i class="now-ui-icons tech_mobile"></i>
+              </span>
+              <input name="phone" type="text" placeholder="Phone..." class="form-control" minlength="10" [(ngModel)]="phone" required>
+            </div>
+            <small [hidden]="true" class="text-danger">
+              Address is required!.
+            </small>
+            <div class="input-group form-group-no-border input-lg">
+              <span class="input-group-addon">
+                <i class="now-ui-icons ui-1_send"></i>
+              </span>
+              <input name="address" type="text" placeholder="Address..." class="form-control" [(ngModel)]="address" required>
+            </div>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary" type="submit">Payment</button> 
+          </div>
+          <a class="previous-step-payment-method" (click)="previousStep()">Previous <<<</a>
+        </form>
+
+        <div id="method-payment" class="form">
+          <div class="header header-primary text-center">
+            <div class="logo-container">
+              <img src="assets/img/logofanatic.png" alt="" style="width: 50%">
+            </div>
+          </div>
+          <div class="content text-left">
+            <h5 class="text-center"> METHOD PAYMENT </h5>
+            <div class="input-group input-lg">
+              <div class="title-payment">
+                <span>Payment by card: </span>
+              </div>
+              <div class="radio">
+                <input type="radio" name="payment-by-card" id="radio1" value="0">
+                <label for="radio1">
+                  <img class="img-payment" src="http://ketoanducminh.edu.vn/images/news/files/2017/thanh-toan-truc-tuyen1.png">
+                </label>
+              </div>
+            </div>
+            <div class="input-group input-lg">
+              <div class="title-payment">
+                <span>Payment through the port:</span>
+              </div>
+              <div class="radio">
+                <input type="radio" name="payment-by-card" id="radio2" value="1" >
+                <label for="radio2">
+                  <img class="img-payment" src="http://ketoanducminh.edu.vn/images/news/files/2017/thanh-toan-truc-tuyen2.png">
+                </label>
+              </div>
+            </div>
+            <div class="input-group input-lg">
+              <div class="title-payment">
+                <span>Payment by electronic wallet:</span>
+              </div>
+              <div class="radio">
+                <input type="radio" name="payment-by-card" id="radio3" value="2" >
+                <label for="radio3">
+                  <img class="img-payment" src="http://ketoanducminh.edu.vn/images/news/files/2017/thanh-toan-truc-tuyen5.png">
+                </label>
+              </div>
+            </div>
+          </div>
+          <a class="next-step-payment-method" (click)="nextStep()">Next >>></a>
+        </div>
+
+      </div>
+    </div>
+    <button class="btn-close" (click)="closeInfoOrderForm()">X</button>
+  </div>
+</div>

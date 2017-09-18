@@ -33,6 +33,7 @@ import { HistoryComponent } from './user/history/history.component'
 import { ShopListComponent } from './shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
 import { UiTreeBrandAsideComponent } from './product/category-tree/ui-tree-brand-aside/ui-tree-brand-aside.component';
+import { InfoOrderComponent } from './order/info-order/info-order.component'
 
 
 
@@ -63,7 +64,8 @@ import { UiTreeBrandAsideComponent } from './product/category-tree/ui-tree-brand
     HistoryComponent,
     ShopListComponent,
     ShopDetailComponent,
-    UiTreeBrandAsideComponent
+    UiTreeBrandAsideComponent,
+    InfoOrderComponent
   ],
   imports: [
     BrowserModule,

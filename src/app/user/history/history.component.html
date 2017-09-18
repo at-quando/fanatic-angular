@@ -17,6 +17,15 @@
             Date order: {{obj.created_at}}
           </p>
         </div>
+        <p class="receiver">
+          Receiver: {{obj.receiver}}
+        </p>
+        <p class="address">
+          Address: {{obj.address}}
+        </p>
+        <p class="phone">
+          Phone: {{obj.phone}}
+        </p>
         <p class="detail-order">
           <a (click)="showDetailOrder(obj.id)">Detail order <i class="fa fa-sort-down"></i></a>
         </p>

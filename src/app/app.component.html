@@ -86,8 +86,8 @@
           <div class="input-group form-group-no-border search-content">
             <input #searchSomething type="text" class="form-control search-input" id="searchInput" placeholder="Search something" [ngModel]="search" (ngModelChange)="somethingSearch($event)" (focus)="enableSearch()" (keydown)="showListSearch($event)">
             <ul class="search-name" (click)="disableSearch()">
-              <li class="search-item" *ngIf="searchName==null">
-                <p> No Item Found </p>
+              <li class="search-item search-item-not-found" *ngIf="searchName?.length === 0 && search !== null">
+                <p class="title-not-found"> No Item Found </p>
               </li>
               <li *ngFor="let nameSearch of searchName" class="search-item">
                 <div class="infor-search clr">
