@@ -28,7 +28,8 @@ export class AuthenticationService {
 
             let user_name = `${response.json().user.name}`;
             let user_id = `${response.json().user.id}`;
-            localStorage.setItem('current_user', JSON.stringify({user_id: user_id, access_token: access_token, user_name: user_name, uid: uid, provider: provider }));
+            let user_avatar = `${response.json().user.avatar}`;
+            localStorage.setItem('current_user', JSON.stringify({user_id: user_id, access_token: access_token, user_name: user_name, uid: uid, provider: provider, user_avatar: user_avatar }));
             location.reload();
           }
       })
@@ -87,6 +88,7 @@ export class AuthenticationService {
     return this.http.delete(`${environment.apiURL}/session/1`, options)
       .map((response: Response) => {
         localStorage.removeItem('current_user');
+        this.router.navigate(['/']);
         location.reload();
       });
   }

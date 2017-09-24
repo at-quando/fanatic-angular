@@ -6,13 +6,30 @@
         <label class="label-info">Your email:</label>
         <label>{{uid}}</label>
       </div>
+      <div class="content-avatar clr">
+        <label class="label-info">Your avatar:</label>
+        <cl-image class="avatar-user" public-id="{{user.avatar}}">
+          <cl-transformation height="150" width="150" crop="fill" gravity="faces">
+          </cl-transformation>
+          <!-- <cl-transformation color="#EECCAA" gravity="south" overlay="text:arial_20:Angular" y="20">
+          </cl-transformation> -->
+          <!-- <cl-transformation angle="20">
+          </cl-transformation> -->
+        </cl-image>
+      </div>
+      <div class="change">
+        <label class="label-info">Change avatar:</label>
+        <span class="btn btn-default btn-file">
+          Browser<input ng2FileSelect [uploader]="uploader" accept="image/*;capture=camera" type="file" name="file" id="image">
+        </span>
+      </div>
       <div>
         <label class="label-info">Your name:</label>
         <input [(ngModel)]="user.name" class="col-sm-9" type="text" name="name" >
       </div>
       <div>
         <label class="label-info">Your phone number:</label>
-        <input  [(ngModel)]="user.phone" class="col-sm-9" type="text" name="phone">
+        <input [(ngModel)]="user.phone" class="col-sm-9" type="text" name="phone">
       </div>
       <div>
         <label class="label-info">Your gender:</label>

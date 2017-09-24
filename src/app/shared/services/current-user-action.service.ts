@@ -4,7 +4,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 import {BehaviorSubject, Subject, Subscriber} from 'rxjs';
-import {Router} from '@angular/router';
+import { Router } from '@angular/router';
 import { ApiService } from './api.service';
 import { environment } from '../../../environments/environment';
 
@@ -37,7 +37,7 @@ export class CurrentUserActionService {
   }
 
 
-  editUserInfo = (user,id) => {
+  editUserInfo = (user, id) => {
     let currentUser = JSON.parse(localStorage.getItem('current_user'));
     let headers = new Headers({
       'Content-Type': 'application/json;charset=utf-8',

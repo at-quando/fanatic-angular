@@ -30,6 +30,7 @@ export class ProductDetailComponent implements OnInit {
   productAnalyze: any;
   productRecommend: any;
 
+
   @ViewChild(ProductListComponent) productList: ProductListComponent;
   @ViewChild(ReviewComponent) reviewList: ReviewComponent;
   constructor(

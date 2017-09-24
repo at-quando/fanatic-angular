@@ -17,4 +17,8 @@ export class ShopComponent implements OnInit {
 
   ngOnInit() {
   }
+
+  topPage(){
+     window.scrollTo(0, 0);
+  }
 }

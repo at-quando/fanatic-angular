@@ -73,7 +73,6 @@ var BoundingBox = function () {
     key: 'show',
     value: function show(zoomPaneWidth, zoomPaneHeight) {
       this.isShowing = true;
-      console.log(1);
       this.settings.containerEl.appendChild(this.el);
 
       var style = this.el.style;

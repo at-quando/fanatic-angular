@@ -1,5 +1,5 @@
 <ul>
-	<a [routerLink]="['../shop',shop.id]">
+	<a [routerLink]="['../shop',shop.id]" (click)="topPage()">
 		<li class="shop-item" >
 			<div class="avatar">
 				<img src={{shop.image}} class="shop-avatar">
