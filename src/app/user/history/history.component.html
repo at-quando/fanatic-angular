@@ -39,7 +39,9 @@
           <tr class="item" *ngFor="let order_items of obj.order_items">
             <td class="item-order">
               <div class="img">
-                <img class="" src="{{order_items.product.properties[0].images[0].image}}" alt="">
+                <!-- <img class="" src="{{order_items.product.properties[0].images[0].image}}" alt=""> -->
+                <cl-image public-id="{{order_items.product.properties[0].images[0].image}}">
+                </cl-image>
               </div>
               <div class="title">
                 <p>
