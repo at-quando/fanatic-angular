@@ -27,7 +27,6 @@ export class ShopDetailComponent implements OnInit{
     private shopsService: ShopsService,
     private productService: ProductService,
     private router: Router) {
-    // $('#locationMap').attr("src", "https://www.google.com/maps/embed/v1/search?key=AIzaSyB2pWEO7SWqwRCMbE9sMJcSzN8jSLH_YjY&q=43 Tống Phước Phổ");
   }
 
   ngOnInit() {
@@ -100,11 +99,15 @@ export class ShopDetailComponent implements OnInit{
       })
       this.productService.getProductByShop(this.id,this.page).subscribe(data => {});
       this.productService._ProductByShopSubject.subscribe(product => {
-        this.products=product;
-        this.productList.products=this.products;
+        if (product && this.productList) {
+          this.products=product;
+          this.productList.products=this.products;
+        }
       })
       this.productService._countShop.subscribe(count => {
-        this.pagination.setPageNumber(Math.ceil(count/12));
+        if (this.pagination) {
+          this.pagination.setPageNumber(Math.ceil(count/12));
+        }
       })
     })
   }

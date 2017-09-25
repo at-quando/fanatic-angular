@@ -33,10 +33,15 @@ import { HistoryComponent } from './user/history/history.component'
 import { ShopListComponent } from './shop/shop-list/shop-list.component';
 import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
 import { UiTreeBrandAsideComponent } from './product/category-tree/ui-tree-brand-aside/ui-tree-brand-aside.component';
-import { InfoOrderComponent } from './order/info-order/info-order.component'
+import { InfoOrderComponent } from './order/info-order/info-order.component';
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-4.x';
+import { Cloudinary } from 'cloudinary-core';
+import { FileUploadModule } from 'ng2-file-upload';
+import { Ng2CloudinaryModule } from 'ng2-cloudinary';
 
+const cloud = CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'asian-tech', api_key: '829637522354547', api_secret: '8xXUcttJ7oaA1L-xGoWsuhbfBSo' } as CloudinaryConfiguration);
 
-
+declare var require: any;
 
 @NgModule({
   declarations: [
@@ -74,11 +79,13 @@ import { InfoOrderComponent } from './order/info-order/info-order.component'
     routing,
     NgbModule.forRoot(),
     Angular2SocialLoginModule,
-    FacebookModule.forRoot()
+    FacebookModule.forRoot(),
+    cloud,
+    FileUploadModule
   ],
-  providers: [ApiService],
+  providers: [
+      ApiService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
-
-

@@ -17,12 +17,12 @@ export class ProductListComponent implements OnInit {
   title: any;
 
   @Input('list') listProduct: any;
-  @Input('titleCare') titleCare: string;
   constructor(
     private _product: ProductService,
     private _order: OrdersService,
     private route: ActivatedRoute
   ) {
+    this.products = [];
     this.subs = this.route.params.subscribe(params => {
       this.id = params['id'];
   });
@@ -31,7 +31,6 @@ export class ProductListComponent implements OnInit {
   ngOnInit() {
     if(this.listProduct) {
       this.products = this.listProduct;
-      this.title = this.titleCare;
     }
   }
 

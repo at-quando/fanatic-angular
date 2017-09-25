@@ -40,7 +40,7 @@ export class ProductComponent implements OnInit {
 
       this._product._count.subscribe(count => {
         this.count = count; 
-        this.pageNumber= Math.ceil(this.count/10);
+        this.pageNumber= Math.ceil(this.count/8);
         this.pagination.setPageNumber(this.pageNumber);
       });
     })

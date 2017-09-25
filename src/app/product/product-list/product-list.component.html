@@ -9,9 +9,18 @@
           <a [routerLink]="['/',item.category.title,item.id]" (click)="topPage()">
             <div class="category-item-picture" *ngIf="item.properties[0].images.length==0 ||item.properties.length==0">
               <img src="http://cdn.shopify.com/s/files/1/1137/0048/t/2/assets/slideshow_image_1.jpg?1928721178739775374" class="image-size" >
+              
             </div>
             <div class="category-item-picture" *ngIf="item.properties[0].images.length!=0">
-              <img src={{item.properties[0].images[0].image}} class="image-size">
+              <!-- <img src={{item.properties[0].images[0].image}} class="image-size"> -->
+              <cl-image class="image-size" public-id="{{item.properties[0].images[0].image}}">
+                <!-- <cl-transformation height="150" width="150" crop="fill" gravity="faces">
+                </cl-transformation> -->
+                <!-- <cl-transformation color="#EECCAA" gravity="south" overlay="text:arial_20:Angular" y="20">
+                </cl-transformation> -->
+                <!-- <cl-transformation angle="20">
+                </cl-transformation> -->
+              </cl-image>
             </div>
           </a>
           <hr class="small">
@@ -21,7 +30,7 @@
             </div>
             <div class="product-price">
               <p>Sell by <i>{{item.shop.name}}</i></p>
-              <!-- <span class="old-price">$40.00</span> -->
+              <!-- <span class="old-price">$500</span> -->
               <span class="new-price">${{item.properties[0].price}}</span>
             </div>
           </div>

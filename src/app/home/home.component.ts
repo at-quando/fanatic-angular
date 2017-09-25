@@ -15,7 +15,6 @@ export class HomeComponent implements OnInit {
   clothesTitle: string;
   electronicTitle: string;
 
-  // @ViewChild(ProductListComponent) productList: ProductListComponent;
   constructor(private _product: ProductService) {
 
   }
@@ -25,14 +24,12 @@ export class HomeComponent implements OnInit {
     this._product._clothesCareProduct.subscribe(items => {
       if(items != []){
         this.clothesCareProducts = items;
-        this.clothesTitle = 'best-care-clothes'
       }
     })
     this._product.getElectronicCareProduct().subscribe(data => {});
     this._product._electronicCareProduct.subscribe(items => {
       if(items != []){
         this.electronicCareProducts = items;
-        this.electronicTitle = 'best-care-electronic'
       }
     })
   }

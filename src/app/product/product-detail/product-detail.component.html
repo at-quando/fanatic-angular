@@ -6,10 +6,14 @@
         <div class="col-sm-7" style="float: left">
           <div class="view-product text-center" *ngIf="product.properties[0].images.length!=0">
             <div class="aside-image">
-              <img class="small-image" src={{image.image}} alt="" *ngFor="let image of product.properties[0].images" (click)="toggleImage(image.image)">
+              <!-- <img class="small-image" src={{image.image}} alt="" *ngFor="let image of product.properties[0].images" (click)="toggleImage(image.image)"> -->
+              <cl-image class="small-image" public-id="{{image.image}}" alt="" *ngFor="let image of product.properties[0].images" (click)="toggleImage(image.image)">
+              </cl-image>
             </div>
             <div class="wrapper ">
-              <img class="big-image drift-demo-trigger" data-zoom="" src={{product.properties[0].images[0].image}}  >
+              <!-- <img class="big-image drift-demo-trigger" data-zoom="" src={{product.properties[0].images[0].image}}  > -->
+              <cl-image class="big-image drift-demo-trigger" data-zoom="" public-id="{{product.properties[0].images[0].image}}" >
+              </cl-image>
               <p>Hover picture to zoom!</p>
               <div class="detail" >
              </div>

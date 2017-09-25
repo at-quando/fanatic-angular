@@ -18,14 +18,14 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['./shop']">
+        <a class="nav-link" [routerLink]="['./shop']" (click)="topPage()">
           Shop Owner
         </a>
       </li>
     </ol>
     <div class="third-navbar">
       <ul class="navbar-nav justify-content-end collapse">
-        <li class="nav-item nav-item-right dropdown" [appNavUser]="name">
+        <li class="nav-item nav-item-right dropdown" [appNavUser]="{name: name, avatar: avatar}">
           <a class="nav-link" href="#pablo" data-toggle="dropdown" id="navbarDropdownMenuLink1">
             <i class="now-ui-icons users_single-02"></i>
             <span class="now-ui-icons arrows-1_minimal-down"></span>
