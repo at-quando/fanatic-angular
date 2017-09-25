@@ -92,7 +92,7 @@
               <li *ngFor="let nameSearch of searchName" class="search-item">
                 <div class="infor-search clr">
                   <a class="success-active" [routerLink]="['/', nameSearch.category.title, nameSearch.id]">
-                    <img class="image-search" src="{{nameSearch.properties[0].images[0].image}}">
+                    <img class="image-search" src="http://res.cloudinary.com/asian-tech/image/upload/{{nameSearch.properties[0].images[0].image}}">
                     <span class="name-price-search">
                       <span class="search-name-product">{{nameSearch.name}}</span>
                       <p class="search-price-product">${{nameSearch.properties[0].price}}</p>
