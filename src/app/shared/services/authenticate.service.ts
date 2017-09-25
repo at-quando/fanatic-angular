@@ -65,13 +65,15 @@ export class AuthenticationService {
     let options = new RequestOptions({ headers: headers });
     return this.http.post(`${environment.apiURL}/omni_auth`, JSON.stringify({}), options).map((response: Response) => {
       let _headers = response.headers;
+      let _body = response.json();
       if (_headers) {
+        let user_avatar = _body.user.avatar;
+        let user_name = _body.user.name;
         let access_token = _headers.get('access-token');
-        let avatar = _headers.get('avatar');
-        let name = _headers.get('name');
         let uid = _headers.get('uid');
         let provider = _headers.get('provider');
-        localStorage.setItem('current_user', JSON.stringify({ access_token: access_token, uid: uid, provider: provider, avatar: avatar, name: name }));
+        localStorage.setItem('current_user', JSON.stringify({ access_token: access_token, uid: uid, provider: provider, user_avatar: user_avatar, user_name: user_name }));
+        location.reload();
       }
     });
   }

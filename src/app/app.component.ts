@@ -350,7 +350,6 @@ export class AppComponent {
       loginFacebook() {
         this.fb.login()
         .then((res: LoginResponse) => {
-          console.log('Logged in', res);
           this._auth.pushTokenFacebook(res.authResponse).subscribe(data => { });
         })
         .catch(this.handleError);

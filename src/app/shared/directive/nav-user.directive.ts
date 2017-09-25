@@ -18,8 +18,18 @@ export class NavUserDirective {
       _child.removeChild(__child);
       let image = this.renderer.createElement(_child, 'img');
       _child.insertBefore(image, ___child)
-      image.setAttribute('src', 'http://res.cloudinary.com/asian-tech/image/upload/c_fill,g_faces,h_30,w_30/' +  this.appNavUser.avatar);
-      image.setAttribute('class', 'rounded-circle')
+      if(this.appNavUser.avatar == null) {
+        image.setAttribute('src', 'http://santetotal.com/wp-content/uploads/2014/05/default-user.png');
+      }
+      else if(this.appNavUser.avatar.includes('https://')) {
+        image.setAttribute('src', this.appNavUser.avatar);
+      }
+      else {
+        image.setAttribute('src', 'http://res.cloudinary.com/asian-tech/image/upload/c_fill,g_faces,h_30,w_30/' +  this.appNavUser.avatar);
+      }
+      image.setAttribute('class', 'rounded-circle');
+      image.setAttribute('width', '30px');
+      image.setAttribute('deight', '30px');
       let insteadElm = this.renderer.createElement(this.el.nativeElement, 'span');
       this.renderer.setElementClass(insteadElm, 'text-empty', true);
       insteadElm.innerHTML = "Hello " + this.appNavUser.name;
