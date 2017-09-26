@@ -104,54 +104,10 @@
     </div>
     <div class="category-info">
       <div class="category-container">
-        <h2>CLOTHES</h2>
-        <ul class="category-list">
-          <li class="category-item">
-            <span class="sale-box">
-              <span class="label-sale">SALE</span>
-            </span>
-            <div class="category-item-picture">
-              <img src="https://cdn.shopify.com/s/files/1/1137/0048/products/x1_5e9bacc6-dd3c-40f6-9380-4068379e8934_large_2x.jpg?v=1455720930">
-            </div>
-            <div class="category-item-info">
-              <p>Aenean consequat sagittis commodo habitasse lacus</p>
-              <div class="product-price">
-                <span class="old-price">$40.00</span>
-                <span class="new-price">$30.00</span>
-              </div>
-            </div>
-          </li>
-          <li class="category-item">
-            <span class="sale-box">
-              <span class="label-sale">SALE</span>
-            </span>
-            <div class="category-item-picture">
-              <img src="https://cdn.shopify.com/s/files/1/1137/0048/products/x1_5e9bacc6-dd3c-40f6-9380-4068379e8934_large_2x.jpg?v=1455720930">
-            </div>
-            <div class="category-item-info">
-              <p>Aenean consequat sagittis commodo habitasse lacus</p>
-              <div class="product-price">
-                <span class="old-price">$40.00</span>
-                <span class="new-price">$30.00</span>
-              </div>
-            </div>
-          </li>
-          <li class="category-item">
-            <span class="sale-box">
-              <span class="label-sale">SALE</span>
-            </span>
-            <div class="category-item-picture">
-              <img src="https://cdn.shopify.com/s/files/1/1137/0048/products/x1_5e9bacc6-dd3c-40f6-9380-4068379e8934_large_2x.jpg?v=1455720930">
-            </div>
-            <div class="category-item-info">
-              <p>Aenean consequat sagittis commodo habitasse lacus</p>
-              <div class="product-price">
-                <span class="old-price">$40.00</span>
-                <span class="new-price">$30.00</span>
-              </div>
-            </div>
-          </li>
-        </ul>
+        <h2>BEST SELLER</h2>
+        <div *ngIf="bestSellerProducts">
+          <product-list class="list-home" [list]="bestSellerProducts" [titleCare]="bestSellerTitle"></product-list>
+        </div>
       </div>
     </div>
   </div>

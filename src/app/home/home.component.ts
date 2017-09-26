@@ -9,15 +9,15 @@ import { ProductListComponent } from '../product/product-list/product-list.compo
   providers: [ProductService]
 })
 export class HomeComponent implements OnInit {
-
   clothesCareProducts: any;
+  bestSellerProducts: any;
   electronicCareProducts: any;
   clothesTitle: string;
+  bestSellerTitle: string;
   electronicTitle: string;
 
   // @ViewChild(ProductListComponent) productList: ProductListComponent;
   constructor(private _product: ProductService) {
-
   }
 
   ngOnInit() {
@@ -27,7 +27,14 @@ export class HomeComponent implements OnInit {
         this.clothesCareProducts = items;
         this.clothesTitle = 'best-care-clothes';
       }
-    })
+    });
+    this._product.getBestSellerProduct().subscribe(data => {});
+    this._product._bestSellerProduct.subscribe(items => {
+      if(items !=[]) {
+        this.bestSellerProducts = items;
+        this.bestSellerTitle = 'best-seller-products';
+      }
+    });
     this._product.getElectronicCareProduct().subscribe(data => {});
     this._product._electronicCareProduct.subscribe(items => {
       if(items !=[]) {

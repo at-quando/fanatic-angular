@@ -85,10 +85,13 @@ export class AuthenticationService {
     });
     let options = new RequestOptions({ headers: headers });
     return this.http.delete(`${environment.apiURL}/session/1`, options)
-      .map((response: Response) => {
-        localStorage.removeItem('current_user');
-        location.reload();
-      });
+    .map((response: Response) => {
+      localStorage.removeItem('current_user');
+      location.reload();
+    })
+    .catch((err: Response) => {
+      localStorage.removeItem('current_user');
+      return Observable.throw(err);
+    });
   }
-
 }

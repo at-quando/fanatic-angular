@@ -17,6 +17,7 @@ export class ProductService {
   _ProductByShopSubject: Subject<Product[]> = new Subject<Product[]>();
   _brandSubject: Subject<any> = new Subject<any>();
   _clothesCareProduct: Subject<any> = new Subject<any>();
+  _bestSellerProduct: Subject<any> = new Subject<any>();
   _electronicCareProduct: Subject<any> = new Subject<any>();
   _suggestSearchName: Subject<any> = new Subject<any>();
   _searchProductname: Subject<any> = new Subject<any>();
@@ -98,6 +99,15 @@ export class ProductService {
     .map((response: Response) => {
       let _body = response.json();
       this._clothesCareProduct.next(_body.products);
+    })
+  }
+
+  getBestSellerProduct = () => {
+    let options = new RequestOptions();
+    return this.http.get(`${environment.apiURL}/best_seller_products`, options)
+    .map((response: Response) => {
+      let _body = response.json();
+      this._bestSellerProduct.next(_body.products);
     })
   }
 

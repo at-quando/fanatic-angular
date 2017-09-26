@@ -57,8 +57,10 @@
     </div>
     <hr class="small">
     <div>
-      <ul class="second-nav navbar-nav collapse navbar-collapse">
-        <li class="nav-item active dropdown" *ngFor="let mainCategory of categories | keys">
+      <ul class="second-nav navbar-nav collapse navbar-collapse aside-nav">
+        <h5 style="margin-bottom: 0; margin-top: 10px; color: white">CATEGORIES</h5>
+        <aside-tree class="nav-item active dropdown replace-nav" [data]="categories"></aside-tree>
+        <li class="nav-item active dropdown origin-nav" *ngFor="let mainCategory of categories | keys">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownCategory">{{mainCategory}}</a>
           <ul class="dropdown-menu dropdown-category" aria-labelledby="dropdownCategory">
             <ul class="collection-item">
