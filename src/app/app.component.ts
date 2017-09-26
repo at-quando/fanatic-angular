@@ -1,7 +1,9 @@
 import { Component, ViewChild } from '@angular/core';
 import { LoginComponent } from './authenticate/login/login.component';
+import { InfoOrderComponent } from './order/info-order/info-order.component'
 import { AuthenticationService } from "./shared/services/authenticate.service";
 import { AppService } from './app.service';
+import { Router } from '@angular/router'
 import { OrdersService } from './shared/services/orders.service'
 import { AuthService } from 'angular2-social-login';
 import { ProductService } from './shared/services/product.service'
@@ -19,6 +21,7 @@ export class AppComponent {
   private shops: any;
   sub: any;
   name: string;
+  avatar: string;
   id: any;
   sublogout: any;
   key: string = 'category';
@@ -28,12 +31,14 @@ export class AppComponent {
   searchList: any;
 
   @ViewChild(LoginComponent) login: LoginComponent;
+  @ViewChild(InfoOrderComponent) info_order: InfoOrderComponent;
   constructor(
     private _auth: AuthenticationService,
     private fb: FacebookService,
     private app: AppService,
     private _order: OrdersService,
-    private _product: ProductService
+    private _product: ProductService,
+    private router: Router
     ) {
     fb.init({
       appId: '107975049932344',
@@ -43,6 +48,7 @@ export class AppComponent {
       this.name = JSON.parse(localStorage.current_user).user_name;
       this.uid = JSON.parse(localStorage.current_user).uid;
       this.id = JSON.parse(localStorage.current_user).user_id;
+      this.avatar = JSON.parse(localStorage.current_user).user_avatar;
     }
   }
   ngOnInit() {
@@ -66,80 +72,89 @@ export class AppComponent {
     resolve(obj) {
       return obj["category"];
     }
+  
+      topPage(){
+        window.scrollTo(0, 0);
+      }
 
-    numberItem() {
-      return this._order.numberItemOrder();
-    }
+      numberItem() {
+        return this._order.numberItemOrder();
+      }
 
-    disableScrolling() {
-      window.scrollTo(0,0);
-      var x = window.scrollX;
-      var y = window.scrollY;
-      window.onscroll = function() { window.scrollTo(x, y); };
-    }
+      disableScrolling() {
+        window.scrollTo(0,0);
+        var x = window.scrollX;
+        var y = window.scrollY;
+        window.onscroll = function() { window.scrollTo(x, y); };
+      }
 
-    loginForm() {
-      var login = document.getElementById("modal-in");
-      var signupForm = document.getElementById("signup");
-      var navLogin = document.getElementById("nav-login");
-      login.style.display = "block";
-      signupForm.style.display = "none";
-      navLogin.classList.add("actived");
-      this.disableScrolling();
-    }
-
-    loginFacebook() {
-      this.fb.login()
-      .then((res: LoginResponse) => {
-        console.log('Logged in', res);
-        this._auth.pushTokenFacebook(res.authResponse).subscribe(data => { });
-      })
-      .catch(this.handleError);
-    }
-
-    logout() {
-      this.sublogout = this._auth.logout().subscribe(data => { });
-    }
-
-
-    private handleError(error) {
-      console.error('Error processing action', error);
-    }
-
-    somethingSearch(newvalue) {
-      this.search = newvalue;
-      this._product.getSuggestSearch(this.search).subscribe(data => {});
-      this._product._suggestSearchName.subscribe(items => {
-        if(this.search) {
-          this.searchName = items;
+      loginForm() {
+        var modal_in = document.getElementById("modal-in");
+        var login = document.getElementById("login");
+        var signupForm = document.getElementById("signup");
+        var navLogin = document.getElementById("nav-login");
+        var navSignUp = document.getElementById("nav-signup")
+        modal_in.style.display = "block";
+        login.style.display = "block";
+        signupForm.style.display = "none";
+        navLogin.classList.add("actived");
+        if(navSignUp.classList.contains("actived")) {
+          navSignUp.classList.remove("actived")
         }
-        else {
-          this.search = null;
-           this.searchName = null;
-        }
-      })
-    }
+        // this.disableScrolling();
+      }
 
-    showListSearch(event:any) {
-      let key = event.keyCode || event.which;
-      if(key == 13) {
-        this._product.searchProductByName(this.search).subscribe(data => {});
-        this._product._searchProductname.subscribe(items => {
-          this.searchList = items;
+      loginFacebook() {
+        this.fb.login()
+        .then((res: LoginResponse) => {
+          this._auth.pushTokenFacebook(res.authResponse).subscribe(data => { });
+        })
+        .catch(this.handleError);
+      }
+
+      logout() {
+        this.sublogout = this._auth.logout().subscribe(data => { });
+      }
+
+
+      private handleError(error) {
+        console.error('Error processing action', error);
+      }
+
+      somethingSearch(newvalue) {
+        this.search = newvalue;
+        this._product.getSuggestSearch(this.search).subscribe(data => {});
+        this._product._suggestSearchName.subscribe(items => {
+          if(this.search) {
+            this.searchName = items;
+          }
+          else {
+            this.search = null;
+            this.searchName = null;
+          }
         })
       }
-    }
 
-    closeSearch() {
-      this.search = null;
-      $('.search-name').hide();
-    }
+      showListSearch(event:any) {
+        let key = event.keyCode || event.which;
+        if(key == 13) {
+          this._product.searchProductByName(this.search).subscribe(data => {});
+          this._product._searchProductname.subscribe(items => {
+            this.searchList = items;
+          })
+        }
+      }
 
-    disableSearch(){
-      $('.search-name').hide();
-    }
+      closeSearch() {
+        this.search = null;
+        $('.search-name').hide();
+      }
 
-    enableSearch(){
-      $('.search-name').show();
+      disableSearch(){
+        $('.search-name').hide();
+      }
+
+      enableSearch(){
+        $('.search-name').show();
+      }
     }
-  }

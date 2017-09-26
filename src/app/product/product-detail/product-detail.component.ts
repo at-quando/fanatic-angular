@@ -30,6 +30,7 @@ export class ProductDetailComponent implements OnInit {
   productAnalyze: any;
   productRecommend: any;
 
+
   @ViewChild(ProductListComponent) productList: ProductListComponent;
   @ViewChild(ReviewComponent) reviewList: ReviewComponent;
   constructor(
@@ -69,7 +70,7 @@ export class ProductDetailComponent implements OnInit {
         });
         this.setProperty(this.property);
         this.zoomImage = this.product.properties[0].images[0].image;
-        setTimeout(()=>{$('.drift-demo-trigger').attr('data-zoom',this.zoomImage)},100);
+        setTimeout(()=>{$('.drift-demo-trigger').attr('data-zoom', 'http://res.cloudinary.com/asian-tech/image/upload/' + this.zoomImage)},100);
         setTimeout(()=>{this.showColor(Object.keys(this.productAnalyze)[0])},50);
       });
     });
@@ -95,7 +96,7 @@ export class ProductDetailComponent implements OnInit {
 
   toggleImage(src) {
     this.zoomImage= src;
-    $('.drift-demo-trigger').attr('data-zoom',this.zoomImage);
+    $('.drift-demo-trigger').attr('data-zoom', 'http://res.cloudinary.com/asian-tech/image/upload/' + this.zoomImage);
   }
 
   ngDestroy() {

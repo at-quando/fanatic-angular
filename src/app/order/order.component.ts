@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { ProductOrder } from '../shared/models/ProductOrder';
 import { OrdersService } from '../shared/services/orders.service'
-import { ApiService } from '../shared/services/api.service'
+import { ApiService } from '../shared/services/api.service';
+import { InfoOrderComponent } from './info-order/info-order.component';
 
 @Component({
   selector: 'app-order',
@@ -12,6 +13,8 @@ import { ApiService } from '../shared/services/api.service'
 export class OrderComponent implements OnInit {
   private productsSubject: any;
   private products: any;
+
+  @ViewChild(InfoOrderComponent) info_order: InfoOrderComponent;
   constructor(
     private _order: OrdersService,
     private api: ApiService
@@ -20,7 +23,9 @@ export class OrderComponent implements OnInit {
 
   ngOnInit() {
     this.productsSubject = this._order.getItem();
-    this.productsSubject.subscribe(data =>{this.products = data});
+    this.productsSubject.subscribe(data => {
+      this.products = data
+    });
   }
 
   getTotal() {
@@ -52,18 +57,28 @@ export class OrderComponent implements OnInit {
   payment() {
     let current_user = localStorage.getItem('current_user');
     if(current_user == null) {
-      var login = document.getElementById("modal-in");
+      this.api.setNotification('yellow', 'Have you had account?, sign up to join!')
+      var modal_in = document.getElementById("modal-in");
+      var login = document.getElementById("login");
       var signupForm = document.getElementById("signup");
+      var navSignUp = document.getElementById("nav-signup");
       var navLogin = document.getElementById("nav-login");
-      login.style.display = "block";
-      signupForm.style.display = "none";
-      navLogin.classList.add("actived");
-      this.disableScrolling();
+      login.style.display = "none";
+      modal_in.style.display = "block";
+      signupForm.style.display = "block";
+      navSignUp.classList.add("actived");
+      if(navLogin.classList.contains("actived")) {
+        navLogin.classList.remove("actived")
+      }
+      // this.disableScrolling();
     }
     else {
-      this._order.payMent().subscribe(data => {});
-      this.api.setNotification("green", "Success to order products, please check mail to more detail! ");
-      localStorage.removeItem('ordersList');
+      var modal_info_order = document.getElementById("modal-info-order");
+      var info_order = document.getElementById("info-order");
+      var method_payment = document.getElementById("method-payment");
+      modal_info_order.style.display = "block";
+      info_order.style.display = "none";
+      method_payment.style.display = "block";
     }
   }
 }

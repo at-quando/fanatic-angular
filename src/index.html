@@ -20,8 +20,10 @@
   <link href="./assets/css/bootstrap.min.css" rel="stylesheet" />
   <link href="./assets/css/now-ui-kit.css" rel="stylesheet" />
   <!-- CSS Just for demo purpose, don't include it in your project -->
- 
+  
   <script type="text/javascript" src="https://connect.facebook.net/en_US/sdk.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAGw-bQBkDDF3ERpXRELFIbMnvEuxtlXBc" async defer>
+  </script>
   <script type="text/javascript" src="./assets/js/Drift.js"></script>
 </head>
 <body data-spy="scroll" data-target=".navbar" data-offset="-50">
@@ -42,12 +44,48 @@
     $(document).on("click",".small-image",function() {
       $('.big-image').attr('src',this.src);
     });
-   $("body").not('#searchInput').click(function() {
+    $("body").not('#searchInput').click(function() {
       if(event.target===$('#searchInput')[0]) {
         return false;
       }
       $('.search-name').hide();
-   })
-});
+    })
+  });
+    // $('#sliderRegular').noUiSlider({
+    //   start: 40,
+    //   connect: "lower",
+    //   range: {
+    //     min: 0,
+    //     max: 100
+    //   }
+    // });
+  // function initMap() {
+  //   // Create a map object and specify the DOM element for display.
+  //   var mapCanvas = document.getElementById('map');
+  //   var location = new google.maps.LatLng(16.0445495, 108.2201364)
+  //   var mapOptions = {
+  //     center: location,
+  //     zoom: 17,
+  //     panControle: false,
+  //     mapTypeId: google.maps.MapTypeId.ROADMAP
+  //   };
+  //   var map = new google.maps.Map(mapCanvas, mapOptions);
+  //   var marker = new google.maps.Marker({
+  //     position: location,
+  //     map: map
+  //   });
+  //   var contentString = '<div class="info-window">' +
+  //   `<h4>About shop address</h4>` +
+  //   `<p>Sơn Trà, Đà Nẵng</p>` +
+  //   `</div>`;
+  //   var inforWindow = new google.maps.InfoWindow({
+  //     content: contentString,
+  //     maxWidth: 300,
+  //   });
+  //   marker.addListener('click', function() {
+  //     inforWindow.open(map, marker);
+  //   });
+  //   google.maps.event.addDomListener(window, 'load', initMap);
+  // }
 </script>
 </html>

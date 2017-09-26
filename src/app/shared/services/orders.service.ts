@@ -98,7 +98,7 @@ export class OrdersService {
     return this.products != null ? this.products.length : 0;
   }
 
-  payMent = () => {
+  payMent = (receiver: string, address: string, phone: string) => {
     this.payment = JSON.parse(localStorage.getItem('ordersList'));
     let orders = [];
     this.payment.map(_item => {
@@ -115,7 +115,7 @@ export class OrdersService {
       'Provider': currentUser.provider
     });
     let options = new RequestOptions({ headers: headers });
-    return this.http.post(`${environment.apiURL}/orders`, JSON.stringify({ orders: orders }), options)
+    return this.http.post(`${environment.apiURL}/orders`, JSON.stringify({ orders: orders, receiver: receiver, address: address, phone: phone }), options)
     .map((response: Response) => {
       // localStorage.removeItem('current_user');
       // location.reload();

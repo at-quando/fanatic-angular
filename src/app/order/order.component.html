@@ -1,3 +1,4 @@
+<info-order></info-order>
 <div class="container-side">
     <h5>My order</h5>
     <div class="row">
@@ -14,9 +15,12 @@
           <tr class="item" *ngFor="let orderItem of products">
             <td class="item-order">
               <div class="img">
-                <img class="" src='../../assets/img/avatar.jpg' alt="">
+                <img class="" src="http://res.cloudinary.com/asian-tech/image/upload/v1505877399/{{orderItem.properties[0].images[0].image}}" alt="">
+                <!-- <cl-image public-id="{{orderItem.properties[0].images[0].image}}" >
+                </cl-image> -->
+                <!-- <cl-image public-id="{{orderItem.properties[0].images[0].image}}" >
+                </cl-image> -->
               </div>
-
               <div class="title">
                 <p>
                   {{orderItem.name}}

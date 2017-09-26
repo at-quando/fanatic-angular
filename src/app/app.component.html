@@ -18,14 +18,14 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['./shop']">
+        <a class="nav-link" [routerLink]="['./shop']" (click)="topPage()">
           Shop Owner
         </a>
       </li>
     </ol>
     <div class="third-navbar">
       <ul class="navbar-nav justify-content-end collapse">
-        <li class="nav-item nav-item-right dropdown" [appNavUser]="name">
+        <li class="nav-item nav-item-right dropdown" [appNavUser]="{name: name, avatar: avatar}">
           <a class="nav-link" href="#pablo" data-toggle="dropdown" id="navbarDropdownMenuLink1">
             <i class="now-ui-icons users_single-02"></i>
             <span class="now-ui-icons arrows-1_minimal-down"></span>
@@ -88,13 +88,13 @@
           <div class="input-group form-group-no-border search-content">
             <input #searchSomething type="text" class="form-control search-input" id="searchInput" placeholder="Search something" [ngModel]="search" (ngModelChange)="somethingSearch($event)" (focus)="enableSearch()" (keydown)="showListSearch($event)">
             <ul class="search-name" (click)="disableSearch()">
-              <li class="search-item" *ngIf="searchName==null">
-                <p> No Item Found </p>
+              <li class="search-item search-item-not-found" *ngIf="searchName?.length === 0 && search !== null">
+                <p class="title-not-found"> No Item Found </p>
               </li>
               <li *ngFor="let nameSearch of searchName" class="search-item">
                 <div class="infor-search clr">
                   <a class="success-active" [routerLink]="['/', nameSearch.category.title, nameSearch.id]">
-                    <img class="image-search" src="{{nameSearch.properties[0].images[0].image}}">
+                    <img class="image-search" src="http://res.cloudinary.com/asian-tech/image/upload/{{nameSearch.properties[0].images[0].image}}">
                     <span class="name-price-search">
                       <span class="search-name-product">{{nameSearch.name}}</span>
                       <p class="search-price-product">${{nameSearch.properties[0].price}}</p>

@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../../shared/models/User';
 import { CurrentUserActionService } from '../../shared/services/current-user-action.service';
 import { ApiService } from '../../shared/services/api.service';
+import { CloudinaryOptions, CloudinaryUploader } from 'ng2-cloudinary';
 
 @Component({
   selector: 'app-user-infor',
@@ -15,22 +16,39 @@ export class InforComponent implements OnInit {
   uid: any;
   user: User;
   userCurrent: User;
+  imageId: any;
+
+  uploader: CloudinaryUploader  = new CloudinaryUploader(
+    new CloudinaryOptions({ cloudName: 'asian-tech', uploadPreset: 'vuqzhe3p' })
+    )
 
   constructor(private userAction: CurrentUserActionService,
-    private api: ApiService) {
+    private api: ApiService,
+    private router: Router
+    ) {
+    this.imageId = null;
     this.user= {
       name:'',
       phone: '',
       gender: '',
       address: '',
-      avatar: null
+      avatar: ''
     }
-    this.uid = JSON.parse(localStorage.getItem('current_user')).uid;
 
     this.userAction.getUserInfo(this.id).subscribe(data => {});
     this.userAction._personalInfo.subscribe(userInfo => {
-      this.user = userInfo;
+      if(userInfo) {
+        this.uid = JSON.parse(localStorage.getItem('current_user')).uid;
+        this.user = userInfo;
+      }
     })
+
+    this.uploader.onSuccessItem = (item: any, response: string, status: number, headers: any): any => {
+      let res: any = JSON.parse(response);
+      this.user.avatar = res.public_id;
+      this.imageId = res.public_id;
+      return { item, response, status, headers };
+    }
   }
 
   ngOnInit() {
@@ -38,7 +56,15 @@ export class InforComponent implements OnInit {
 
   editUserInfo(model,f) {
     if(f) {
-      this.userAction.editUserInfo(this.user,this.id).subscribe(data => {});
+      if(this.uploader.queue.length > 0){
+        this.uploader.uploadAll();
+        setTimeout(() => {
+          this.userAction.editUserInfo(this.user,this.id).subscribe(data => {});
+        }, 5000)
+      }
+      else {
+        this.userAction.editUserInfo(this.user,this.id).subscribe(data => {});
+      }
     }
     else {
       this.api.setNotification("yellow", "Nothing happened! Your information is up to date! ");

@@ -1,0 +1,82 @@
+@mixin step-follow() {
+  position: absolute;
+  top: 100px;
+  right: 0;
+  font-size: 20px;
+  color: rgba(105, 80, 80, 0.77);
+}
+
+#method-payment {
+  position: relative;
+  .next-step-payment-method {
+    @include step-follow();
+  }
+  .input-half {
+    width: 50%;
+    float: left;
+  }
+}
+
+#info-order {
+  position: relative;
+  .previous-step-payment-method {
+    @include step-follow();
+  }
+}
+::-webkit-input-placeholder { /* Chrome */
+  color: black;
+}
+:-ms-input-placeholder { /* IE 10+ */
+  color: black;
+}
+::-moz-placeholder { /* Firefox 19+ */
+  color: black;
+}
+:-moz-placeholder { /* Firefox 4 - 18 */
+  color: black;
+}
+h6 {
+  padding-top: 20px;
+}
+.nav-account {
+  margin-top: 20px;
+  a {
+    cursor: pointer;
+    padding: 0 20px;
+    font-size: 17px;
+    color: black;
+    border: 1px solid black;
+  }
+  .actived {
+    border: 1px solid orange;
+    color: orange !important;
+  }
+}
+
+.input-group {
+  margin-bottom: 30px;
+}
+small {
+  font-size: 14px;
+}
+
+.modal-dialog {
+  height: 75% !important;
+  max-width: 530px !important;
+}
+
+.radio {
+  margin-left: 25px;
+  width: 60%;
+  margin-left: 10%;
+}
+
+.img-payment {
+  width: 150px;
+  height: auto;
+  margin-left: 25px;
+}
+
+.title-payment {
+  width: 30%;
+}

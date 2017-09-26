@@ -82,6 +82,11 @@ a {
           }
         }
       }
+      .search-item-not-found {
+        .title-not-found {
+          margin-left: 50px;
+        }
+      }
     }
   }
 }
@@ -100,6 +105,10 @@ a {
 
 .dropdown:hover > .dropdown-menu {
   display: block;
+}
+
+.dropdown {
+  margin-left: 5px;
 }
 
 .category-item {

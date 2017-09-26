@@ -1,58 +1,58 @@
 <div *ngIf="shop">
-	<div class="shop-cover-picture">
-		<img src={{shop.image}} class="cover-picture">
-		<div class="shop-main-info">
-			<h4>{{shop.name}}</h4>
-			<hr class="small">
-			<p>{{shop.slogan}}</p>
-		</div>
-	</div>
-	<div class="container-side">
-		<div class="row">
-		 <nav class="col-sm-3" >
-		 	<div class="shop-navigation" >
-		 		<h4>{{shop.name}}</h4>
-		 		<ul>
-		 			<li class="actived"><a href={{url}}#product>Products</a></li>
-		 			<li><a href={{url}}#review>Review</a></li>
-		 			<li><a href={{url}}#location>Location</a></li>
-		 			<li><a href={{url}}#information>Infomation</a></li>
-		 		</ul>
-		 	</div>
-		</nav>
-		<span class="anchor" id="product"></span>
-		<div class="col-sm-9 padding-right">
-			<h4>PRODUCTS</h4>
-					<product-list></product-list>
-					<pagination ></pagination>
-					<hr class="small">
-					<span class="anchor" id="review"></span>
-					<review></review>
-					<hr class="small">
-					<span class="anchor" id="location"></span>
-					<div  class="location">
-						<h4>MAP</h4>
-						<iframe *ngIf="shop" id="locationMap" class="google-map" src="https://www.google.com/maps/embed/v1/search?key=AIzaSyB2pWEO7SWqwRCMbE9sMJcSzN8jSLH_YjY&q=shop.address" frameborder="0" allowfullscreen>
-					</iframe>
-					</div>
-					<hr class="small">
-					<span class="anchor" id="information"></span>
-					<div  class="full-info">
-						<div class="meta">
-							<h4>INFOMATION</h4>
-							<h6>{{shop.name}}</h6>
-							<p><span>Address:</span> {{shop.address}}</p>
-							<p><span>Telephone:</span> 123123123</p>
-							<p>
-								<span>Description:</span> 
-								{{shop.description}}
-							</p>
-						</div>
-						<div class="logo">
-							<img src={{shop.logo}}>
-						</div>
-					</div>
-				</div>
-			</div>
-	</div>
+  <div class="shop-cover-picture">
+    <img src={{shop.image}} class="cover-picture">
+    <div class="shop-main-info">
+      <h4>{{shop.name}}</h4>
+      <hr class="small">
+      <p>{{shop.slogan}}</p>
+    </div>
+  </div>
+  <div class="container-side">
+    <div class="row">
+      <nav class="col-sm-3" >
+        <div class="shop-navigation" >
+          <h4>{{shop.name}}</h4>
+          <ul>
+            <li class="actived"><a href={{url}}#product>Products</a></li>
+            <li><a href={{url}}#review>Review</a></li>
+            <li><a href={{url}}#location>Location</a></li>
+            <li><a href={{url}}#information>Infomation</a></li>
+          </ul>
+        </div>
+      </nav>
+      <span class="anchor" id="product"></span>
+      <div class="col-sm-9 padding-right">
+        <h4>PRODUCTS</h4>
+        <product-list></product-list>
+        <pagination ></pagination>
+        <hr class="small">
+        <span class="anchor" id="review"></span>
+        <review></review>
+        <hr class="small">
+        <span class="anchor" id="location"></span>
+        <div  class="location">
+          <h4>MAP</h4>
+          <div id="map">
+          </div>
+        </div>
+        <hr class="small">
+        <span class="anchor" id="information"></span>
+        <div  class="full-info">
+          <div class="meta">
+            <h4>INFOMATION</h4>
+            <h6>{{shop.name}}</h6>
+            <p><span>Address:</span> {{shop.address}}</p>
+            <p><span>Telephone:</span> 123123123</p>
+            <p>
+              <span>Description:</span> 
+              {{shop.description}}
+            </p>
+          </div>
+          <div class="logo">
+            <img src={{shop.logo}}>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
