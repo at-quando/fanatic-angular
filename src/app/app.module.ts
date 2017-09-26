@@ -10,6 +10,7 @@ import { Angular2SocialLoginModule } from "angular2-social-login";
 import { FacebookModule } from 'ngx-facebook';
 import { ProductComponent } from './product/product.component';
 import { NotificationComponent } from './shared/layout/notification/notification.component';
+import { AsideTreeComponent } from './shared/layout/aside-tree/aside-tree.component';
 import { ProductListComponent } from './product/product-list/product-list.component';
 import { ImageZoomModule } from 'angular2-image-zoom';
 import { routing, appRoutingProviders } from './app.route';
@@ -70,6 +71,7 @@ declare var require: any;
     ShopListComponent,
     ShopDetailComponent,
     UiTreeBrandAsideComponent,
+    AsideTreeComponent,
     InfoOrderComponent
   ],
   imports: [

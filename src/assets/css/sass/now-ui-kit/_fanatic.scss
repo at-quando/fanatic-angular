@@ -329,9 +329,12 @@ h1,h2,h3,h4,h5,h6,span,p{
 
   
 }
-
+ .replace-nav{
+      display: none;
+    }
 .container-side {
   margin-bottom: 100px;
+  padding-left: 20px;
 }
 
 .small-image{
@@ -367,7 +370,7 @@ h1,h2,h3,h4,h5,h6,span,p{
     width: 100%;
     padding: 0;
     .category-item {
-      width: calc(100%/3) !important;
+      width: calc(100%/4);
       margin-bottom: 30px;
       position: relative;
       height: 350px;
