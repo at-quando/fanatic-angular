@@ -2,44 +2,27 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import { AppComponent } from './app.component';
-import { LoginComponent } from './authenticate/login/login.component';
-import { NavUserDirective } from './shared/directive/nav-user.directive';
+
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { Angular2SocialLoginModule } from "angular2-social-login";
+import { Angular2SocialLoginModule } from 'angular2-social-login';
 import { FacebookModule } from 'ngx-facebook';
-import { ProductComponent } from './product/product.component';
-import { NotificationComponent } from './shared/layout/notification/notification.component';
-import { AsideTreeComponent } from './shared/layout/aside-tree/aside-tree.component';
-import { ProductListComponent } from './product/product-list/product-list.component';
 import { ImageZoomModule } from 'angular2-image-zoom';
-import { routing, appRoutingProviders } from './app.route';
-import { HomeComponent } from './home/home.component';
-import { KeysPipe } from './shared/pipe/categories.pipe';
-import { ReplaceBlankPipe } from './shared/pipe/replaceBlank.pipe';
-import { UiTreeComponent } from './shared/layout/ui-tree/ui-tree.component';
-import { ProductDetailComponent } from './product/product-detail/product-detail.component';
-import { CategoryTreeComponent } from './product/category-tree/category-tree.component';
-import { UiTreeAsideComponent } from './product/category-tree/ui-tree-aside/ui-tree-aside.component';
-import { ConfirmEmailComponent } from './authenticate/confirm-email/confirm-email.component';
-import { FooterComponent } from './shared/layout/footer/footer.component';
-import { PaginationComponent } from './shared/layout/pagination/pagination.component';
-import { UserComponent } from './user/user.component';
-import { ShopComponent } from './shop/shop.component';
-import { ReviewComponent } from './review/review.component';
-import { ApiService } from './shared/services/api.service';
-import { OrderComponent } from './order/order.component';
-import { InforComponent } from './user/infor/infor.component';
-import { HistoryComponent } from './user/history/history.component'
-import { ShopListComponent } from './shop/shop-list/shop-list.component';
-import { ShopDetailComponent } from './shop/shop-detail/shop-detail.component';
-import { UiTreeBrandAsideComponent } from './product/category-tree/ui-tree-brand-aside/ui-tree-brand-aside.component';
-import { InfoOrderComponent } from './order/info-order/info-order.component';
+import { AppRoutingModule } from './app.routing';
 import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-4.x';
 import { Cloudinary } from 'cloudinary-core';
 import { FileUploadModule } from 'ng2-file-upload';
-import { Ng2CloudinaryModule } from 'ng2-cloudinary';
+import { SharedModule} from './shared/module/shared.module';
+import { UiTreeModule } from './shared/layout/ui-tree/ui-tree.module';
+import { GlobalModule } from './global/global.module';
+import { AppComponent } from './app.component';
+import { LoginComponent } from './global/login/login.component';
+import { AccountModule } from './account/account.module';
+import { CoreModule } from './core/module/core.module';
+import { NotificationModule } from './shared/layout/notification/notification.module';
+import { FooterModule } from './shared/layout/footer/footer.module';
+import { ApiService } from './shared/services/api.service';
 
+// tslint:disable-next-line:max-line-length
 const cloud = CloudinaryModule.forRoot({Cloudinary}, { cloud_name: 'asian-tech', api_key: '829637522354547', api_secret: '8xXUcttJ7oaA1L-xGoWsuhbfBSo' } as CloudinaryConfiguration);
 
 declare var require: any;
@@ -47,46 +30,28 @@ declare var require: any;
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    NavUserDirective,
-    ProductComponent,
-    ProductListComponent,
-    HomeComponent,
-    KeysPipe,
-    ReplaceBlankPipe,
-    UiTreeComponent,
-    ProductDetailComponent,
-    CategoryTreeComponent,
-    FooterComponent,
-    UiTreeAsideComponent,
-    ConfirmEmailComponent,
-    PaginationComponent,
-    UserComponent,
-    ShopComponent,
-    ReviewComponent,
-    NotificationComponent,
-    OrderComponent,
-    InforComponent,
-    HistoryComponent,
-    ShopListComponent,
-    ShopDetailComponent,
-    UiTreeBrandAsideComponent,
-    AsideTreeComponent,
-    InfoOrderComponent
+    LoginComponent
   ],
   imports: [
+    SharedModule,
     BrowserModule,
     FormsModule,
     HttpModule,
-    routing,
     NgbModule.forRoot(),
     Angular2SocialLoginModule,
     FacebookModule.forRoot(),
     cloud,
-    FileUploadModule
+    FileUploadModule,
+    AppRoutingModule,
+    AccountModule,
+    GlobalModule,
+    CoreModule.forRoot(),
+    UiTreeModule,
+    NotificationModule,
+    FooterModule
   ],
   providers: [
-      ApiService,
+    ApiService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,0 +1,57 @@
+<info-order></info-order>
+<div class="container-side">
+    <h5>My order</h5>
+    <div class="row">
+      <div class="col-sm-9 orders">
+        <table class="table-orders table">
+          <tr>
+            <th class="product">{{numberItem()}} PRODUCTS</th>
+            <th class="price">PRICE</th>
+            <th class="number">NUMBER</th>
+          </tr>
+          <tr *ngIf="numberItem()==0">
+            <p>You don't have any products, please choice first!!!</p>
+          </tr>
+          <tr class="item" *ngFor="let orderItem of products">
+            <td class="item-order">
+              <div class="img">
+                <img class="" src="http://res.cloudinary.com/asian-tech/image/upload/v1505877399/{{orderItem.properties[0].images[0].image}}" alt="">
+              </div>
+              <div class="title">
+                <p>
+                  {{orderItem.name}}
+                </p>
+                <div>
+                  Color: {{orderItem.properties[0].color}} 
+                  <div *ngIf="orderItem.properties[0].size">Size: {{orderItem.properties[0].size}}</div>
+                  <div *ngIf="orderItem.properties[0].storage">Storage: {{orderItem.properties[0].storage}}</div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <h4>${{orderItem.properties[0].price}}</h4>
+            </td>
+            <td>
+              <div class="text-center">
+                <button class="btn-number" (click)="minusQuantity(orderItem)">-</button>
+                <input type="number" class="number-product" value={{orderItem.quantity}}>
+                <button class="btn-number" (click)="plusQuantity(orderItem)">+</button>
+              </div>
+            </td>
+            <div class="delete">
+              <a (click)="deleteOrderItem(orderItem)">x</a>
+            </div>
+          </tr>
+        </table>
+      </div>
+      <div class="col-sm-3 payment">
+        <h6>Order information</h6>
+        <hr class="mar">
+        <span>Price:</span> <span class="price-info">${{getTotal()}}</span>
+        <hr class="mar">
+        <span>Total price(Total for pay):</span> <span class="price-info">${{getTotal()}}</span> 
+        <hr class="mar">
+        <button type="button" class="btn btn-primary" (click)="payment()" [disabled]="products==null ||products.length==0" >Payment</button>
+      </div>
+    </div>
+</div>

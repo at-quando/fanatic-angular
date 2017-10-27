@@ -9,7 +9,7 @@
   </div>
   <div class="full-width">
     <a href="#pablo">
-      <img src="assets/img/logofanatic.png" class="brand-name">
+      <img src="assets/img/logofanatic.png" class="brand-name" style="background: white;">
     </a>
     <ol class="navbar-nav collapse navbar-collapse">
       <li class="nav-item">
@@ -59,7 +59,9 @@
     <div>
       <ul class="second-nav navbar-nav collapse navbar-collapse aside-nav">
         <h5 style="margin-bottom: 0; margin-top: 10px; color: white">CATEGORIES</h5>
-        <aside-tree class="nav-item active dropdown replace-nav" [data]="categories"></aside-tree>
+        <div *ngIf="categoriesAside">
+          <!-- <aside-tree class="nav-item active dropdown replace-nav" [datas]="categoriesAside"></aside-tree> -->
+        </div>
         <li class="nav-item active dropdown origin-nav" *ngFor="let mainCategory of categories | keys">
           <a class="nav-link dropdown-toggle" data-toggle="dropdown" id="dropdownCategory">{{mainCategory}}</a>
           <ul class="dropdown-menu dropdown-category" aria-labelledby="dropdownCategory">

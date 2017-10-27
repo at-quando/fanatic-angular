@@ -8,7 +8,7 @@
         </a>
       </h4>
       <div id={{k|replaceBlankSpace}} class="panel-collapse collapse">
-        <aside-tree [data]="mainCategory[k]" class="panel-body"></aside-tree>
+        <aside-tree [datas]="mainCategory[k]" class="panel-body"></aside-tree>
       </div>
     </div>
   </div>
@@ -22,7 +22,7 @@
           <a [routerLink]="['../',m | lowercase]">
             {{m}}
           </a>
-          <aside-tree [data]="mainCategory[k][m]" class="panel-body"></aside-tree>
+          <aside-tree [datas]="mainCategory[k][m]" class="panel-body"></aside-tree>
         </li>
       </div>
     </ul>

@@ -1,12 +1,11 @@
 import { Component, ViewChild } from '@angular/core';
-import { LoginComponent } from './authenticate/login/login.component';
-import { InfoOrderComponent } from './order/info-order/info-order.component'
-import { AuthenticationService } from "./shared/services/authenticate.service";
+import { LoginComponent } from './global/login/login.component';
+import { AuthenticationService } from './shared/services/authenticate.service';
 import { AppService } from './app.service';
-import { Router } from '@angular/router'
-import { OrdersService } from './shared/services/orders.service'
+import { Router } from '@angular/router';
+import { OrdersService } from './shared/services/orders.service';
 import { AuthService } from 'angular2-social-login';
-import { ProductService } from './shared/services/product.service'
+import { ProductService } from './shared/services/product.service';
 import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBVideoComponent } from 'ngx-facebook';
 
 @Component({
@@ -18,6 +17,7 @@ import { FacebookService, LoginResponse, LoginOptions, UIResponse, UIParams, FBV
 export class AppComponent {
   public user;
   private categories: any;
+  private categoriesAside: any;
   private shops: any;
   sub: any;
   name: string;
@@ -29,9 +29,9 @@ export class AppComponent {
   search: string;
   searchName: any;
   searchList: any;
+  check: boolean;
 
   @ViewChild(LoginComponent) login: LoginComponent;
-  @ViewChild(InfoOrderComponent) info_order: InfoOrderComponent;
   constructor(
     private _auth: AuthenticationService,
     private fb: FacebookService,
@@ -50,6 +50,7 @@ export class AppComponent {
       this.id = JSON.parse(localStorage.current_user).user_id;
       this.avatar = JSON.parse(localStorage.current_user).user_avatar;
     }
+    this.check=false;
   }
   ngOnInit() {
     $('.search-name').hide();
@@ -156,5 +157,11 @@ export class AppComponent {
 
       enableSearch(){
         $('.search-name').show();
+      }
+
+      ngDoCheck() {
+        if($(window).width()<=989){
+          this.categoriesAside=this.categories;
+        }
       }
     }

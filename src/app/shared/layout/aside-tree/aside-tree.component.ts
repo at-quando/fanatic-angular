@@ -10,7 +10,7 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./aside-tree.component.scss']
 })
 export class AsideTreeComponent implements OnInit {
-  @Input('data') mainCategory: any;
+  @Input('datas') mainCategory: any;
 
   constructor(private route: ActivatedRoute) {
   }
